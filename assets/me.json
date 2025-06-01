@@ -1,0 +1,28 @@
+{
+  "name": "Lakubu David",
+  "location_text": "Mauritius",
+  "role_parts": [
+    "Student at the University of Mascareignes",
+    "Backend Developer"
+  ],
+  "contact_links": [
+    {
+      "text": "Mail",
+      "href": "mailto:contact@lakubudavid.me"
+    },
+    {
+      "text": "Linkedin",
+      "href": "https://www.linkedin.com/in/david-lakubu/"
+    },
+    {
+      "text": "Github",
+      "href": "https://github.com/lakubudavid/"
+    }
+  ],
+  "profile_image": {
+    "src": "assets/img/profile.jpg",
+    "alt": "profile picture",
+    "width": "200px",
+    "height": "200px"
+  }
+}

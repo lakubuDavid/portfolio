@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Oracle Netsuite Developer (Internship)",
+    "duration": "May-July 2024",
+    "tech_used": "Javascript, Netsuite, Xojo, Git",
+    "description": "Me and my team implemented a POS using Xojo and Netsuite, I was responsible for implementing the backend API trough Netsuite RESTlets using Javascript and the client library in Xojo."
+  },
+  {
+    "title": "Freelance Web Developper",
+    "duration": "January 2023 - Now",
+    "tech_used": "Typescript, Nuxt, Vercel,Prismic CMS, Git",
+    "description": "I have helped in the creation of a website for a company called <a href=\"aeesservices.com\">AEES</a> using my knowledges."
+  }
+]

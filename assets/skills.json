@@ -1,0 +1,50 @@
+[
+  {
+    "category": "Technical Skills",
+    "subcategories": [
+      {
+        "name": "Languages",
+        "items": [
+          "Typescript",
+          "HTML & CSS",
+          "SQL",
+          "Go",
+          "C#",
+          "C++",
+          "Lua"
+        ]
+      },
+      {
+        "name": "Libraries & Tools",
+        "items": [
+          "Hono",
+          "Nuxt & Vue 3",
+          "Drizzle",
+          "Sqlite",
+          "MongoDb",
+          "Redis",
+          "Firebase"
+        ]
+      },
+      {
+        "name": "Infra & Platforms",
+        "items": [
+          "Docker Compose",
+          "Cloudflare",
+          "Vercel",
+          "S3",
+          "Netsuite",
+          "Turso"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Personal Skills",
+    "items": [
+      "Bilangual (French & English)",
+      "Solution oriented thinking",
+      "Self learner"
+    ]
+  }
+]

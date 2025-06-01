@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Soop",
+    "description": "A scafolding tool to ease up new projects startup Especially useful if ,like myself, you are regularly calling init on multiple cli tools for the same kind of projects It uses just as project runner instead of Makefile but you are free to use any other tool",
+    "tech_used": "Crystal",
+    "status": "In active development",
+    "github_link": "https://github.com/lakubudavid/soop"
+  },
+  {
+    "name": "Noon",
+    "description": "This web server, based on C sockets, uses Lua as the server scripting language. Most features are functional, allowing route definitions and text file serving. It also implements basic middleware.",
+    "tech_used": "C++, Lua",
+    "status": "Paused",
+    "github_link": "https://github.com/lakubudavid/noon"
+  },
+  {
+    "name": "Moddo",
+    "description": "A command-line interface (CLI) tool designed for model generation that enables developers to create classes in various programming languages from a single, unified model definition file. This tool streamlines the process of translating model specifications into code, enhancing productivity and ensuring consistency across different languages.",
+    "tech_used": "Go",
+    "status": "Paused",
+    "github_link": "https://github.com/lakubudavid/moddo"
+  }
+]
