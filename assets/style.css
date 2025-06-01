@@ -74,12 +74,14 @@
 :root {
   --row-grid-template: repeat(2, 1fr);
   --grid-template: repeat(2, 1fr);
+  --side-margin: 0px 100px
 }
 
 @media (max-width: 1000px) {
   :root {
     --row-grid-template: 1fr;
     --grid-template: 1fr;
+    --side-margin: 0px 5px
   }
 }
 
@@ -178,7 +180,7 @@ main {
 }
 
 body {
-  margin: 0px;
+  margin: var(--side-margin);
   padding: 20px;
 
   color: var(--text-color);
@@ -210,6 +212,7 @@ h2 {
 
 section {
   padding: 20px;
+
   border: 1px solid var(--border-color);
   border-radius: 10px;
   width: auto;
