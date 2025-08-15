@@ -19,6 +19,10 @@
         "items": [
           "Hono",
           "Nuxt & Vue 3",
+          "React",
+          "Tanstack Router",
+          "React query",
+          "Zustand",
           "Drizzle",
           "Sqlite",
           "MongoDb",
