@@ -74,7 +74,7 @@ const body = document.querySelector("body");
  * @typedef {object} WorkExperience
  * @property {string} title - The job title.
  * @property {string} duration - The duration of the work experience.
- * @property {string} tech_used - The technologies used.
+ * @property {string[]} tech_used - The technologies used.
  * @property {string} description - The description of the role/tasks (can contain HTML like links).
  */
 
@@ -394,7 +394,9 @@ async function loadWorkExperiences() {
               <h2><strong>${experience.title}</strong></h2>
               <span>${experience.duration}</span>
               <br>
-              <span><strong>Tech Used :</strong> ${experience.tech_used}</span>
+              <span><strong>Tech Used :</strong> ${experience.tech_used.join(
+                ", ",
+              )}</span>
               <br>
               <span>
                   <p>${experience.description}</p>
@@ -466,6 +468,12 @@ async function loadMe() {
       .map((part) => `<span>${part}</span>`)
       .join(" | ");
     meInfoContainer.append(roleSpan); // Insert after the location span
+  }
+  // Populate Description
+  if (meData.description) {
+    const descriptionP = document.createElement("p");
+    descriptionP.innerHTML = meData.description;
+    meInfoContainer.append(descriptionP);
   }
 
   // Populate Contact Links
