@@ -74,7 +74,7 @@
 :root {
   --row-grid-template: repeat(2, 1fr);
   --grid-template: repeat(2, 1fr);
-  --side-margin: 0px 100px
+  --side-margin: 0px 100px;
 }
 
 @media (max-width: 1000px) {
@@ -222,7 +222,7 @@ section {
 }
 
 section:not(#me) {
-  line-height: 1.5em;
+  line-height: 1.5rem;
   letter-spacing: 0.5px;
 }
 
@@ -260,7 +260,7 @@ section#me {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  font-size: 1.25em;
+  font-size: 1.25rem;
   padding: 20px 20px 10px 20px;
   font-family: "Space Grotesk", sans-serif !important;
 }
@@ -368,4 +368,29 @@ div.f-row {
 .grid {
   display: grid;
   grid-template-columns: var(--grid-template);
+}
+
+@media(max-width: 760px) {
+  .p-group {
+    padding-bottom: 5px;
+
+    /* h2 { */
+    /* padding-bottom: 5px; */
+    /* } */
+
+    span {
+      padding-bottom: 10px;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  #skills>div {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+  }
 }

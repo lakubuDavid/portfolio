@@ -1,6 +1,6 @@
 [
   {
-    "title": "Full-Stack Developer",
+    "title": "Full-Stack Developer - K52 Experts, Calebasses, Mauritius",
     "duration": "May-July 2025",
     "tech_used": [
       "Javascript",
@@ -14,21 +14,21 @@
       "ASP.NET",
       "OpenAPI"
     ],
-    "description": "I worked on an iinternall support tool for ticket management, I implemented the backend in C# with ASP.NET and EntityFramework and the frontend in React using tanstack router, react-query and zustand"
+    "description": "I worked on an internal support tool for ticket management, I implemented the backend in C# with ASP.NET and EntityFramework and the frontend in React using tanstack router, react-query and zustand"
   },
   {
-    "title": "Oracle Netsuite Developer",
+    "title": "Oracle Netsuite Developer - ITeligence Sys, Port Louis, Mauritius",
     "duration": "May-July 2024",
     "tech_used": [
       "Javascript",
-      " Netsuite",
-      " Xojo",
-      " Git"
+      "Netsuite",
+      "Xojo",
+      "Git"
     ],
     "description": "Me and my team implemented a POS using Xojo and Netsuite, I was responsible for implementing the backend API trough Netsuite RESTlets using Javascript and the client library in Xojo."
   },
   {
-    "title": "Freelance Web Developper",
+    "title": "Freelance Web Developper - AEES Services, Lubumbashi, DR Congo",
     "duration": "January 2023 - Now",
     "tech_used": [
       "Typescript",

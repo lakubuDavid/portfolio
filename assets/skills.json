@@ -18,16 +18,20 @@
         "name": "Libraries & Tools",
         "items": [
           "Hono",
-          "Nuxt & Vue 3",
+          "ORPC",
+          "Nuxt & Vue",
           "React",
           "Tanstack Router",
+          "Tanstack Start",
           "React query",
           "Zustand",
           "Drizzle",
           "Sqlite",
           "MongoDb",
           "Redis",
-          "Firebase"
+          "Firebase",
+          "Vercel AI SDK",
+          "Ollama"
         ]
       },
       {
@@ -38,7 +42,8 @@
           "Vercel",
           "S3",
           "Netsuite",
-          "Turso"
+          "Turso",
+          "GCP"
         ]
       }
     ]

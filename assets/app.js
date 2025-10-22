@@ -156,7 +156,7 @@ function loadLayouts() {
       collapseContainer.setAttribute("data-collapsed", savedState ?? "on");
       // Update button text based on saved state
       el.textContent =
-        collapseContainer.getAttribute("data-collapsed") == "on"
+        collapseContainer.getAttribute("data-collapsed") === "on"
           ? "hide"
           : "show";
     } else {
@@ -382,7 +382,9 @@ async function loadWorkExperiences() {
   // Start from the first child after the H1 to preserve the H1 and trigger link
   const existingExperienceElements =
     workExperienceSection.querySelectorAll(".p-group");
-  existingExperienceElements.forEach((el) => el.remove());
+  existingExperienceElements.forEach((el) => {
+    el.remove();
+  });
 
   const workExperiences = await getWorkExperiences();
 
@@ -527,10 +529,10 @@ document.querySelectorAll(".collapse-trigger").forEach((el) => {
     if (collapseContainer) {
       // Check if target exists
       const currentState = collapseContainer.getAttribute("data-collapsed");
-      const newState = currentState == "on" ? "off" : "on";
+      const newState = currentState === "on" ? "off" : "on";
 
       collapseContainer.setAttribute("data-collapsed", newState);
-      el.textContent = newState == "on" ? "hide" : "show";
+      el.textContent = newState === "on" ? "hide" : "show";
 
       localStorage.setItem(`layout-state:${target}`, newState);
     } else {
