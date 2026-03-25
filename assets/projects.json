@@ -1,23 +1,41 @@
 [
   {
     "name": "Soop",
-    "description": "A scafolding tool to ease up new projects startup Especially useful if ,like myself, you are regularly calling init on multiple cli tools for the same kind of projects It uses just as project runner instead of Makefile but you are free to use any other tool",
+    "description": {
+      "en": "A scaffolding tool to ease up new projects startup. Especially useful if, like myself, you are regularly calling init on multiple CLI tools for the same kind of projects. It uses just as project runner instead of Makefile but you are free to use any other tool",
+      "fr": "Un outil de scaffolding pour faciliter le démarrage de nouveaux projets. Particulièrement utile si, comme moi, vous appelez régulièrement init sur plusieurs outils CLI pour le même type de projets. Il utilise just comme runner de projet au lieu de Makefile mais vous êtes libre d'utiliser n'importe quel autre outil"
+    },
     "tech_used": "Crystal",
-    "status": "In active development",
+    "status": {
+      "en": "In active development",
+      "fr": "En développement actif"
+    },
     "github_link": "https://github.com/lakubudavid/soop"
   },
   {
     "name": "Noon",
-    "description": "This web server, based on C sockets, uses Lua as the server scripting language. Most features are functional, allowing route definitions and text file serving. It also implements basic middleware.",
+    "description": {
+      "en": "This web server, based on C sockets, uses Lua as the server scripting language. Most features are functional, allowing route definitions and text file serving. It also implements basic middleware.",
+      "fr": "Ce serveur web, basé sur les sockets C, utilise Lua comme langage de script serveur. La plupart des fonctionnalités sont opérationnelles, permettant la définition de routes et le service de fichiers texte. Il implémente également un middleware basique."
+    },
     "tech_used": "C++, Lua",
-    "status": "Paused",
+    "status": {
+      "en": "Paused",
+      "fr": "En pause"
+    },
     "github_link": "https://github.com/lakubudavid/noon"
   },
   {
     "name": "Moddo",
-    "description": "A command-line interface (CLI) tool designed for model generation that enables developers to create classes in various programming languages from a single, unified model definition file. This tool streamlines the process of translating model specifications into code, enhancing productivity and ensuring consistency across different languages.",
+    "description": {
+      "en": "A command-line interface (CLI) tool designed for model generation that enables developers to create classes in various programming languages from a single, unified model definition file. This tool streamlines the process of translating model specifications into code, enhancing productivity and ensuring consistency across different languages.",
+      "fr": "Un outil en ligne de commande (CLI) conçu pour la génération de modèles qui permet aux développeurs de créer des classes dans divers langages de programmation à partir d'un seul fichier de définition de modèle unifié. Cet outil simplifie le processus de traduction des spécifications de modèles en code, améliorant la productivité et assurant la cohérence entre les différents langages."
+    },
     "tech_used": "Go",
-    "status": "Paused",
+    "status": {
+      "en": "Paused",
+      "fr": "En pause"
+    },
     "github_link": "https://github.com/lakubudavid/moddo"
   }
 ]

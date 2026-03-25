@@ -9,27 +9,23 @@
           "HTML & CSS",
           "SQL",
           "Go",
+          "Python",
           "C#",
           "C++",
-          "Lua"
+          "Lua",
+          "SQL"
         ]
       },
       {
         "name": "Libraries & Tools",
         "items": [
-          "Hono",
-          "ORPC",
+          "Hono & RPC",
           "Nuxt & Vue",
           "React",
-          "Tanstack Router",
-          "Tanstack Start",
           "React query",
           "Zustand",
-          "Drizzle",
-          "Sqlite",
           "MongoDb",
           "Redis",
-          "Firebase",
           "Vercel AI SDK",
           "Ollama"
         ]
@@ -41,6 +37,7 @@
           "Cloudflare",
           "Vercel",
           "S3",
+          "Firebase",
           "Netsuite",
           "Turso",
           "GCP"
@@ -53,7 +50,8 @@
     "items": [
       "Bilangual (French & English)",
       "Solution oriented thinking",
-      "Self learner"
+      "Self learner",
+      "Basic Electronics"
     ]
   }
 ]

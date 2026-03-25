@@ -1,138 +1,382 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <title>David Lakubu - Software Engineer</title>
+    <link rel="stylesheet" href="assets/style.css" />
 
-<head>
-  <title>David Lakubu - Software Engineer</title>
-  <link rel="stylesheet" href="assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Space+Grotesk:wght@300..700&display=swap"
-    rel="stylesheet">
-</head>
+    <!-- Alpine.js -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.4/dist/cdn.min.js"
+    ></script>
 
-<body class="theme-light">
-  <main>
-    <nav>
-      <span>
-        <!-- <button id="theme-switcher">theme</button> -->
-        <select id="theme-selector">
-        </select>
-      </span>
-    </nav>
-    <section id="me">
-      <div class="f-row">
-        <div class="col" id="me-info">
-          <span class="big-title">Lakubu David</span>
-          <span id="me-location-text">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M16.2721 10.2721C16.2721 12.4813 14.4813 14.2721 12.2721 14.2721C10.063 14.2721 8.27214 12.4813 8.27214 10.2721C8.27214 8.06298 10.063 6.27212 12.2721 6.27212C14.4813 6.27212 16.2721 8.06298 16.2721 10.2721ZM14.2721 10.2721C14.2721 11.3767 13.3767 12.2721 12.2721 12.2721C11.1676 12.2721 10.2721 11.3767 10.2721 10.2721C10.2721 9.16755 11.1676 8.27212 12.2721 8.27212C13.3767 8.27212 14.2721 9.16755 14.2721 10.2721Z"
-                fill="currentColor" />
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M5.79417 16.5183C2.19424 13.0909 2.05438 7.39409 5.48178 3.79417C8.90918 0.194243 14.6059 0.054383 18.2059 3.48178C21.8058 6.90918 21.9457 12.6059 18.5183 16.2059L12.3124 22.7241L5.79417 16.5183ZM17.0698 14.8268L12.243 19.8965L7.17324 15.0698C4.3733 12.404 4.26452 7.97318 6.93028 5.17324C9.59603 2.3733 14.0268 2.26452 16.8268 4.93028C19.6267 7.59603 19.7355 12.0268 17.0698 14.8268Z"
-                fill="currentColor" />
-            </svg>
-            Currently in Mauritius
-          </span>
-          <span id="me-roles">
-            <!-- <span>Student at the University of Mascareignes </span> -->
-            <!-- |<span> Backend Developer</span> -->
-          </span>
-          <!-- <div class="links"> -->
-            <!-- <ul> -->
-              <!-- <li> -->
-                <!-- Contact me : -->
-              <!-- </li> -->
-              <!-- <li> -->
-                <!-- <a href="mailto:contact@lakubudavid.me"> -->
-                  <!-- Mail -->
-                <!-- </a> -->
-              <!-- </li> -->
-              <!-- - -->
-              <!-- <li> -->
-                <!-- <a href="https://www.linkedin.com/in/david-lakubu/"> -->
-                  <!-- Linkedin -->
-                <!-- </a> -->
-              <!-- </li> -->
-            <!-- </ul> -->
-          <!-- </div> -->
+    <script src="assets/app-alpine.js"></script>
+  </head>
+
+  <body
+    x-data="themeManager()"
+    :class="themeClass"
+    x-init="init()"
+  >
+    <main>
+      <nav>
+        <div class="selectors">
+          <!-- Theme Selector -->
+          <div
+            class="custom-select"
+            x-data="themeSelector()"
+            @click.outside="open = false"
+          >
+            <div
+              class="select-selected"
+              :class="{ 'select-arrow-active': open }"
+              @click="open = !open"
+              @keydown.enter="open = !open"
+              @keydown.escape="open = false"
+              tabindex="0"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style="
+                  display: inline-block;
+                  vertical-align: middle;
+                  margin-right: 8px;
+                  opacity: 0.7;
+                "
+              >
+                <path
+                  d="M12 3C10.8065 4.19347 10.136 5.81217 10.136 7.5C10.136 9.18783 10.8065 10.8065 12 12C13.1935 13.1935 13.8122 14.8065 13.8122 16.5C13.8122 18.1935 13.1935 19.8065 12 21"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 8.13401 8.13401 5 12 5C15.866 5 19 8.13401 19 12Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
+              <span x-text="currentTheme"></span>
+            </div>
+            <div class="select-items" :class="{ 'select-show': open }">
+              <template x-for="themeName in themes" :key="themeName">
+                <div
+                  :class="{ 'same-as-selected': currentTheme === themeName }"
+                  @click="setCurrentTheme(themeName)"
+                  x-text="themeName"
+                ></div>
+              </template>
+            </div>
+          </div>
+
+          <!-- Language Selector -->
+          <div
+            class="custom-select"
+            x-data="languageSelector()"
+            @click.outside="open = false"
+          >
+            <div
+              class="select-selected"
+              :class="{ 'select-arrow-active': open }"
+              @click="open = !open"
+              @keydown.enter="open = !open"
+              @keydown.escape="open = false"
+              tabindex="0"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style="
+                  display: inline-block;
+                  vertical-align: middle;
+                  margin-right: 8px;
+                  opacity: 0.7;
+                "
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path
+                  d="M12 3C12 3 8 6 8 12C8 18 12 21 12 21"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path
+                  d="M12 3C12 3 16 6 16 12C16 18 12 21 12 21"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path d="M3 12H21" stroke="currentColor" stroke-width="2" />
+                <path d="M4 8H20" stroke="currentColor" stroke-width="2" />
+                <path d="M4 16H20" stroke="currentColor" stroke-width="2" />
+              </svg>
+              <span x-text="getLanguageLabel(currentLanguage)"></span>
+            </div>
+            <div class="select-items" :class="{ 'select-show': open }">
+              <template x-for="lang in languages" :key="lang">
+                <div
+                  :class="{ 'same-as-selected': currentLanguage === lang }"
+                  @click="setCurrentLanguage(lang)"
+                  x-text="getLanguageLabel(lang)"
+                ></div>
+              </template>
+            </div>
+          </div>
         </div>
-        <img id="me-profile-image" width="200px" height="200px" alt="profile picture" src="assets/img/profile.jpg">
-      </div>
-    </section>
-    <div class="row">
-      <section id="skills" data-collapsed="on">
-        <h1>Skills <a class="collapse-trigger" data-collapse-target="#skills">hide</a> </h1>
-        <h2 class="collapsible">Technical Skills</h2>
-        <div class="collapsible" id="technical-skills">
+      </nav>
+
+      <!-- Me Section -->
+      <section
+        id="me"
+        x-data="meSection()"
+        :data-collapsed="isCollapsed() ? 'on' : 'off'"
+      >
+        <div class="f-row collapsible">
+          <div class="col" id="me-info">
+            <span class="big-title" x-text="name">Lakubu David</span>
+            <span id="me-location-text">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M16.2721 10.2721C16.2721 12.4813 14.4813 14.2721 12.2721 14.2721C10.063 14.2721 8.27214 12.4813 8.27214 10.2721C8.27214 8.06298 10.063 6.27212 12.2721 6.27212C14.4813 6.27212 16.2721 8.06298 16.2721 10.2721ZM14.2721 10.2721C14.2721 11.3767 13.3767 12.2721 12.2721 12.2721C11.1676 12.2721 10.2721 11.3767 10.2721 10.2721C10.2721 9.16755 11.1676 8.27212 12.2721 8.27212C13.3767 8.27212 14.2721 9.16755 14.2721 10.2721Z"
+                  fill="currentColor"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.79417 16.5183C2.19424 13.0909 2.05438 7.39409 5.48178 3.79417C8.90918 0.194243 14.6059 0.054383 18.2059 3.48178C21.8058 6.90918 21.9457 12.6059 18.5183 16.2059L12.3124 22.7241L5.79417 16.5183ZM17.0698 14.8268L12.243 19.8965L7.17324 15.0698C4.3733 12.404 4.26452 7.97318 6.93028 5.17324C9.59603 2.3733 14.0268 2.26452 16.8268 4.93028C19.6267 7.59603 19.7355 12.0268 17.0698 14.8268Z"
+                  fill="currentColor"
+                />
+              </svg>
+              <span x-text="i18n.t('currentlyIn')">Currently in</span>
+              <span x-text="locationText">Mauritius</span>
+            </span>
+            <span id="me-roles" x-show="roleParts.length > 0">
+              <template x-for="(role, index) in roleParts" :key="index">
+                <span>
+                  <span x-text="role"></span
+                  ><span x-show="index < roleParts.length - 1"> | </span>
+                </span>
+              </template>
+            </span>
+            <p x-html="description" x-show="description"></p>
+            <div class="links" x-show="contactLinks.length > 0">
+              <ul>
+                <li x-text="i18n.t('contactMe')">Contact me :</li>
+                <template x-for="(link, index) in contactLinks" :key="index">
+                  <span>
+                    <li style="direction:flex;direction: row;">
+                      <a :href="link.href" x-text="link.text"></a>
+                      <!-- <span x-show="index < contactLinks.length - 1">-</span> -->
+                    </li>
+                  </span>
+                </template>
+              </ul>
+            </div>
+          </div>
+          <img
+            id="me-profile-image"
+            :width="profileImage.width || '200px'"
+            :height="profileImage.height || '200px'"
+            :alt="profileImage.alt || 'profile picture'"
+            :src="profileImage.src || 'assets/img/profile.jpg'"
+          />
+        </div>
+      </section>
+
+      <div class="col">
+        <!-- Skills Section -->
+        <section
+          id="skills"
+          x-data="skillsSection()"
+          :data-collapsed="isCollapsed() ? 'on' : 'off'"
+        >
+          <h1>
+            <span x-text="i18n.t('skills')">Skills</span>
+            <a
+              class="collapse-trigger"
+              @click="toggleCollapse()"
+              x-text="buttonText"
+              >hide</a
+            >
+          </h1>
+          <h2 class="collapsible" x-text="i18n.t('technicalSkills')">
+            Technical Skills
+          </h2>
+          <div class="collapsible" id="technical-skills">
+            <div>
+              <h3>Languages</h3>
+              <ul>
+                <template x-for="item in languageSkills" :key="item">
+                  <li x-text="item"></li>
+                </template>
+              </ul>
+            </div>
+            <div>
+              <h3>Libraries & Tools</h3>
+              <ul>
+                <template x-for="item in librariesAndTools" :key="item">
+                  <li x-text="item"></li>
+                </template>
+              </ul>
+            </div>
+            <div>
+              <h3>Infra & Platforms</h3>
+              <ul>
+                <template x-for="item in infraAndPlatforms" :key="item">
+                  <li x-text="item"></li>
+                </template>
+              </ul>
+            </div>
+          </div>
           <div>
-            <!-- <h3>Languages</h3> -->
-            <!-- <ul> -->
-            <!-- <li>Typescript</li> -->
-            <!-- <li>HTML & CSS </li> -->
-            <!-- <li>SQL</li> -->
-            <!-- <li>Go</li> -->
-            <!-- <li>C#</li> -->
-            <!-- <li>C++</li> -->
-            <!-- <li>Lua</li> -->
-            <!-- <li>C++</li> -->
-            <!-- </ul> -->
-            <!-- </div> -->
-            <!-- <div> -->
-            <!-- <h3>Libraries & Tools</h3> -->
-            <!-- <ul> -->
-            <!-- <li>Hono</li> -->
-            <!-- <li>Nuxt & Vue 3</li> -->
-            <!-- <li>Drizzle</li> -->
-            <!-- <li>Sqlite</li> -->
-            <!-- <li>MongoDb</li> -->
-            <!-- <li>Redis</li> -->
-            <!-- <li>Firebase</li> -->
-            <!-- </ul> -->
-            <!-- </div> -->
-            <!-- <div> -->
-            <!-- <h3>Infra & Platforms</h3> -->
-            <!-- <ul> -->
-            <!-- <li>Docker Compose</li> -->
-            <!-- <li>Cloudflare</li> -->
-            <!-- <li>Vercel</li> -->
-            <!-- <li>S3</li> -->
-            <!-- <li>Netsuite</li> -->
-            <!-- <li>Turso</li> -->
-            <!-- </ul> -->
+            <h2 class="collapsible" x-text="i18n.t('personalSkills')">
+              Personal Skills
+            </h2>
+            <div class="collapsible" id="personal-skills">
+              <ul x-show="personalSkills.length > 0">
+                <template x-for="skill in personalSkills" :key="skill">
+                  <li x-text="skill"></li>
+                </template>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div>
-          <h2 class="collapsible">Personal Skills</h2>
-          <div class="collapsible" id="personal-skills">
-            <!-- <ul> -->
-            <!-- <li>Bilangual (French & English)</li> -->
-            <!-- <li>Solution oriented thinking</li> -->
-            <!-- <li>Self learner</li> -->
-            <!-- </ul> -->
-          </div>
-        </div>
-      </section>
-      <section id="about" data-collapsed="on">
-        <h1>Work Experiences <a class="collapse-trigger" data-collapse-target="#about">hide</a> </h1>
-      <div id="work-experience" class="collapsible">
-      </div>
-      </section>
-    </div>
-    <section id="blogs" data-collapsed="on">
-      <h1>Blog Articles <a class="collapse-trigger" data-collapse-target="#blogs">hide</a> </h1>
-      <div id="blogs-list" class="collapsible">
-      </div>
-    </section>
-    <section id="project" data-collapsed="on">
-      <h1>Personal Projects <a class="collapse-trigger" data-collapse-target="#project">hide</a> </h1>
-      <div class="grid" id="personal-projects">
-      </div>
-    </section>
-  </main>
-</body>
-<script src="assets/app.js"></script>
+        </section>
 
+        <!-- Work Experience Section -->
+        <section
+          id="about"
+          x-data="workExperienceSection()"
+          :data-collapsed="isCollapsed() ? 'on' : 'off'"
+        >
+          <h1>
+            <span x-text="i18n.t('workExperiences')">Work Experiences</span>
+            <a
+              class="collapse-trigger"
+              @click="toggleCollapse()"
+              x-text="buttonText"
+              >hide</a
+            >
+          </h1>
+          <div id="work-experience" class="collapsible">
+            <template x-for="experience in experiences" :key="experience.title">
+              <div class="p-group collapsible">
+                <h2><strong x-text="experience.title"></strong></h2>
+                <span x-text="experience.duration"></span>
+                <br />
+                <span
+                  ><strong x-text="i18n.t('techUsed')">Tech Used :</strong>
+                  <span x-text="experience.tech_used.join(', ')"></span
+                ></span>
+                <br />
+                <span>
+                  <p x-html="experience.description"></p>
+                </span>
+              </div>
+            </template>
+          </div>
+        </section>
+      </div>
+
+      <!-- Blogs Section -->
+      <section
+        id="blogs"
+        x-data="blogsSection()"
+        :data-collapsed="isCollapsed() ? 'on' : 'off'"
+      >
+        <h1>
+          <span x-text="i18n.t('blogArticles')">Blog Articles</span>
+          <a
+            class="collapse-trigger"
+            @click="toggleCollapse()"
+            x-text="buttonText"
+            >hide</a
+          >
+        </h1>
+        <div id="blogs-list" class="collapsible">
+          <template x-for="article in articles" :key="article.id">
+            <div class="blog-list-item">
+              <div class="col">
+                <strong
+                  ><a :href="'posts?blog_post=' + article.id" x-text="article.title"></a
+                ></strong>
+                <small x-text="formatDate(article.date)"></small>
+              </div>
+            </div>
+          </template>
+          <p x-show="loading" x-text="i18n.t('loading')">Loading...</p>
+          <p
+            x-show="!loading && articles.length === 0"
+            x-text="i18n.t('noArticles')"
+          >
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section
+        id="project"
+        x-data="projectsSection()"
+        :data-collapsed="isCollapsed() ? 'on' : 'off'"
+      >
+        <h1>
+          <span x-text="i18n.t('personalProjects')">Personal Projects</span>
+          <a
+            class="collapse-trigger"
+            @click="toggleCollapse()"
+            x-text="buttonText"
+            >hide</a
+          >
+        </h1>
+        <div class="grid" id="personal-projects">
+          <template x-for="project in projects" :key="project.name">
+            <div class="p-group collapsible">
+              <h2><strong x-text="project.name"></strong></h2>
+              <span x-text="getDescription(project)"></span>
+              <br />
+              <span
+                ><strong x-text="i18n.t('techUsed')">Tech Used :</strong>
+                <span x-text="project.tech_used"></span></span
+              ><br />
+              <span
+                ><strong x-text="i18n.t('status')">Status :</strong>
+                <span x-text="getStatus(project)"></span
+              ></span>
+              <br />
+              <span
+                ><span x-text="i18n.t('seeOnGithub')">See on</span>
+                <a :href="project.github_link">github</a></span
+              >
+            </div>
+          </template>
+          <p x-show="loading" x-text="i18n.t('loading')">Loading...</p>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

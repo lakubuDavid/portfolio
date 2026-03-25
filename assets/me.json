@@ -1,11 +1,17 @@
 {
   "name": "Lakubu David",
-  "location_text": "Mauritius",
-  "role_parts": [
-    "Student at the University of Mascareignes",
-    "Backend Developer"
-  ],
-  "description": "Hi, My name is David, I like music, coding and cooking,<br/>I have been coding since I was 15",
+  "location_text": {
+    "en": "Mauritius",
+    "fr": "Maurice"
+  },
+  "role_parts": {
+    "en": ["Student at the University of Mascareignes", "Backend Developer"],
+    "fr": ["Étudiant à l'Université des Mascareignes", "Développeur Backend"]
+  },
+  "description": {
+    "en": "Hi, My name is David, I like music, coding and cooking,<br/>I have been coding since I was 15",
+    "fr": "Salut, je m'appelle David, j'aime la musique, le code et la cuisine,<br/>Je code depuis mes 15 ans"
+  },
   "contact_links": [
     {
       "text": "Mail",
@@ -22,7 +28,10 @@
   ],
   "profile_image": {
     "src": "assets/img/profile.jpg",
-    "alt": "profile picture",
+    "alt": {
+      "en": "profile picture",
+      "fr": "photo de profil"
+    },
     "width": "200px",
     "height": "200px"
   }
