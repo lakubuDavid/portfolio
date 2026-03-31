@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>David Lakubu — Design 2: Constructivist</title>
+<link rel="stylesheet" href="assets/new2_style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Raleway:ital,wght@0,300;0,800;1,300&family=Special+Elite&display=swap" rel="stylesheet"/>
+
+<!-- Alpine.js -->
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.4/dist/cdn.min.js"
+></script>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/components/new2.js"></script>
+</head>
+<body x-data="themeManager()" x-init="init()">
+
+<div class="topbar">
+  <span>David Lakubu · Portfolio</span>
+  <span x-data="topbarLinks()">
+    <a :href="'https://' + github" target="_blank">Github</a> · 
+    <a :href="'https://' + linkedin" target="_blank">LinkedIn</a> · 
+    <a :href="'mailto:' + email">Email</a>
+  </span>
+  <span>Mauritius · 2026</span>
+</div>
+
+<div class="hero" x-data="heroSection2()">
+  <div class="hero-stripe"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-label">◆ Software Engineer · Backend Specialist</div>
+      <div class="hero-name">
+        <span x-text="firstName"></span><br/>
+        <span x-text="lastName"></span>
+        <span x-text="locationText"></span>
+      </div>
+      <p class="hero-desc" x-text="byline"></p>
+      <div class="hero-links">
+        <a :href="githubLink" target="_blank" class="hero-link">GitHub</a>
+        <a href="#" class="hero-link">Resume</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-label">[ Photo ]</div>
+    </div>
+  </div>
+</div>
+
+<div class="main-grid" x-data="mainContent2()">
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Languages</div>
+      <template x-for="skill in languageSkills" :key="skill">
+        <div class="skill-row">
+          <span class="skill-name" x-text="skill"></span>
+          <div class="skill-bar">
+            <div class="skill-bar-fill"></div>
+          </div>
+        </div>
+      </template>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Frameworks</div>
+      <ul>
+        <template x-for="fw in frameworks" :key="fw">
+          <li x-text="fw"></li>
+        </template>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Infrastructure</div>
+      <ul>
+        <template x-for="infra in infraSkills" :key="infra">
+          <li x-text="infra"></li>
+        </template>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Personal</div>
+      <ul>
+        <li>System Design</li>
+        <li>Technical Writing</li>
+        <li>Open Source</li>
+        <li>Problem Solving</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="section-title">Work Experience</div>
+
+    <template x-for="(exp, index) in experiences" :key="exp.title">
+      <div class="work-card">
+        <div class="work-year" x-text="getYear(exp.duration)"></div>
+        <div class="work-info">
+          <h3 x-text="exp.title"></h3>
+          <div class="duration" x-text="exp.duration"></div>
+          <p x-html="exp.description"></p>
+          <div class="work-tech">
+            <template x-for="tech in exp.tech_used" :key="tech">
+              <span class="tech-badge" x-text="tech"></span>
+            </template>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <div class="section-title">Projects</div>
+    <div class="proj-grid" x-data="projectsStrip2()">
+      <template x-for="(project, index) in projects" :key="project.name">
+        <div class="proj-card" :data-num="'0' + (index + 1)">
+          <h3 x-text="project.name"></h3>
+          <p x-text="getDescription(project)"></p>
+          <div class="proj-tech" x-text="project.tech_used"></div>
+          <a :href="project.github_link" target="_blank">→ GitHub</a>
+        </div>
+      </template>
+    </div>
+
+    <div class="section-title" style="margin-top:30px;">Blog</div>
+    <template x-for="(article, index) in articles.slice(0, 3)" :key="article.id">
+      <div class="blog-row">
+        <div class="blog-num" x-text="'0' + (index + 1)"></div>
+        <div>
+          <div class="blog-title">
+            <a :href="'posts?blog_post=' + article.id" style="color:inherit;text-decoration:none;" x-text="article.title"></a>
+          </div>
+          <div class="blog-date" x-text="formatBlogDate(article.date)"></div>
+        </div>
+      </div>
+    </template>
+  </div>
+</div>
+
+<footer x-data="footerLinks()">
+  <span>© 2026 David Lakubu</span>
+  <span>Backend Engineer · Mauritius</span>
+  <span>
+    <a :href="'https://' + github" target="_blank">Github</a> · 
+    <a :href="'https://' + linkedin" target="_blank">LinkedIn</a> · 
+    <a :href="'mailto:' + email">Email</a>
+  </span>
+</footer>
+
+</body>
+</html>

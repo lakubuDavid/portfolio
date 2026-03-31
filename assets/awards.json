@@ -1,0 +1,56 @@
+[
+  {
+    "title": {
+      "en": "DELF B2",
+      "fr": "DELF B2"
+    },
+    "description": {
+      "en": "French language diploma",
+      "fr": "Diplôme de langue française"
+    }
+  },
+  {
+    "title": {
+      "en": "Entreprendre 2023 Certificate",
+      "fr": "Certificat Entreprendre 2023"
+    },
+    "description": {
+      "en": "SME Mauritius entrepreneurship program",
+      "fr": "Programme d'entrepreneuriat SME Mauritius"
+    }
+  },
+  {
+    "title": {
+      "en": "IELTS Academic Test - Grade 8",
+      "fr": "Test IELTS Académique - Note 8"
+    },
+    "description": {
+      "en": "English language proficiency certification (2022)",
+      "fr": "Certification de proficiency anglais (2022)"
+    }
+  },
+  {
+    "title": {
+      "en": "First Runner-Up & Jury's Favourite",
+      "fr": "Premier Finaliste & Coup de Cœur du Jury"
+    },
+    "description": {
+      "en": "Middlesex Fast Coding Competition",
+      "date": "February 17, 2025"
+    }
+  },
+  {
+    "title": {
+      "en": "First Place - PIX Tournament",
+      "fr": "Première Place - Tournoi PIX"
+    },
+    "description": {
+      "en": "AUF Mauritius",
+      "fr": "AUF Maurice"
+    },
+    "date": {
+      "en": "July 2025",
+      "fr": "Juillet 2025"
+    }
+  }
+]

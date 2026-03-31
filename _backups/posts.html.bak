@@ -6,41 +6,6 @@
   <title>David Lakubu — Blog</title>
   <link rel="stylesheet" href="assets/new_style.css" />
 
-  <!-- Page Loader CSS (inline for immediate loading) -->
-  <style>
-    .page-loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: var(--bg) !important;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 99999;
-      transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
-      overflow: hidden;
-    }
-    .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .loader-container { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
-    .spinner-square {
-      width: 60px; height: 60px;
-      border: 3px solid var(--border);
-      border-top-color: var(--accent);
-      border-right-color: var(--accent);
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .loader-text {
-      font-family: "Readex Pro", sans-serif;
-      font-size: 1rem;
-      color: var(--ink, #1a1a2e);
-      letter-spacing: 0.05em;
-    }
-  </style>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -57,9 +22,6 @@
   <!-- marked.js -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-  <!-- Page Loader (load first, no dependencies) -->
-  <script src="assets/js/loader.js"></script>
-
   <script src="assets/js/data.js"></script>
   <script src="assets/app-alpine.js"></script>
   <script src="assets/js/posts.js"></script>
@@ -67,18 +29,10 @@
 
 <body x-data="combinedInit()" :class="themeClass">
 
-  <!-- Page Loader -->
-  <div id="pageLoader" class="page-loader">
-    <div class="loader-container">
-      <div class="spinner-square"></div>
-      <div class="loader-text">Loading...</div>
-    </div>
-  </div>
-
   <!-- Masthead -->
   <header class="masthead">
     <div class="masthead-left">
-      <a href="index.html" style="color: var(--ink); text-decoration: none;">← Home</a>
+      <a href="index.html" style="color: var(--ink); text-decoration: none;">← Back to Home</a>
     </div>
     <div class="masthead-center" x-text="data ? data.tagline.en : 'Blog'"></div>
     <div class="masthead-right">
@@ -96,15 +50,6 @@
       </div>
     </div>
   </header>
-
-  <!-- Section Nav -->
-  <nav class="section-nav">
-    <a href="index.html">Home</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="posts.html">Blog</a>
-    <div class="spacer"></div>
-    <a href="https://github.com/davidlakubu" target="_blank">GitHub →</a>
-  </nav>
 
   <!-- Color Bar -->
   <div class="color-bar">

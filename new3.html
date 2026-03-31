@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>David Lakubu — Design 1: Newspaper Brutalist</title>
+<link rel="stylesheet" href="assets/new3_style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+
+<!-- Alpine.js -->
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.4/dist/cdn.min.js"
+></script>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/components/new3.js"></script>
+</head>
+<body>
+
+<div class="masthead">
+  <span class="date" x-text="currentDate"></span>
+  <span>◆ THE DEVELOPER'S GAZETTE ◆</span>
+  <span>VOL. 1 — MAURITIUS EDITION</span>
+</div>
+
+<div class="newspaper-header" x-data="newspaperHeader()">
+  <div class="headline">
+    <span x-text="firstName"></span><br><em x-text="lastName"></em>
+  </div>
+  <div class="subhead" x-text="tagline"></div>
+</div>
+
+<div class="page">
+  <div class="columns" x-data="newspaperContent()">
+    <!-- LEFT COL -->
+    <div class="col-block">
+      <h2>About<br/>the Author</h2>
+      <div class="photo-box">
+        <span>[ PHOTO ]</span>
+      </div>
+      <div class="stamp">Available</div>
+      <p>Based in Mauritius, David is a backend engineer specialising in scalable APIs, database architecture, and modern web platforms.</p>
+      <p>He writes clean, purposeful code across multiple languages and deploys on the edge.</p>
+      <div style="margin-top:12px;">
+        <div style="font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;opacity:0.5;margin-bottom:6px;">Contact</div>
+        <a :href="'https://' + contact.github" style="color:var(--accent);font-size:0.78rem;display:block;" x-text="contact.github"></a>
+        <a :href="'https://' + contact.linkedin" style="color:var(--accent);font-size:0.78rem;display:block;" x-text="contact.linkedin"></a>
+        <a :href="'mailto:' + contact.email" style="color:var(--accent);font-size:0.78rem;display:block;" x-text="contact.email"></a>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <!-- CENTRE COL -->
+    <div class="col-block">
+      <div class="section-label">Work Experience <small>— CAREER CHRONICLE</small></div>
+
+      <template x-for="exp in experiences" :key="exp.title">
+        <div class="work-item">
+          <h3 x-text="exp.title"></h3>
+          <div class="duration" x-text="exp.duration"></div>
+          <div style="font-size:0.7rem;margin-top:3px;"><em x-text="exp.tech_used.join(' · ')"></em></div>
+          <p x-html="exp.description"></p>
+        </div>
+      </template>
+
+      <div class="pull-quote">"Code is craft — architecture is art."</div>
+
+      <div class="section-label">Projects <small>— PERSONAL VENTURES</small></div>
+      <div class="projects-grid">
+        <template x-for="project in projects.slice(0, 4)" :key="project.name">
+          <div class="project-card">
+            <h3 x-text="project.name"></h3>
+            <p x-text="getDescription(project)"></p>
+            <div class="tech" x-text="project.tech_used"></div>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <div class="col-divider"></div>
+
+    <!-- RIGHT COL -->
+    <div class="col-block">
+      <h2>Technical Arsenal</h2>
+      <div style="margin-bottom:12px;">
+        <div style="font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;opacity:0.5;margin-bottom:6px;">Languages</div>
+        <template x-for="(lang, index) in languageSkills" :key="lang">
+          <span class="skill-tag" :class="index < 4 ? 'highlight' : ''" x-text="lang"></span>
+        </template>
+      </div>
+      <div style="margin-bottom:12px;">
+        <div style="font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;opacity:0.5;margin-bottom:6px;">Frameworks</div>
+        <template x-for="fw in frameworks" :key="fw">
+          <span class="skill-tag" x-text="fw"></span>
+        </template>
+      </div>
+      <div style="margin-bottom:12px;">
+        <div style="font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;opacity:0.5;margin-bottom:6px;">Infra</div>
+        <template x-for="infra in infraSkills" :key="infra">
+          <span class="skill-tag" x-text="infra"></span>
+        </template>
+      </div>
+
+      <h2 style="margin-top:20px;">From the Blog</h2>
+      <template x-for="(article, index) in articles.slice(0, 5)" :key="article.id">
+        <div class="blog-item">
+          <span class="num" x-text="'0' + (index + 1)"></span>
+          <a :href="'posts?blog_post=' + article.id" x-text="article.title"></a>
+          <span class="bdate" x-text="formatBlogDate(article.date)"></span>
+        </div>
+      </template>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip" x-data="footerStrip()">
+  <span>© 2026 DAVID LAKUBU</span>
+  <span>◆ <a :href="'https://' + contact.github" target="_blank">GITHUB</a> ◆ <a :href="'https://' + contact.linkedin" target="_blank">LINKEDIN</a> ◆ <a :href="'mailto:' + contact.email">EMAIL</a> ◆</span>
+  <span>MAURITIUS · BACKEND ENGINEER</span>
+</div>
+
+</body>
+</html>

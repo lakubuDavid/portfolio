@@ -1,0 +1,10 @@
+{
+  "baseUrl": "https://mini-cms.lakubudavid.me/",
+  "workspaceId": "jHlwWJEXcYz62SSJNfkoU1CthfV73agR",
+  "projectId": "oOWqMNozTbs5UXwZKW_Nb",
+  "apiKey": "mcms_mfiznRaqvUdzKZvRSLmHNDQFdktOpfrMLNyTVBUkJaTVKkqLMBJNlRoONemGYURb",
+  "collectionsPath": "mini.collections.json",
+  "typesPath": "mini.types.ts",
+  "clientPath": "mini.client.js",
+  "declarationsPath": "mini.client.d.ts"
+}

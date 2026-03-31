@@ -1,5 +1,22 @@
 [
   {
+    "name": "Mini CMS",
+    "description": {
+      "en": "A minimalist, self-hosted CMS for development studios. Features a web dashboard, authentication, database layer, API routes, and a CLI for schema sync and content operations.",
+      "fr": "Un CMS minimaliste auto-hébergé pour les studios de développement. Comprend un tableau de bord web, l'authentification, la couche base de données, les routes API et une CLI pour la synchronisation du schéma et les opérations de contenu."
+    },
+    "tech_used": "TypeScript,Vercel,React, Bun, Turso",
+    "status": {
+      "en": "In active development",
+      "fr": "En développement actif"
+    },
+    "github_link": "https://github.com/lakubudavid/mini-cms",
+    "external_link": {
+      "name": "Live Demo",
+      "url": "https://mini-cms.lakubudavid.me"
+    }
+  },
+  {
     "name": "Soop",
     "description": {
       "en": "A scaffolding tool to ease up new projects startup. Especially useful if, like myself, you are regularly calling init on multiple CLI tools for the same kind of projects. It uses just as project runner instead of Makefile but you are free to use any other tool",
@@ -37,5 +54,22 @@
       "fr": "En pause"
     },
     "github_link": "https://github.com/lakubudavid/moddo"
+  },
+  {
+    "name": "Tic-Tac-Toe",
+    "description": {
+      "en": "A classic Tic-Tac-Toe game implementation featuring interactive gameplay with a responsive UI. The game includes single-player mode with an AI opponent .",
+      "fr": "Une implémentation classique du jeu Tic-Tac-Toe avec un gameplay interactif et une interface utilisateur réactive. Le jeu inclut un mode solo avec un adversaire IA ."
+    },
+    "tech_used": "HTML, CSS, JavaScript",
+    "status": {
+      "en": "Completed",
+      "fr": "Terminé"
+    },
+    "github_link": "https://github.com/lakubuDavid/Mini-Games/tree/main/Tic-Tac-Toe",
+    "external_link": {
+      "name": "Play Game",
+      "url": "https://lakubudavid.github.io/Mini-Games/Tic-Tac-Toe/"
+    }
   }
 ]

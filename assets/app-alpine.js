@@ -1,4 +1,5 @@
-// Alpine.js Portfolio Application with i18n support
+// Alpine.js Portfolio Application - Base stores and shared components
+// Note: Page-specific components are in assets/js/<page>.js
 
 // Initialize Alpine stores and components before Alpine starts
 document.addEventListener("alpine:init", () => {
@@ -15,17 +16,20 @@ document.addEventListener("alpine:init", () => {
     translations: {
       en: {
         aboutMe: "About Me",
+        education: "Education",
         currentlyIn: "Currently in",
         contactMe: "Contact me :",
         skills: "Skills",
         technicalSkills: "Technical Skills",
         personalSkills: "Personal Skills",
         workExperiences: "Work Experiences",
+        awardsCertificates: "Awards & Certificates",
         blogArticles: "Blog Articles",
         personalProjects: "Personal Projects",
         techUsed: "Tech Used :",
         status: "Status :",
         seeOnGithub: "See on",
+        visitSite: "Visit",
         hide: "hide",
         show: "show",
         loading: "Loading...",
@@ -37,17 +41,20 @@ document.addEventListener("alpine:init", () => {
       },
       fr: {
         aboutMe: "À propos",
+        education: "Éducation",
         currentlyIn: "Actuellement à",
         contactMe: "Me contacter :",
         skills: "Compétences",
         technicalSkills: "Compétences Techniques",
         personalSkills: "Compétences Personnelles",
         workExperiences: "Expériences Professionnelles",
+        awardsCertificates: "Prix & Certificats",
         blogArticles: "Articles de Blog",
         personalProjects: "Projets Personnels",
         techUsed: "Technologies :",
         status: "Statut :",
         seeOnGithub: "Voir sur",
+        visitSite: "Voir",
         hide: "masquer",
         show: "afficher",
         loading: "Chargement...",
@@ -59,7 +66,7 @@ document.addEventListener("alpine:init", () => {
       },
     },
 
-    set(lang) {
+    setLanguage(lang) {
       if (this.languages.includes(lang)) {
         this.current = lang;
         localStorage.setItem("language", lang);
@@ -111,7 +118,7 @@ document.addEventListener("alpine:init", () => {
     states: {},
 
     init() {
-      const targets = ["#me", "#skills", "#about", "#blogs", "#project"];
+      const targets = ["#me", "#about", "#education", "#experience", "#skills", "#awards", "#blogs", "#project"];
       targets.forEach((target) => {
         const savedState = localStorage.getItem(`collapse:${target}`);
         this.states[target] = savedState || "on";
@@ -155,7 +162,7 @@ document.addEventListener("alpine:init", () => {
     },
   }));
 
-  // Register Alpine.js components
+  // Theme selector component
   Alpine.data("themeSelector", () => ({
     open: false,
 
@@ -173,6 +180,7 @@ document.addEventListener("alpine:init", () => {
     },
   }));
 
+  // Language selector component
   Alpine.data("languageSelector", () => ({
     open: false,
 
@@ -185,7 +193,7 @@ document.addEventListener("alpine:init", () => {
     },
 
     setCurrentLanguage(value) {
-      Alpine.store("i18n").set(value);
+      Alpine.store("i18n").setLanguage(value);
       this.open = false;
     },
 
@@ -195,6 +203,7 @@ document.addEventListener("alpine:init", () => {
     },
   }));
 
+  // Me Section component (for index.html)
   Alpine.data("meSection", () => ({
     data: null,
     loading: true,
@@ -251,6 +260,58 @@ document.addEventListener("alpine:init", () => {
     },
   }));
 
+  // Combined init for new_home.html - initializes both theme and me data
+    Alpine.data("combinedInit", () => ({
+      data: null,
+      loading: true,
+
+      async init() {
+        Alpine.store("theme").init();
+        Alpine.store("collapse").init();
+        this.data = await fetchMe();
+        this.loading = false;
+      },
+
+      get i18n() {
+        return Alpine.store("i18n");
+      },
+
+      get theme() {
+        return Alpine.store("theme").current;
+      },
+
+      get themeClass() {
+       return `theme-${Alpine.store("theme").current}`;
+     },
+
+     get name() {
+       return this.data?.name || "";
+     },
+
+     get locationText() {
+       return this.i18n.localize(this.data?.location_text) || "";
+     },
+
+     get roleParts() {
+       const roles = this.data?.role_parts;
+       if (!roles) return [];
+       return this.i18n.localize(roles) || [];
+     },
+
+     get description() {
+       return this.i18n.localize(this.data?.description) || "";
+     },
+
+     get profileImage() {
+       const img = this.data?.profile_image || {};
+       return {
+         ...img,
+         alt: this.i18n.localize(img.alt) || "profile picture",
+       };
+     },
+   }));
+
+  // Skills Section component
   Alpine.data("skillsSection", () => ({
     skills: [],
     loading: true,
@@ -271,8 +332,7 @@ document.addEventListener("alpine:init", () => {
 
     get languageSkills() {
       if (!this.skills || this.skills.length === 0) {
-        // Return a default list while loading
-        return ["Typescript", "HTML & CSS", "SQL", "Go", "Python", "C#", "C++", "Lua"];
+        return [];
       }
       const tech = this.skills.find((s) => s.category === "Technical Skills");
       const lang = tech?.subcategories?.find((s) => s.name === "Languages");
@@ -294,9 +354,7 @@ document.addEventListener("alpine:init", () => {
     },
 
     get personalSkills() {
-      const personal = this.skills.find(
-        (s) => s.category === "Personal Skills",
-      );
+      const personal = this.skills.find((s) => s.category === "Personal Skills");
       return personal?.items || [];
     },
 
@@ -313,32 +371,49 @@ document.addEventListener("alpine:init", () => {
     },
   }));
 
-  Alpine.data("workExperienceSection", () => ({
-    experiences: [],
-    loading: true,
+  // Work Experience Section component
+   Alpine.data("workExperienceSection", () => ({
+     experiences: [],
+     loading: true,
 
-    async init() {
-      this.experiences = await fetchWorkExperiences();
-      this.loading = false;
-    },
+     async init() {
+       this.experiences = await fetchWorkExperiences();
+       this.loading = false;
+     },
 
-    get i18n() {
-      return Alpine.store("i18n");
-    },
+      get i18n() {
+        return Alpine.store("i18n");
+      },
 
-    isCollapsed() {
-      return Alpine.store("collapse").isCollapsed("#about");
-    },
+      hasExternalLink(experience) {
+        return !!experience.external_link;
+      },
 
-    toggleCollapse() {
-      Alpine.store("collapse").toggle("#about");
-    },
+      getExternalLinkUrl(experience) {
+        return experience.external_link?.url || "";
+      },
 
-    get buttonText() {
-      return Alpine.store("collapse").getButtonText("#about");
-    },
-  }));
+      getExternalLinkName(experience) {
+        const link = experience.external_link;
+        if (!link) return "";
+        if (typeof link === "string") return "Visit";
+        return link.name || "Visit";
+      },
 
+      isCollapsed() {
+       return Alpine.store("collapse").isCollapsed("#about");
+     },
+
+     toggleCollapse() {
+       Alpine.store("collapse").toggle("#about");
+     },
+
+     get buttonText() {
+       return Alpine.store("collapse").getButtonText("#about");
+     },
+   }));
+
+  // Blogs Section component
   Alpine.data("blogsSection", () => ({
     articles: [],
     loading: true,
@@ -375,12 +450,78 @@ document.addEventListener("alpine:init", () => {
     },
   }));
 
-  Alpine.data("projectsSection", () => ({
-    projects: [],
+  // Projects Section component
+   Alpine.data("projectsSection", () => ({
+     projects: [],
+     loading: true,
+
+     async init() {
+       this.projects = await fetchProjects();
+       this.loading = false;
+     },
+
+      get i18n() {
+        return Alpine.store("i18n");
+      },
+
+      getDescription(project) {
+        return this.i18n.localize(project.description);
+      },
+
+      getStatus(project) {
+        return this.i18n.localize(project.status);
+      },
+
+      hasExternalLink(project) {
+        return !!project.external_link;
+      },
+
+      getExternalLinkUrl(project) {
+        return project.external_link?.url || "";
+      },
+
+      getExternalLinkName(project) {
+        const link = project.external_link;
+        if (!link) return "";
+        if (typeof link === "string") return "Visit";
+        return link.name || "Visit";
+      },
+
+      isCollapsed() {
+        return Alpine.store("collapse").isCollapsed("#project");
+      },
+
+     toggleCollapse() {
+       Alpine.store("collapse").toggle("#project");
+     },
+
+     get buttonText() {
+       return Alpine.store("collapse").getButtonText("#project");
+     },
+   }));
+
+  // Awards Section component
+  Alpine.data("awardsSection", () => ({
+    awards: [],
     loading: true,
 
     async init() {
-      this.projects = await fetchProjects();
+      this.awards = await fetchAwards();
+      this.loading = false;
+    },
+
+    get i18n() {
+      return Alpine.store("i18n");
+    },
+  }));
+
+  // About Me Section component (for portfolio.html)
+  Alpine.data("aboutMeSection", () => ({
+    data: null,
+    loading: true,
+
+    async init() {
+      this.data = await fetchMe();
       this.loading = false;
     },
 
@@ -388,33 +529,126 @@ document.addEventListener("alpine:init", () => {
       return Alpine.store("i18n");
     },
 
-    getDescription(project) {
-      return this.i18n.localize(project.description);
+    get name() {
+      return this.data?.name || "";
     },
 
-    getStatus(project) {
-      return this.i18n.localize(project.status);
+    get tagline() {
+      return this.i18n.localize(this.data?.tagline) || "";
+    },
+
+    get locationText() {
+      return this.i18n.localize(this.data?.location_text) || "";
+    },
+
+    get contact() {
+      return this.data?.contact || {};
+    },
+
+    get profileImage() {
+      const img = this.data?.profile_image || {};
+      return {
+        ...img,
+        alt: this.i18n.localize(img.alt) || "profile picture",
+      };
     },
 
     isCollapsed() {
-      return Alpine.store("collapse").isCollapsed("#project");
+      return Alpine.store("collapse").isCollapsed("#about");
     },
 
     toggleCollapse() {
-      Alpine.store("collapse").toggle("#project");
+      Alpine.store("collapse").toggle("#about");
     },
 
     get buttonText() {
-      return Alpine.store("collapse").getButtonText("#project");
+      return Alpine.store("collapse").getButtonText("#about");
     },
   }));
 
+  // Education Section component
+  Alpine.data("educationSection", () => ({
+    education: [],
+    loading: true,
+
+    async init() {
+      this.education = await fetchEducation();
+      this.loading = false;
+    },
+
+    get i18n() {
+      return Alpine.store("i18n");
+    },
+
+    isCollapsed() {
+      return Alpine.store("collapse").isCollapsed("#education");
+    },
+
+    toggleCollapse() {
+      Alpine.store("collapse").toggle("#education");
+    },
+
+    get buttonText() {
+      return Alpine.store("collapse").getButtonText("#education");
+    },
+  }));
+
+  // Awards Section component
+  Alpine.data("awardsSection", () => ({
+    awards: [],
+    loading: true,
+
+    async init() {
+      this.awards = await fetchAwards();
+      this.loading = false;
+    },
+
+    get i18n() {
+      return Alpine.store("i18n");
+    },
+
+    isCollapsed() {
+      return Alpine.store("collapse").isCollapsed("#awards");
+    },
+
+    toggleCollapse() {
+      Alpine.store("collapse").toggle("#awards");
+    },
+
+    get buttonText() {
+      return Alpine.store("collapse").getButtonText("#awards");
+    },
+  }));
+
+  // Scroll Indicator component
+  Alpine.data("scrollIndicator", () => ({
+    showIndicator: false,
+    scrollProgress: 0,
+
+    init() {
+      this.handleScroll();
+    },
+
+    handleScroll() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      this.scrollProgress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      this.showIndicator = scrollTop > 200;
+    },
+
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
+  }));
+
+  // Blog Section component (for blog posts)
   Alpine.data("blogSection", () => ({
     articles: [],
     loading: true,
     currentPostId: null,
     renderedContent: "",
     postMetadata: null,
+    tocHeadings: [],
 
     async init() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -439,8 +673,41 @@ document.addEventListener("alpine:init", () => {
     async loadPost() {
       const post = await fetchBlogPost(this.currentPostId);
       if (post) {
-        this.renderedContent = marked.parse(post.content);
+        this.renderedContent = marked?.parse(post.content) || post.content;
         this.postMetadata = post.metadata;
+        this.$nextTick(() => this.generateToc());
+      }
+    },
+
+    generateToc() {
+      const article = document.querySelector(".blog-post");
+      if (!article) return;
+
+      const headings = article.querySelectorAll("h1, h2, h3, h4, h5, h6");
+      this.tocHeadings = [];
+
+      headings.forEach((heading, index) => {
+        const id = heading.id || `heading-${index}`;
+        heading.id = id;
+
+        this.tocHeadings.push({
+          id: id,
+          text: heading.textContent,
+          level: parseInt(heading.tagName.charAt(1)),
+        });
+      });
+    },
+
+    scrollToHeading(event, id) {
+      event.preventDefault();
+      const element = document.getElementById(id);
+      if (element) {
+        const offset = 80;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: elementPosition - offset,
+          behavior: "smooth",
+        });
       }
     },
 
@@ -525,6 +792,28 @@ async function fetchBlogPost(id) {
   } catch (error) {
     console.error("Error fetching blog post:", error);
     return null;
+  }
+}
+
+async function fetchEducation() {
+  try {
+    const response = await fetch("assets/education.json");
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching education:", error);
+    return [];
+  }
+}
+
+async function fetchAwards() {
+  try {
+    const response = await fetch("assets/awards.json");
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching awards:", error);
+    return [];
   }
 }
 

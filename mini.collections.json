@@ -1,0 +1,48 @@
+{
+  "$schema": "https://mini-cms.lakubudavid.me/schemas/mini.collections.schema.json",
+  "workspaceId": "jHlwWJEXcYz62SSJNfkoU1CthfV73agR",
+  "pulledAt": "2026-03-28T14:39:38.620Z",
+  "collections": [
+    {
+      "name": "Previous Projects",
+      "slug": "projects",
+      "schema": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Name"
+        },
+        {
+          "key": "description_en",
+          "type": "text",
+          "label": "Description - EN"
+        },
+        {
+          "key": "description_fr",
+          "type": "text",
+          "label": "Description - FR"
+        },
+        {
+          "key": "tech_used",
+          "type": "text",
+          "label": "Tech Used"
+        },
+        {
+          "key": "status_en",
+          "type": "text",
+          "label": "Status - EN"
+        },
+        {
+          "key": "status_fr",
+          "type": "text",
+          "label": "Status - FR"
+        },
+        {
+          "key": "github_link",
+          "type": "url",
+          "label": "GitHub Link"
+        }
+      ]
+    }
+  ]
+}

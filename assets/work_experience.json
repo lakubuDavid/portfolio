@@ -1,45 +1,66 @@
 [
   {
-    "title": "Ai-ML Developer - Protolab, IFM Mauritius Rosehill, Mauritius",
-    "duration": "December 2025 - January 2026",
-    "tech_used": [
-      "Python",
-      "PyTorch",
-      "WSL",
-      "Tailscale SSH",
-      "Docker",
-      "Flask",
-      "React"
-    ],
-    "description": "I worked on fine-tuning image tagging and classification models based on the OpenCLIP and EfficientNet architectures. I implemented a Flask API for model inference using WSL and Tailscale SSH. I also implemented a React frontend for the image gallery, tagging and classification."
-  },
-  {
-    "title": "Full-Stack Developer - K52 Experts, Calebasses, Mauritius",
+    "title": "Full-stack Developer Intern, K52 Experts, Mauritius, Calebasses",
     "duration": "May-July 2025",
     "tech_used": [
-      "Javascript",
-      "Typescript",
-      "Tanstack Router",
-      "Tanstack Query (React Query)",
-      "React",
-      "Tailwind",
-      "Zustand",
       "C#",
       "ASP.NET",
-      "OpenAPI"
+      "SQL Server",
+      "React",
+      "TypeScript",
+      "Material Design",
+      "React Query",
+      "Zustand"
     ],
-    "description": "I worked on an internal support tool for ticket management, I implemented the backend in C# with ASP.NET and EntityFramework and the frontend in React using tanstack router, react-query and zustand"
+    "description": "I implemented a support ticket system and designed the SQL Server database. I developed the backend using C#, ASP.NET, and SQL Server, along with the React frontend utilizing TypeScript, Material Design, React Query, and Zustand.",
+    "contact": "info@k52experts.com"
   },
   {
-    "title": "Oracle Netsuite Developer - ITeligence Sys, Port Louis, Mauritius",
+    "title": "Fullstack Engineer, Solution Inc, South Africa, Johannesburg (Remote)",
+    "duration": "November 2024 - Now",
+    "tech_used": [
+      "TypeScript",
+      "Drizzle ORM",
+      "Redis",
+      "Turso",
+      "Resend",
+      "Expo Notifications",
+      "Redis Streams",
+      "Firestore",
+      "React Query",
+      "React Native",
+      "Expo SQLite"
+    ],
+    "description": "I implemented the backend in TypeScript using the Drizzle ORM, Redis for caching with the Turso database, and Resend for our application, Baxo, an instant messaging app. I developed the notification system based Expo Notifications and Redis Streams. Additionally, I worked on client-api interaction with React Query and the local sync engine on the React Native application using Expo SQLite and Drizzle. Implemented the client library as an npm package and updated it on the backend. Implemented Firestore functions for event management.",
+    "contact": "solutioninc@solutionincorporate.com"
+  },
+  {
+    "title": "Oracle Netsuite Developer Intern, ITelligence Sys, Mauritius, Port-Louis",
     "duration": "May-July 2024",
-    "tech_used": ["Javascript", "Netsuite", "Xojo", "Git"],
-    "description": "Me and my team implemented a POS using Xojo and Netsuite, I was responsible for implementing the backend API trough Netsuite RESTlets using Javascript and the client library in Xojo."
+    "tech_used": [
+      "JavaScript",
+      "Oracle Netsuite",
+      "Xojo",
+      "RESTlets"
+    ],
+    "description": "My team and I worked on implementing a POS using Xojo and Oracle Netsuite. My task consisted of designing the API used by the Xojo app to access data on Oracle Netsuite with JavaScript RESTlets, and implementing the client-side classes interacting with the API in Xojo.",
+    "contact": "thussain@itelligencesys.com"
   },
   {
-    "title": "Freelance Web Developper - AEES Services, Lubumbashi, DR Congo",
-    "duration": "January 2023 - Now",
-    "tech_used": ["Typescript", "Nuxt", "Vercel", "Prismic CMS", "Git"],
-    "description": "I have helped in the creation of a website for a company called <a href=\"https://aeesservices.com\">AEES</a> as well helped setup the new domain and email address management to this day."
+    "title": "Web Developer, AEES Services, DR Congo, Lubumbashi",
+    "duration": "January 2023",
+    "tech_used": [
+      "Nuxt",
+      "Vue.js",
+      "Prismic",
+      "Vercel",
+      "Git"
+    ],
+    "description": "I was responsible for creating a new website for the company Aees Services in Lubumbashi using Nuxt, Vue.js, and Prismic for the content.",
+    "contact": "mongaguy@gmail.com",
+    "external_link": {
+      "name": "Website",
+      "url": "https://aeesservices.com"
+    }
   }
 ]

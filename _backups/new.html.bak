@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>David Lakubu — Design 5: Editorial Magazine</title>
+<link rel="stylesheet" href="assets/new_style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400;1,6..96,700&family=Questrial&family=Readex+Pro:wght@300;400;700&display=swap" rel="stylesheet"/>
+
+<!-- Alpine.js -->
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.4/dist/cdn.min.js"
+></script>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/app-alpine.js"></script>
+</head>
+<body x-data="combinedInit()" :class="themeClass">
+
+<div class="masthead">
+  <div class="masthead-left" x-text="data ? (data.role_parts ? data.role_parts.en[1] + ' · ' + locationText + ' · ' + new Date().getFullYear()) : 'Loading...'"></div>
+  <div class="masthead-center" x-text="data ? data.tagline.en : 'The Dev Portfolio'"></div>
+  <div class="masthead-right">
+    <div class="selectors">
+      <div class="custom-select" x-data="themeSelector()" @click.outside="open = false">
+        <div class="select-selected" :class="{ 'select-arrow-active': open }" @click="open = !open" tabindex="0">
+          <span x-text="currentTheme"></span>
+        </div>
+        <div class="select-items" :class="{ 'select-show': open }">
+          <template x-for="themeName in themes" :key="themeName">
+            <div :class="{ 'same-as-selected': currentTheme === themeName }" @click="setCurrentTheme(themeName)" x-text="themeName"></div>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="color-bar">
+  <div class="cb1"></div><div class="cb2"></div><div class="cb3"></div><div class="cb4"></div>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <span class="issue-tag" x-text="data && data.role_parts ? data.role_parts.en[1] + ' · Volume 1' : 'Loading...'"></span>
+    <div class="hero-name">
+      <span x-text="data ? data.name.split(' ')[0] : 'David'"></span><br/>
+      <span x-text="data ? data.name.split(' ').slice(1).join(' ') : 'Lakubu'"></span>
+      <em x-text="data ? data.tagline.en : 'Software Engineer'"></em>
+    </div>
+    <p class="hero-byline" x-html="description"></p>
+    <div class="location-tag"><span x-text="locationText"></span></div>
+    <div class="btn-row">
+      <a href="https://github.com/davidlakubu" class="btn btn-stroke" target="_blank">GitHub</a>
+      <a href="mailto:hello@lakubudavid.me" class="btn btn-stroke">Contact</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-image-inner" x-show="!loading">
+      <img :src="profileImage.src || 'assets/img/profile.jpg'" :alt="profileImage.alt || 'profile picture'" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;"/>
+    </div>
+    <div class="hero-image-inner" x-show="loading">
+      <div class="hero-photo-placeholder"></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-nav">
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <!-- <a href="#blogs">Blog</a> -->
+  <a href="#skills">Skills</a>
+  <div class="spacer"></div>
+  <a href="https://github.com/davidlakubu" target="_blank">GitHub →</a>
+</div>
+
+<div class="main">
+  <!-- Work Experience -->
+  <div class="article" id="experience" x-data="workExperienceSection()">
+    <div class="article-label">Career</div>
+    <div class="article-title">Work<br/>Experience</div>
+
+    <template x-for="exp in experiences" :key="exp.title">
+      <div class="work-entry">
+        <div class="work-title" x-text="exp.title"></div>
+        <div class="work-meta" x-text="exp.duration"></div>
+        <div class="work-desc" x-html="exp.description"></div>
+        <div class="work-stack">
+          <template x-for="tech in exp.tech_used" :key="tech">
+            <span class="stack-item" x-text="tech"></span>
+          </template>
+        </div>
+      </div>
+    </template>
+  </div>
+
+  <!-- Awards Section -->
+  <div class="article" x-data="awardsSection()">
+    <div class="article-label">Recognition</div>
+    <div class="article-title">Awards &<br/>Certifications</div>
+
+    <template x-for="award in awards" :key="award.title.en">
+      <div class="work-entry">
+        <div class="work-title" x-text="award.title.en"></div>
+        <div class="work-meta" x-text="award.date?.en || award.description?.date"></div>
+        <div class="work-desc" x-text="award.description?.en || award.description"></div>
+      </div>
+    </template>
+  </div>
+
+
+  <!-- Blog Section -->
+  <!-- <div class="article" id="blogs" x-data="blogsSection()"> -->
+    <!-- <div class="article-label">Writing</div> -->
+    <!-- <div class="article-title">Blog<br/>Articles</div> -->
+
+    <!-- <template x-for="article in articles.slice(0, 4)" :key="article.id"> -->
+      <!-- <div class="work-entry"> -->
+        <!-- <div class="work-title"> -->
+          <!-- <a :href="'posts?blog_post=' + article.id" style="color:var(--ink);text-decoration:none;" x-text="article.title"></a> -->
+        <!-- </div> -->
+        <!-- <div class="work-meta" x-text="formatDate(article.date)"></div> -->
+        <!-- <div class="work-desc" x-text="article.description"></div> -->
+      <!-- </div> -->
+    <!-- </template> -->
+  <!-- </div> -->
+
+  <!-- Sidebar skills -->
+  <div class="sidebar" id="skills" x-data="skillsSection()">
+    <div class="sidebar-block">
+      <div class="sidebar-title">Languages</div>
+      <template x-for="(lang, index) in languageSkills" :key="index">
+        <div class="sidebar-item" x-text="lang"></div>
+      </template>
+    </div>
+    <div class="sidebar-block">
+      <div class="sidebar-title">Libraries & Tools</div>
+      <template x-for="(item, index) in librariesAndTools" :key="index">
+        <div class="sidebar-item" x-text="item"></div>
+      </template>
+    </div>
+    <div class="sidebar-block">
+      <div class="sidebar-title">Infrastructure</div>
+      <template x-for="(item, index) in infraAndPlatforms" :key="index">
+        <div class="sidebar-item" x-text="item"></div>
+      </template>
+    </div>
+    <div class="sidebar-block">
+      <div class="sidebar-title">Contact</div>
+      <div class="sidebar-item">
+        <a href="mailto:hello@lakubudavid.me" style="color:var(--accent);text-decoration:none;">hello@lakubudavid.me</a>
+      </div>
+      <div class="sidebar-item">
+        <a href="https://github.com/davidlakubu" target="_blank" style="color:var(--accent);text-decoration:none;">github.com/davidlakubu</a>
+      </div>
+      <div class="sidebar-item">
+        <a href="https://linkedin.com/in/david-lakubu" target="_blank" style="color:var(--accent);text-decoration:none;">linkedin.com/in/david-lakubu</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS STRIP -->
+<div class="projects-strip" id="projects" x-data="projectsSection()">
+  <div x-show="loading" class="loading">Loading projects...</div>
+  <template x-for="(project, index) in projects" :key="project.name">
+    <div class="proj-item">
+      <div class="proj-num" x-text="'0' + (index + 1)"></div>
+      <div class="proj-name" x-text="project.name"></div>
+      <div class="proj-desc" x-text="getDescription(project)"></div>
+      <div class="proj-tech" x-text="project.tech_used"></div>
+      <a :href="project.github_link" class="proj-link" target="_blank">View on GitHub</a>
+    </div>
+  </template>
+</div>
+
+<footer>
+  <div class="f-brand">David Lakubu</div>
+  <div class="f-links">
+    <a href="https://github.com/davidlakubu" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/david-lakubu" target="_blank">LinkedIn</a>
+    <a href="mailto:hello@lakubudavid.me">Email</a>
+    <a href="posts.html">Blog</a>
+  </div>
+  <div class="f-right">© 2026 · MAURITIUS · BACKEND ENGINEER</div>
+</footer>
+
+</body>
+</html>

@@ -3,43 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>David Lakubu — Home</title>
+  <title>David Lakubu — Portfolio</title>
   <link rel="stylesheet" href="assets/new_style.css" />
-
-  <!-- Page Loader CSS (inline for immediate loading) -->
-  <style>
-    .page-loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: var(--bg) !important;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 99999;
-      transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
-      overflow: hidden;
-    }
-    .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .loader-container { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
-    .spinner-square {
-      width: 60px; height: 60px;
-      border: 3px solid var(--border);
-      border-top-color: var(--accent);
-      border-right-color: var(--accent);
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .loader-text {
-      font-family: "Readex Pro", sans-serif;
-      font-size: 1rem;
-      color: var(--ink);
-      letter-spacing: 0.05em;
-    }
-  </style>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -54,22 +19,11 @@
     src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.4/dist/cdn.min.js"
   ></script>
 
-  <!-- Page Loader (load first, no dependencies) -->
-  <script src="assets/js/loader.js"></script>
-
   <script src="assets/js/data.js"></script>
   <script src="assets/app-alpine.js"></script>
 </head>
 
 <body x-data="combinedInit()" :class="themeClass">
-
-  <!-- Page Loader -->
-  <div id="pageLoader" class="page-loader">
-    <div class="loader-container">
-      <div class="spinner-square"></div>
-      <div class="loader-text">Loading...</div>
-    </div>
-  </div>
 
   <!-- Masthead -->
   <header class="masthead">
@@ -127,9 +81,8 @@
 
   <!-- Section Nav -->
   <nav class="section-nav">
-    <a href="index.html">Home</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="posts.html">Blog</a>
+    <a href="#projects">Projects</a>
+    <a href="#blogs">Blog</a>
     <div class="spacer"></div>
     <a href="https://github.com/davidlakubu" target="_blank">GitHub →</a>
   </nav>
@@ -215,10 +168,7 @@
         <div class="proj-name" x-text="project.name"></div>
         <div class="proj-desc" x-text="getDescription(project)"></div>
         <div class="proj-tech" x-text="project.tech_used"></div>
-        <div class="proj-links">
-          <a :href="project.github_link" class="proj-link" target="_blank">GitHub</a>
-          <a x-show="hasExternalLink(project)" :href="getExternalLinkUrl(project)" class="proj-link" target="_blank" x-text="getExternalLinkName(project)"></a>
-        </div>
+        <a :href="project.github_link" class="proj-link" target="_blank">View on GitHub</a>
       </div>
     </template>
   </div>

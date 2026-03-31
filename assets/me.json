@@ -1,5 +1,9 @@
 {
-  "name": "Lakubu David",
+  "name": "David Lakubu",
+  "tagline": {
+    "en": "Software Engineer",
+    "fr": "Ingénieur Logiciel"
+  },
   "location_text": {
     "en": "Mauritius",
     "fr": "Maurice"
@@ -12,18 +16,33 @@
     "en": "Hi, My name is David, I like music, coding and cooking,<br/>I have been coding since I was 15",
     "fr": "Salut, je m'appelle David, j'aime la musique, le code et la cuisine,<br/>Je code depuis mes 15 ans"
   },
+  "contact": {
+    "email": "lakubudavid@gmail.com",
+    "phone": "+23059822070",
+    "github": "github.com/lakubudavid",
+    "linkedin": "linkedin.com/in/david-lakubu",
+    "website": "lakubudavid.me"
+  },
   "contact_links": [
     {
       "text": "Mail",
-      "href": "mailto:contact@lakubudavid.me"
+      "href": "mailto:lakubudavid@gmail.com"
     },
     {
-      "text": "Linkedin",
+      "text": "Phone",
+      "href": "tel:+23059822070"
+    },
+    {
+      "text": "GitHub",
+      "href": "https://github.com/lakubudavid/"
+    },
+    {
+      "text": "LinkedIn",
       "href": "https://www.linkedin.com/in/david-lakubu/"
     },
     {
-      "text": "Github",
-      "href": "https://github.com/lakubudavid/"
+      "text": "Website",
+      "href": "https://lakubudavid.me"
     }
   ],
   "profile_image": {

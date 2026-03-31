@@ -1,0 +1,20 @@
+[
+  {
+    "institution": {
+      "en": "Université des Mascareignes",
+      "fr": "Université des Mascareignes"
+    },
+    "location": {
+      "en": "Mauritius",
+      "fr": "Maurice"
+    },
+    "degree": {
+      "en": "BSc Software Engineering (Hons)",
+      "fr": "Licence en Génie Logiciel (Honours)"
+    },
+    "period": {
+      "en": "2023 - Now (3rd year)",
+      "fr": "2023 - Maintenant (3ème année)"
+    }
+  }
+]
