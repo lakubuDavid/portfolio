@@ -1,6 +1,24 @@
 [
   {
     "institution": {
+      "en": "Groupe Scolaire Les Battants",
+      "fr": "Groupe Scolaire Les Battants"
+    },
+    "location": {
+      "en": "Lubumbashi - DR Congo",
+      "fr": "Lubumbashi - DR Congo"
+    },
+    "degree": {
+      "en": "Secondary School Diploma in Math & Physics",
+      "fr": "Diplome d'Etat en Math & Physics"
+    },
+    "period": {
+      "en": "2014 - 2021",
+      "fr": "2014 - 2021"
+    }
+  },
+  {
+    "institution": {
       "en": "Université des Mascareignes",
       "fr": "Université des Mascareignes"
     },

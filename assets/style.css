@@ -445,6 +445,7 @@ footer .f-right {
   text-decoration: none;
   transition: all 0.2s;
   border: 2px solid transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .btn-filled {
@@ -1006,6 +1007,8 @@ strong {
 a {
   color: var(--link-color);
   text-decoration: none;
+  text-shadow: 0 0 6px var(--text-color);
+  opacity: 0.85;
 }
 
 nav {

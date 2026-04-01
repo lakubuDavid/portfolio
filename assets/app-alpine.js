@@ -270,6 +270,9 @@ document.addEventListener("alpine:init", () => {
         Alpine.store("collapse").init();
         this.data = await fetchMe();
         this.loading = false;
+        if (window.pageLoader) {
+          window.pageLoader.hide();
+        }
       },
 
       get i18n() {
