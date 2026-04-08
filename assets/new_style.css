@@ -1342,6 +1342,7 @@ nav .selectors {
   .blog-post {
     width: 100%;
     font-size: 0.9rem;
+    max-width: 90dvw;
   }
 }
 
