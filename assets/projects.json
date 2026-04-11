@@ -67,5 +67,18 @@
       "fr": "Terminé"
     },
     "github_link": "https://github.com/lakubuDavid/Mini-Games/tree/main/Tic-Tac-Toe"
+  },
+  {
+    "name": "Chess",
+    "description": {
+      "en": "A Basic Chess game implementation, no AI (yet) missing a few features but it already as chess pieces rules plus a basic UI for main menu,pause menu and promotion",
+      "fr": "Une implémentation basique du jeu d'échecs, sans IA (pour le moment), manquant quelques fonctionnalités mais disposant déjà des règles des pièces d'échecs ainsi qu'une interface utilisateur basique avec menu principal, menu pause et promotion"
+    },
+    "tech_used": "Lua,Love2D",
+    "status": {
+      "en": "In active development",
+      "fr": "En développement actif"
+    },
+    "github_link": "https://github.com/lakubuDavid/Mini-Games/tree/main/Chess"
   }
 ]
