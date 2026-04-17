@@ -130,7 +130,17 @@
 
     <template x-for="award in awards" :key="award.title.en">
       <div class="work-entry">
-        <div class="work-title" x-text="award.title.en"></div>
+        <div class="work-title">
+          <template x-if="award.external_url">
+            <a :href="award.external_url" target="_blank" rel="noopener noreferrer" style="color: var(--ink); text-decoration: none;">
+              <span x-text="award.title.en"></span>
+              <span class="external-badge" x-text="award.platform" style="font-size: 0.5rem; margin-left: 6px; padding: 2px 6px; background: var(--border); border-radius: 4px; text-transform: uppercase;"></span>
+            </a>
+          </template>
+          <template x-if="!award.external_url">
+            <span x-text="award.title.en"></span>
+          </template>
+        </div>
         <div class="work-meta" x-text="award.date?.en || award.description?.date"></div>
         <div class="work-desc" x-text="award.description?.en || award.description"></div>
       </div>
@@ -152,8 +162,8 @@
           </template>
         </div>
         <div class="work-links">
-          <template x-if="hasExternalLink(exp)">
-            <a :href="getExternalLinkUrl(exp)" class="work-link" target="_blank" x-text="getExternalLinkName(exp)"></a>
+          <template x-for="link in exp.links" :key="link.url">
+            <a :href="link.url" class="work-link" target="_blank" x-text="link.name"></a>
           </template>
         </div>
       </div>

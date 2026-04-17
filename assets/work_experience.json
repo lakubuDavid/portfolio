@@ -32,7 +32,11 @@
       "Expo SQLite"
     ],
     "description": "I implemented the backend in TypeScript using the Drizzle ORM, Redis for caching with the Turso database, and Resend for our application, Baxo, an instant messaging app. I developed the notification system based Expo Notifications and Redis Streams. Additionally, I worked on client-api interaction with React Query and the local sync engine on the React Native application using Expo SQLite and Drizzle. Implemented the client library as an npm package and updated it on the backend. Implemented Firestore functions for event management.",
-    "contact": "solutioninc@solutionincorporate.com"
+    "contact": "solutioninc@solutionincorporate.com",
+    "links": [
+      { "name": "Baxo App", "url": "https://apps.apple.com/cd/app/baxo/id6742257607" },
+      { "name": "Solution Inc", "url": "https://www.solutionincorporate.com/" }
+    ]
   },
   {
     "title": "Oracle Netsuite Developer Intern, ITelligence Sys, Mauritius, Port-Louis",
@@ -58,9 +62,8 @@
     ],
     "description": "I was responsible for creating a new website for the company Aees Services in Lubumbashi using Nuxt, Vue.js, and Prismic for the content.",
     "contact": "mongaguy@gmail.com",
-    "external_link": {
-      "name": "Website",
-      "url": "https://aeesservices.com"
-    }
+    "links": [
+      { "name": "Website", "url": "https://aeesservices.com" }
+    ]
   }
 ]

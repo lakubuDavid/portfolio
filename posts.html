@@ -136,14 +136,22 @@
       </template>
 
       <template x-if="!loading && !currentPostId">
-        <div class="blog-list-container">
+        <div class="blog-list-container" style="max-width: 100%;">
           <div class="article-label">Writing</div>
           <h1 class="blog-list-title">Blog Articles</h1>
           <div id="blogs-list">
             <template x-for="article in articles" :key="article.id">
               <div class="work-entry">
                 <div class="work-title">
-                  <a :href="'posts?blog_post=' + article.id" style="color: var(--ink); text-decoration: none;" x-text="article.title"></a>
+<template x-if="article.external_url">
+                    <a :href="article.external_url" target="_blank" rel="noopener noreferrer" style="color: var(--ink); text-decoration: none;">
+                      <span x-text="article.title"></span>
+                      <span class="external-badge" x-text="article.platform" style="font-size: 0.5rem; margin-left: 6px; padding: 2px 6px; background: var(--border); border-radius: 4px; text-transform: uppercase;"></span>
+                    </a>
+                  </template>
+                  <template x-if="!article.external_url">
+                    <a :href="'posts?blog_post=' + article.id" style="color: var(--ink); text-decoration: none;" x-text="article.title"></a>
+                  </template>
                 </div>
                 <div class="work-meta" x-text="formatDate(article.date)"></div>
                 <div class="work-desc" x-text="article.description"></div>
@@ -154,7 +162,16 @@
         </div>
       </template>
 
-      <template x-if="!loading && currentPostId">
+<template x-if="!loading && currentPostId && isExternal">
+        <div class="blog-post-container">
+          <a :href="externalUrl" target="_blank" rel="noopener noreferrer" class="back-link">
+            <span x-text="i18n.t('external') + ': ' + postMetadata?.platform" style="text-transform: capitalize;"></span>
+            <span style="margin-left: 8px;">→</span>
+          </a>
+        </div>
+      </template>
+
+      <template x-if="!loading && currentPostId && !isExternal">
         <div class="blog-post-container">
           <a href="posts.html" class="back-to-list">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -178,7 +195,7 @@
                   <span>Back</span>
                 </a>
               </div>
-          <div class="toc-title">Contents</div>
+              <div class="toc-title">Contents</div>
               <nav class="toc-nav">
                 <template x-for="(heading, index) in tocHeadings" :key="index">
                   <a :href="'#' + heading.id" class="toc-link" :class="'toc-level-' + heading.level" :style="'padding-left: ' + ((heading.level - 1) * 12) + 'px'" x-text="heading.text" @click="scrollToHeading($event, heading.id)"></a>

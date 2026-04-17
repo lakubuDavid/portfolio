@@ -30,6 +30,8 @@ document.addEventListener("alpine:init", () => {
     renderedContent: "",
     postMetadata: null,
     tocHeadings: [],
+    isExternal: false,
+    externalUrl: "",
 
     async init() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -52,6 +54,22 @@ document.addEventListener("alpine:init", () => {
     },
 
     async loadPost() {
+      // First check if it's an external post
+      const allPosts = await fetchBlogArticles();
+      const externalPost = allPosts.find((p) => p.id === this.currentPostId && p.external_url);
+      
+      if (externalPost) {
+        this.isExternal = true;
+        this.externalUrl = externalPost.external_url;
+        this.postMetadata = {
+          title: externalPost.title,
+          date: externalPost.date,
+          platform: externalPost.platform,
+        };
+        return;
+      }
+      
+      // Otherwise load local post
       const post = await fetchBlogPost(this.currentPostId);
       if (post) {
         this.renderedContent = marked?.parse(post.content) || post.content;

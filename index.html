@@ -156,14 +156,22 @@
     <!-- </div> -->
 
     <!-- Blog Section -->
-    <div class="article" id="blogs" x-data="blogsSection()">
+    <div class="article" id="blogs" x-data="blogsSection()" style="grid-column: 1 / -1;">
       <div class="article-label">Writing</div>
-      <div class="article-title">Blog<br/>Articles</div>
+      <div class="article-title">Blog Articles <br> & More</div>
 
-      <template x-for="article in articles.slice(0, 4)" :key="article.id">
+      <template x-for="article in articles" :key="article.id">
         <div class="work-entry">
           <div class="work-title">
-            <a :href="'posts?blog_post=' + article.id" style="color: var(--text-color); text-decoration: none;" x-text="article.title"></a>
+            <template x-if="hasExternalLink(article)">
+              <a :href="getExternalLinkUrl(article)" target="_blank" rel="noopener noreferrer" style="color: var(--ink); text-decoration: none;">
+                <span x-text="article.title"></span>
+                <span class="external-badge" x-text="getPlatform(article)" style="font-size: 0.5rem; margin-left: 6px; padding: 2px 6px; background: var(--border); border-radius: 4px; text-transform: uppercase;"></span>
+              </a>
+            </template>
+            <template x-if="!hasExternalLink(article)">
+              <a :href="'posts?blog_post=' + article.id" style="color: var(--ink); text-decoration: none;" x-text="article.title"></a>
+            </template>
           </div>
           <div class="work-meta" x-text="formatDate(article.date)"></div>
           <div class="work-desc" x-text="article.description"></div>

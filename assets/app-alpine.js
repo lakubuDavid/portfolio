@@ -24,7 +24,7 @@ document.addEventListener("alpine:init", () => {
         personalSkills: "Personal Skills",
         workExperiences: "Work Experiences",
         awardsCertificates: "Awards & Certificates",
-        blogArticles: "Blog Articles",
+        blogArticles: "Blog Articles & Stuff",
         personalProjects: "Personal Projects",
         techUsed: "Tech Used :",
         status: "Status :",
@@ -38,6 +38,7 @@ document.addEventListener("alpine:init", () => {
         allArticles: "See all articles",
         backToHome: "Back to Home",
         backToList: "Back to list",
+        external: "External",
       },
       fr: {
         aboutMe: "À propos",
@@ -49,7 +50,7 @@ document.addEventListener("alpine:init", () => {
         personalSkills: "Compétences Personnelles",
         workExperiences: "Expériences Professionnelles",
         awardsCertificates: "Prix & Certificats",
-        blogArticles: "Articles de Blog",
+        blogArticles: "Articles de Blog & et autre",
         personalProjects: "Projets Personnels",
         techUsed: "Technologies :",
         status: "Statut :",
@@ -63,6 +64,7 @@ document.addEventListener("alpine:init", () => {
         allArticles: "Voir tous les articles",
         backToHome: "Retour à l'accueil",
         backToList: "Retour à la liste",
+        external: "Externe",
       },
     },
 
@@ -403,6 +405,10 @@ document.addEventListener("alpine:init", () => {
         return link.name || "Visit";
       },
 
+      getLinks(experience) {
+        return experience.links || [];
+      },
+
       isCollapsed() {
        return Alpine.store("collapse").isCollapsed("#about");
      },
@@ -428,6 +434,18 @@ document.addEventListener("alpine:init", () => {
 
     get i18n() {
       return Alpine.store("i18n");
+    },
+
+    hasExternalLink(post) {
+      return !!post.external_url;
+    },
+
+    getExternalLinkUrl(post) {
+      return post.external_url || "";
+    },
+
+    getPlatform(post) {
+      return post.platform || "";
     },
 
     formatDate(dateString) {
@@ -515,6 +533,18 @@ document.addEventListener("alpine:init", () => {
 
     get i18n() {
       return Alpine.store("i18n");
+    },
+
+    hasExternalLink(award) {
+      return !!award.external_url;
+    },
+
+    getExternalLinkUrl(award) {
+      return award.external_url || "";
+    },
+
+    getPlatform(award) {
+      return award.platform || "";
     },
   }));
 
@@ -652,6 +682,8 @@ document.addEventListener("alpine:init", () => {
     renderedContent: "",
     postMetadata: null,
     tocHeadings: [],
+    isExternal: false,
+    externalUrl: "",
 
     async init() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -673,7 +705,35 @@ document.addEventListener("alpine:init", () => {
       this.articles = await fetchBlogArticles();
     },
 
+    isExternalPost(post) {
+      return !!post.external_url;
+    },
+
+    getExternalUrl(post) {
+      return post.external_url || "";
+    },
+
+    getPlatform(post) {
+      return post.platform || "";
+    },
+
     async loadPost() {
+      // First check if it's an external post
+      const allPosts = await fetchBlogArticles();
+      const externalPost = allPosts.find((p) => p.id === this.currentPostId && p.external_url);
+      
+      if (externalPost) {
+        this.isExternal = true;
+        this.externalUrl = externalPost.external_url;
+        this.postMetadata = {
+          title: externalPost.title,
+          date: externalPost.date,
+          platform: externalPost.platform,
+        };
+        return;
+      }
+      
+      // Otherwise load local post
       const post = await fetchBlogPost(this.currentPostId);
       if (post) {
         this.renderedContent = marked?.parse(post.content) || post.content;

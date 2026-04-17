@@ -4,5 +4,37 @@
     "title": "How I made my own HTTP server using C++ and Lua",
     "description": "Building an HTTP server from scratch using C++ for networking and Lua for request processing",
     "date": "2023-09-01"
+  },
+  {
+    "id": "middlesex-speedcoding",
+    "title": "Middlesex University Mauritius - Speed Coding Tech Talent",
+    "description": "Speed Coding competition at Middlesex University Mauritius",
+    "date": "2025-01-03",
+    "platform": "linkedin",
+    "external_url": "https://www.linkedin.com/posts/middlesex-university-mauritius_middlesexmauritius-speedcoding-techtalent-activity-7297524190927032320-R6Ln?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE1CX1MBmp5QRZsx-MMTHAnB-uHOgbdG05c"
+  },
+  {
+    "id": "ai-for-impact",
+    "title": "AI for Impact - Computer Vision Deep Learning",
+    "description": "AI for Impact program featuring computer vision and deep learning projects",
+    "date": "2025-02-10",
+    "platform": "linkedin",
+    "external_url": "https://www.linkedin.com/posts/alexia-jolicoeur-973886287_aiforimpact-computervision-deeplearning-ugcPost-7423390251022245888-d7NK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE1CX1MBmp5QRZsx-MMTHAnB-uHOgbdG05c"
+  },
+  {
+    "id": "auf-concours-2025",
+    "title": "Concours TOPIX Maurice 2025 - AUF",
+    "description": "Congratulations to the winners of the TOPIX Mauritius 2025 competition",
+    "date": "2025-02-15",
+    "platform": "facebook",
+    "external_url": "https://www.facebook.com/AUF.afriqueaustraleetoceanindien/posts/concours-f%C3%A9licitations-aux-gagnants-du-concours-to-pix-maurice-2025-hier-lauf-ma/1195758639262163/"
+  },
+  {
+    "id": "vit-techwave-2026",
+    "title": "VIT Mauritius - TechWave 2026",
+    "description": "TechWave 2026 event at VIT Mauritius",
+    "date": "2026-03-24",
+    "platform": "linkedin",
+    "external_url": "https://www.linkedin.com/posts/vitmauritius_vitmauritius-techwave2026-swanmauritius-activity-7439981373181833216-34-0?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE1CX1MBmp5QRZsx-MMTHAnB-uHOgbdG05c"
   }
 ]

@@ -36,8 +36,10 @@
     },
     "description": {
       "en": "Middlesex Fast Coding Competition",
-      "date": "February 17, 2025"
-    }
+      "fr": "Concours Fast Coding Middlesex"
+    },
+    "external_url": "https://www.linkedin.com/posts/middlesex-university-mauritius_middlesexmauritius-speedcoding-techtalent-activity-7297524190927032320-R6Ln?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE1CX1MBmp5QRZsx-MMTHAnB-uHOgbdG05c",
+    "platform": "linkedin"
   },
   {
     "title": {
@@ -48,9 +50,7 @@
       "en": "AUF Mauritius",
       "fr": "AUF Maurice"
     },
-    "date": {
-      "en": "July 2025",
-      "fr": "Juillet 2025"
-    }
+    "external_url": "https://www.facebook.com/AUF.afriqueaustraleetoceanindien/posts/concours-f%C3%A9licitations-aux-gagnants-du-concours-to-pix-maurice-2025-hier-lauf-ma/1195758639262163/",
+    "platform": "facebook"
   }
 ]

@@ -1152,6 +1152,7 @@ nav .selectors {
   grid-template-columns: 250px 1fr;
   gap: 60px;
   margin-top: 40px;
+  justify-items: center;
 }
 
 /* TOC Sidebar */
@@ -1342,7 +1343,8 @@ nav .selectors {
   .blog-post {
     width: 100%;
     font-size: 0.9rem;
-    max-width: 90dvw;
+    max-width: 100dvw;
+    padding: 0px 10px;
   }
 }
 
