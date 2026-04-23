@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>David Lakubu — Home</title>
-  <link rel="stylesheet" href="assets/new_style.css" />
+  <link rel="stylesheet" href="assets/new_style.css" >
 
   <!-- Page Loader CSS (inline for immediate loading) -->
   <style>
@@ -41,12 +41,12 @@
     }
   </style>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" >
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
   <link
     href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Questrial&family=Readex+Pro:wght@200..400&display=swap"
     rel="stylesheet"
-  />
+  >
 
   <!-- Alpine.js -->
   <script
@@ -104,7 +104,7 @@
     <div class="hero-content">
       <span class="issue-tag" x-text="data && data.role_parts ? data.role_parts.en[1] + ' · Volume 1' : 'Loading...'"></span>
       <h1 class="hero-name">
-        <span x-text="data ? data.name.split(' ')[0] : 'David'"></span><br/>
+        <span x-text="data ? data.name.split(' ')[0] : 'David'"></span><br>
         <span x-text="data ? data.name.split(' ').slice(1).join(' ') : 'Lakubu'"></span>
         <em x-text="data ? data.tagline.en : 'Full Stack Developer'"></em>
       </h1>
@@ -117,7 +117,7 @@
     </div>
     <div class="hero-image">
       <div class="hero-image-inner" x-show="!loading">
-        <img :src="profileImage.src || 'assets/img/profile.jpg'" :alt="profileImage.alt || 'profile picture'" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;"/>
+        <img :src="profileImage.src || 'assets/img/profile.jpg'" :alt="profileImage.alt || 'profile picture'" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
       </div>
       <div class="hero-image-inner" x-show="loading">
         <div class="hero-photo-placeholder"></div>
@@ -241,6 +241,29 @@
     </div>
     <div class="f-right">© 2026 · MAURITIUS · BACKEND ENGINEER</div>
   </footer>
-
+<!-- UniBot Chat Widget -->
+<script>
+  (function() {
+    var script = document.createElement('script');
+    script.src = 'https://cdn.lakubudavid.me/chatbot/js/chat-widget.js?v=' + Date.now();
+    script.onload = function() {
+      window.ChatWidget.init({
+        chatbotId: 'kH6O4xLolyApRVqWtsc4R',
+        apiUrl: 'https://aichat.lakubudavid.me',
+        position: 'bottom-right',
+        theme: 'light',
+        greeting: "Hi! 👋 How can I help you today?",
+        placeholder: 'Type your message...',
+        brandColor: '#6366f1',
+        zIndex: 999999
+      });
+    };
+    script.onerror = function() {
+      console.error('[ChatWidget] Failed to load widget script');
+    };
+    document.head.appendChild(script);
+  })();
+</script>
+<!-- End UniBot Chat Widget -->
 </body>
 </html>
