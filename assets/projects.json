@@ -3,7 +3,7 @@
     "name": "Mini CMS",
     "description": {
       "en": "A minimalist, self-hosted CMS for development studios. Features a web dashboard, authentication, database layer, API routes, and a CLI for schema sync and content operations.",
-      "fr": "Un CMS minimaliste auto-hébergé pour les studios de développement. Comprend un tableau de bord web, l'authentification, la couche base de données, les routes API et une CLI pour la synchronisation du schéma et les opérations de contenu."
+      "fr": "Un CMS minimaliste auto-hébergé pour les studios de développement. Comprend un tableau de bord web, l'authentification, la couche base de données, les routes API et une CLI pour la[...]"
     },
     "tech_used": "TypeScript,Vercel,React, Bun, Turso",
     "status": {
@@ -19,8 +19,8 @@
   {
     "name": "Soop",
     "description": {
-      "en": "A scaffolding tool to ease up new projects startup. Especially useful if, like myself, you are regularly calling init on multiple CLI tools for the same kind of projects. It uses just as project runner instead of Makefile but you are free to use any other tool",
-      "fr": "Un outil de scaffolding pour faciliter le démarrage de nouveaux projets. Particulièrement utile si, comme moi, vous appelez régulièrement init sur plusieurs outils CLI pour le même type de projets. Il utilise just comme runner de projet au lieu de Makefile mais vous êtes libre d'utiliser n'importe quel autre outil"
+      "en": "A scaffolding tool to ease up new projects startup. Especially useful if, like myself, you are regularly calling init on multiple CLI tools for the same kind of projects. It uses just[...]",
+      "fr": "Un outil de scaffolding pour faciliter le démarrage de nouveaux projets. Particulièrement utile si, comme moi, vous appelez régulièrement init sur plusieurs outils CLI pour le mê[...]"
     },
     "tech_used": "Crystal",
     "status": {
@@ -32,8 +32,8 @@
   {
     "name": "Noon",
     "description": {
-      "en": "This web server, based on C sockets, uses Lua as the server scripting language. Most features are functional, allowing route definitions and text file serving. It also implements basic middleware.",
-      "fr": "Ce serveur web, basé sur les sockets C, utilise Lua comme langage de script serveur. La plupart des fonctionnalités sont opérationnelles, permettant la définition de routes et le service de fichiers texte. Il implémente également un middleware basique."
+      "en": "This web server, based on C sockets, uses Lua as the server scripting language. Most features are functional, allowing route definitions and text file serving. It also implements basi[...]",
+      "fr": "Ce serveur web, basé sur les sockets C, utilise Lua comme langage de script serveur. La plupart des fonctionnalités sont opérationnelles, permettant la définition de routes et le [... ]"
     },
     "tech_used": "C++, Lua",
     "status": {
@@ -45,8 +45,8 @@
   {
     "name": "Moddo",
     "description": {
-      "en": "A command-line interface (CLI) tool designed for model generation that enables developers to create classes in various programming languages from a single, unified model definition file. This tool streamlines the process of translating model specifications into code, enhancing productivity and ensuring consistency across different languages.",
-      "fr": "Un outil en ligne de commande (CLI) conçu pour la génération de modèles qui permet aux développeurs de créer des classes dans divers langages de programmation à partir d'un seul fichier de définition de modèle unifié. Cet outil simplifie le processus de traduction des spécifications de modèles en code, améliorant la productivité et assurant la cohérence entre les différents langages."
+      "en": "A command-line interface (CLI) tool designed for model generation that enables developers to create classes in various programming languages from a single, unified model definition fi[...]",
+      "fr": "Un outil en ligne de commande (CLI) conçu pour la génération de modèles qui permet aux développeurs de créer des classes dans divers langages de programmation à partir d'un seu[... ]"
     },
     "tech_used": "Go",
     "status": {
@@ -72,7 +72,7 @@
     "name": "Chess",
     "description": {
       "en": "A Basic Chess game implementation, no AI (yet) missing a few features but it already as chess pieces rules plus a basic UI for main menu,pause menu and promotion",
-      "fr": "Une implémentation basique du jeu d'échecs, sans IA (pour le moment), manquant quelques fonctionnalités mais disposant déjà des règles des pièces d'échecs ainsi qu'une interface utilisateur basique avec menu principal, menu pause et promotion"
+      "fr": "Une implémentation basique du jeu d'échecs, sans IA (pour le moment), manquant quelques fonctionnalités mais disposant déjà des règles des pièces d'échecs ainsi qu'une interfa[... ]"
     },
     "tech_used": "Lua,Love2D",
     "status": {
@@ -80,5 +80,22 @@
       "fr": "En développement actif"
     },
     "github_link": "https://github.com/lakubuDavid/Mini-Games/tree/main/Chess"
+  },
+  {
+    "name": "Student Information Chatbot",
+    "description": {
+      "en": "Student Information Chatbot - a conversational AI and NLP system built as a final-year project. It provides university information through an embeddable React chat widget, server functions (Cloudflare Workers), Drizzle-based database integration, benchmarking tools, and a Typst project report.",
+      "fr": "Chatbot d'information pour étudiants - un système d'IA conversationnelle et NLP développé comme projet de fin d'études. Il fournit des informations universitaires via un widget de chat React embarquable, des fonctions serveur (Cloudflare Workers), une intégration de base de données Drizzle, des outils de benchmark et un rapport de projet Typst."
+    },
+    "tech_used": "TypeScript,React,Bun,Cloudflare Workers,Drizzle, TanStack Router,Typst",
+    "status": {
+      "en": "Completed",
+      "fr": "Terminé"
+    },
+    "github_link": "https://github.com/lakubuDavid/final-year-project",
+    "external_link": {
+      "name": "Live Demo",
+      "url": "https://aichat.lakubudavid.me"
+    }
   }
 ]
