@@ -79,7 +79,11 @@
       "en": "In active development",
       "fr": "En développement actif"
     },
-    "github_link": "https://github.com/lakubuDavid/Mini-Games/tree/main/Chess"
+    "github_link": "https://github.com/lakubuDavid/Mini-Games/tree/main/Chess",
+    "external_link": {
+      "name": "Play it",
+      "url": "https://games.lakubudavid.me/play.html?id=tic-tac-toe"
+    }
   },
   {
     "name": "Student Information Chatbot",
