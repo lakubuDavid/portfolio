@@ -69,8 +69,16 @@ document.addEventListener("alpine:init", () => {
         return;
       }
       
+      // Check for localized version
+      const postMeta = allPosts.find((p) => p.id === this.currentPostId);
+      const lang = this.i18n.current;
+      let postId = this.currentPostId;
+      if (postMeta?.localized && postMeta.localized[lang] != null) {
+        postId = postMeta.localized[lang];
+      }
+      
       // Otherwise load local post
-      const post = await fetchBlogPost(this.currentPostId);
+      const post = await fetchBlogPost(postId);
       if (post) {
         this.renderedContent = marked?.parse(post.content) || post.content;
         this.postMetadata = post.metadata;

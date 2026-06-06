@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>David Lakubu — Portfolio</title>
+<link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="stylesheet" href="assets/new_style.css" />
 
 <!-- Page Loader CSS (inline for immediate loading) -->
@@ -66,10 +67,20 @@
 </div>
 
 <div class="masthead">
-  <div class="masthead-left" x-text="data ? (data.role_parts ? data.role_parts.en[1] + ' · ' + locationText + ' · ' + new Date().getFullYear()) : 'Loading...'"></div>
-  <div class="masthead-center" x-text="data ? data.tagline.en : 'The Dev Portfolio'"></div>
+  <div class="masthead-left" x-text="data ? (roleParts.length ? roleParts[1] + ' · ' + locationText + ' · ' + new Date().getFullYear()) : 'Loading...'"></div>
+  <div class="masthead-center" x-text="data ? $store.i18n.localize(data.tagline) : 'The Dev Portfolio'"></div>
   <div class="masthead-right">
     <div class="selectors">
+      <div class="custom-select" x-data="languageSelector()" @click.outside="open = false">
+        <div class="select-selected" :class="{ 'select-arrow-active': open }" @click="open = !open" tabindex="0">
+          <span x-text="getLanguageLabel(currentLanguage)"></span>
+        </div>
+        <div class="select-items" :class="{ 'select-show': open }">
+          <template x-for="lang in languages" :key="lang">
+            <div :class="{ 'same-as-selected': currentLanguage === lang }" @click="setCurrentLanguage(lang)" x-text="getLanguageLabel(lang)"></div>
+          </template>
+        </div>
+      </div>
       <div class="custom-select" x-data="themeSelector()" @click.outside="open = false">
         <div class="select-selected" :class="{ 'select-arrow-active': open }" @click="open = !open" tabindex="0">
           <span x-text="currentTheme"></span>
@@ -90,17 +101,17 @@
 
 <div class="hero">
   <div class="hero-content">
-    <span class="issue-tag" x-text="data && data.role_parts ? data.role_parts.en[1] + ' · Volume 1' : 'Loading...'"></span>
+    <span class="issue-tag" x-text="data && roleParts.length ? roleParts[1] + ' · Volume 1' : 'Loading...'"></span>
     <div class="hero-name">
       <span x-text="data ? data.name.split(' ')[0] : 'David'"></span><br/>
       <span x-text="data ? data.name.split(' ').slice(1).join(' ') : 'Lakubu'"></span>
-      <em x-text="data ? data.tagline.en : 'Software Engineer'"></em>
+      <em x-text="data ? $store.i18n.localize(data.tagline) : 'Software Engineer'"></em>
     </div>
     <p class="hero-byline" x-html="description"></p>
-    <div class="location-tag"><span x-text="locationText"></span></div>
+    <div class="location-tag">📍 <span x-text="locationText"></span></div>
     <div class="btn-row">
-      <a href="https://github.com/davidlakubu" class="btn btn-stroke" target="_blank">GitHub</a>
-      <a href="mailto:hello@lakubudavid.me" class="btn btn-stroke">Contact</a>
+      <a href="https://github.com/davidlakubu" class="btn btn-stroke" target="_blank" x-text="$store.i18n.t('gitHub')"></a>
+      <a href="mailto:hello@lakubudavid.me" class="btn btn-stroke" x-text="$store.i18n.t('contact')"></a>
     </div>
   </div>
   <div class="hero-image">
@@ -114,48 +125,48 @@
 </div>
 
 <div class="section-nav">
-  <a href="index.html">Home</a>
-  <a href="portfolio.html">Portfolio</a>
-  <a href="posts.html">Blog</a>
+  <a href="index.html" x-text="$store.i18n.t('home')"></a>
+  <a href="portfolio.html" x-text="$store.i18n.t('portfolio')"></a>
+  <a href="posts.html" x-text="$store.i18n.t('blog')"></a>
   <div class="spacer"></div>
-  <a href="https://github.com/davidlakubu" target="_blank">GitHub →</a>
+  <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t('gitHub')"></span> →</a>
 </div>
 
 <div class="main">
 
   <!-- Awards Section -->
   <div class="article" x-data="awardsSection()">
-    <div class="article-label">Recognition</div>
-    <div class="article-title">Awards &<br/>Certifications</div>
+    <div class="article-label" x-text="$store.i18n.t('recognition')"></div>
+    <div class="article-title" x-text="$store.i18n.t('awardsCertificates')"></div>
 
     <template x-for="award in awards" :key="award.title.en">
       <div class="work-entry">
         <div class="work-title">
           <template x-if="award.external_url">
             <a :href="award.external_url" target="_blank" rel="noopener noreferrer" style="color: var(--ink); text-decoration: none;">
-              <span x-text="award.title.en"></span>
+              <span x-text="$store.i18n.localize(award.title)"></span>
               <span class="external-badge" x-text="award.platform" style="font-size: 0.5rem; margin-left: 6px; padding: 2px 6px; background: var(--border); border-radius: 4px; text-transform: uppercase;"></span>
             </a>
           </template>
           <template x-if="!award.external_url">
-            <span x-text="award.title.en"></span>
+            <span x-text="$store.i18n.localize(award.title)"></span>
           </template>
         </div>
-        <div class="work-meta" x-text="award.date?.en || award.description?.date"></div>
-        <div class="work-desc" x-text="award.description?.en || award.description"></div>
+        <div class="work-meta" x-text="$store.i18n.localize(award.date) || award.description?.date"></div>
+        <div class="work-desc" x-text="$store.i18n.localize(award.description)"></div>
       </div>
     </template>
   </div>
   <!-- Work Experience -->
   <div class="article" id="experience" x-data="workExperienceSection()">
-    <div class="article-label">Career</div>
-    <div class="article-title">Work<br/>Experience</div>
+    <div class="article-label" x-text="$store.i18n.t('career')"></div>
+    <div class="article-title" x-text="$store.i18n.t('workExperiences')"></div>
 
     <template x-for="exp in experiences" :key="exp.title">
       <div class="work-entry">
         <div class="work-title" x-text="exp.title"></div>
         <div class="work-meta" x-text="exp.duration"></div>
-        <div class="work-desc" x-html="exp.description"></div>
+        <div class="work-desc" x-html="$store.i18n.localize(exp.description)"></div>
         <div class="work-stack">
           <template x-for="tech in exp.tech_used" :key="tech">
             <span class="stack-item" x-text="tech"></span>
@@ -191,25 +202,25 @@
   <!-- Sidebar skills -->
   <div class="sidebar" id="skills" x-data="skillsSection()">
     <div class="sidebar-block">
-      <div class="sidebar-title">Languages</div>
+      <div class="sidebar-title" x-text="$store.i18n.t('languages')"></div>
       <template x-for="(lang, index) in languageSkills" :key="index">
         <div class="sidebar-item" x-text="lang"></div>
       </template>
     </div>
     <div class="sidebar-block">
-      <div class="sidebar-title">Libraries & Tools</div>
+      <div class="sidebar-title" x-text="$store.i18n.t('librariesTools')"></div>
       <template x-for="(item, index) in librariesAndTools" :key="index">
         <div class="sidebar-item" x-text="item"></div>
       </template>
     </div>
     <div class="sidebar-block">
-      <div class="sidebar-title">Infrastructure</div>
+      <div class="sidebar-title" x-text="$store.i18n.t('infrastructure')"></div>
       <template x-for="(item, index) in infraAndPlatforms" :key="index">
         <div class="sidebar-item" x-text="item"></div>
       </template>
     </div>
     <div class="sidebar-block">
-      <div class="sidebar-title">Contact</div>
+      <div class="sidebar-title" x-text="$store.i18n.t('contact')"></div>
       <div class="sidebar-item">
         <a href="mailto:hello@lakubudavid.me" style="color:var(--accent);text-decoration:none;">hello@lakubudavid.me</a>
       </div>
@@ -225,7 +236,7 @@
 
 <!-- PROJECTS STRIP -->
 <div class="projects-strip" id="projects" x-data="projectsSection()">
-  <div x-show="loading" class="loading">Loading projects...</div>
+  <div x-show="loading" class="loading" x-text="$store.i18n.t('loading')"></div>
   <template x-for="(project, index) in projects" :key="project.name">
     <div class="proj-item">
       <div class="proj-num" x-text="'0' + (index + 1)"></div>
@@ -233,7 +244,7 @@
       <div class="proj-desc" x-text="getDescription(project)"></div>
       <div class="proj-tech" x-text="project.tech_used"></div>
       <div class="proj-links">
-        <a :href="project.github_link" class="proj-link" target="_blank">GitHub</a>
+        <a :href="project.github_link" class="proj-link" target="_blank" x-text="$store.i18n.t('gitHub')"></a>
         <a x-show="hasExternalLink(project)" :href="getExternalLinkUrl(project)" class="proj-link" target="_blank" x-text="getExternalLinkName(project)"></a>
       </div>
     </div>
@@ -243,12 +254,12 @@
 <footer>
   <div class="f-brand">David Lakubu</div>
   <div class="f-links">
-    <a href="https://github.com/davidlakubu" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/david-lakubu" target="_blank">LinkedIn</a>
-    <a href="mailto:hello@lakubudavid.me">Email</a>
-    <a href="posts.html">Blog</a>
+    <a href="https://github.com/davidlakubu" target="_blank" x-text="$store.i18n.t('gitHub')"></a>
+    <a href="https://linkedin.com/in/david-lakubu" target="_blank" x-text="$store.i18n.t('linkedin')"></a>
+    <a href="mailto:hello@lakubudavid.me" x-text="$store.i18n.t('email')"></a>
+    <a href="posts.html" x-text="$store.i18n.t('blog')"></a>
   </div>
-  <div class="f-right">© 2026 · MAURITIUS · BACKEND ENGINEER</div>
+  <div class="f-right">© 2026 · 📍 <span x-text="locationText"></span></div>
 </footer>
 
 </body>

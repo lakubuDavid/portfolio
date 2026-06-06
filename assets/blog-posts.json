@@ -3,7 +3,10 @@
     "id": "how-i-made-my-own-http-server-using-cpp-and-lua",
     "title": "How I made my own HTTP server using C++ and Lua",
     "description": "Building an HTTP server from scratch using C++ for networking and Lua for request processing",
-    "date": "2023-09-01"
+    "date": "2023-09-01",
+    "localized": {
+      "fr": null
+    }
   },
   {
     "id": "middlesex-speedcoding",

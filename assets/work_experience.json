@@ -1,5 +1,17 @@
 [
   {
+    "title": "IT Trainee, SWAN General Ltd, Mauritius, Port Louis",
+    "duration": "May 2026 - Now",
+    "tech_used": [
+      "React",
+      "Node.js"
+    ],
+    "description": {
+      "en": "Working as an IT Trainee at SWAN General Ltd, a leading financial solutions provider in Mauritius established in 1855. Building and maintaining web applications using React and Node.js.",
+      "fr": "Travaille en tant que stagiaire IT chez SWAN General Ltd, un fournisseur leader de solutions financières à Maurice fondé en 1855. Développe et maintient des applications web avec React et Node.js."
+    }
+  },
+  {
     "title": "Full-stack Developer Intern, K52 Experts, Mauritius, Calebasses",
     "duration": "May-July 2025",
     "tech_used": [

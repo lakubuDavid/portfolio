@@ -39,6 +39,23 @@ document.addEventListener("alpine:init", () => {
         backToHome: "Back to Home",
         backToList: "Back to list",
         external: "External",
+        home: "Home",
+        portfolio: "Portfolio",
+        blog: "Blog",
+        writing: "Writing",
+        career: "Career",
+        recognition: "Recognition",
+        languages: "Languages",
+        librariesTools: "Libraries & Tools",
+        infrastructure: "Infrastructure",
+        contact: "Contact",
+        contents: "Contents",
+        back: "Back",
+        gitHub: "GitHub",
+        linkedin: "LinkedIn",
+        email: "Email",
+        projects: "Projects",
+        blogTitle: "Blog Articles<br>& More",
       },
       fr: {
         aboutMe: "À propos",
@@ -65,6 +82,23 @@ document.addEventListener("alpine:init", () => {
         backToHome: "Retour à l'accueil",
         backToList: "Retour à la liste",
         external: "Externe",
+        home: "Accueil",
+        portfolio: "Portfolio",
+        blog: "Blog",
+        writing: "Écriture",
+        career: "Carrière",
+        recognition: "Reconnaissance",
+        languages: "Langues",
+        librariesTools: "Bibliothèques & Outils",
+        infrastructure: "Infrastructure",
+        contact: "Contact",
+        contents: "Sommaire",
+        back: "Retour",
+        gitHub: "GitHub",
+        linkedin: "LinkedIn",
+        email: "Email",
+        projects: "Projets",
+        blogTitle: "Articles de Blog<br>& plus",
       },
     },
 
@@ -733,8 +767,16 @@ document.addEventListener("alpine:init", () => {
         return;
       }
       
+      // Check for localized version
+      const postMeta = allPosts.find((p) => p.id === this.currentPostId);
+      const lang = this.i18n.current;
+      let postId = this.currentPostId;
+      if (postMeta?.localized && postMeta.localized[lang] != null) {
+        postId = postMeta.localized[lang];
+      }
+      
       // Otherwise load local post
-      const post = await fetchBlogPost(this.currentPostId);
+      const post = await fetchBlogPost(postId);
       if (post) {
         this.renderedContent = marked?.parse(post.content) || post.content;
         this.postMetadata = post.metadata;

@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>David Lakubu — Blog</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="stylesheet" href="assets/new_style.css" />
 
   <!-- Page Loader CSS (inline for immediate loading) -->
@@ -78,11 +79,21 @@
   <!-- Masthead -->
   <header class="masthead">
     <div class="masthead-left">
-      <a href="index.html" style="color: var(--ink); text-decoration: none;">← Home</a>
+      <a href="index.html" style="color: var(--ink); text-decoration: none;">← <span x-text="$store.i18n.t('home')"></span></a>
     </div>
-    <div class="masthead-center" x-text="data ? data.tagline.en : 'Blog'"></div>
+    <div class="masthead-center" x-text="data ? $store.i18n.localize(data.tagline) : 'Blog'"></div>
     <div class="masthead-right">
       <div class="selectors">
+        <div class="custom-select" x-data="languageSelector()" @click.outside="open = false">
+          <div class="select-selected" :class="{ 'select-arrow-active': open }" @click="open = !open" tabindex="0">
+            <span x-text="getLanguageLabel(currentLanguage)"></span>
+          </div>
+          <div class="select-items" :class="{ 'select-show': open }">
+            <template x-for="lang in languages" :key="lang">
+              <div :class="{ 'same-as-selected': currentLanguage === lang }" @click="setCurrentLanguage(lang)" x-text="getLanguageLabel(lang)"></div>
+            </template>
+          </div>
+        </div>
         <div class="custom-select" x-data="themeSelector()" @click.outside="open = false">
           <div class="select-selected" :class="{ 'select-arrow-active': open }" @click="open = !open" tabindex="0">
             <span x-text="currentTheme"></span>
@@ -99,11 +110,11 @@
 
   <!-- Section Nav -->
   <nav class="section-nav">
-    <a href="index.html">Home</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="posts.html">Blog</a>
+    <a href="index.html" x-text="$store.i18n.t('home')"></a>
+    <a href="portfolio.html" x-text="$store.i18n.t('portfolio')"></a>
+    <a href="posts.html" x-text="$store.i18n.t('blog')"></a>
     <div class="spacer"></div>
-    <a href="https://github.com/davidlakubu" target="_blank">GitHub →</a>
+    <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t('gitHub')"></span> →</a>
   </nav>
 
   <!-- Color Bar -->
@@ -137,8 +148,8 @@
 
       <template x-if="!loading && !currentPostId">
         <div class="blog-list-container" style="max-width: 100%;">
-          <div class="article-label">Writing</div>
-          <h1 class="blog-list-title">Blog Articles</h1>
+          <div class="article-label" x-text="$store.i18n.t('writing')"></div>
+          <h1 class="blog-list-title" x-text="$store.i18n.t('blogArticles')"></h1>
           <div id="blogs-list">
             <template x-for="article in articles" :key="article.id">
               <div class="work-entry">
@@ -192,10 +203,10 @@
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                     <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
-                  <span>Back</span>
+                  <span x-text="$store.i18n.t('back')"></span>
                 </a>
               </div>
-              <div class="toc-title">Contents</div>
+              <div class="toc-title" x-text="$store.i18n.t('contents')"></div>
               <nav class="toc-nav">
                 <template x-for="(heading, index) in tocHeadings" :key="index">
                   <a :href="'#' + heading.id" class="toc-link" :class="'toc-level-' + heading.level" :style="'padding-left: ' + ((heading.level - 1) * 12) + 'px'" x-text="heading.text" @click="scrollToHeading($event, heading.id)"></a>
@@ -212,11 +223,11 @@
   <footer>
     <div class="f-brand">David Lakubu</div>
     <div class="f-links">
-      <a href="https://github.com/davidlakubu" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/david-lakubu" target="_blank">LinkedIn</a>
-      <a href="mailto:hello@lakubudavid.me">Email</a>
+      <a href="https://github.com/davidlakubu" target="_blank" x-text="$store.i18n.t('gitHub')"></a>
+      <a href="https://linkedin.com/in/david-lakubu" target="_blank" x-text="$store.i18n.t('linkedin')"></a>
+      <a href="mailto:hello@lakubudavid.me" x-text="$store.i18n.t('email')"></a>
     </div>
-    <div class="f-right">© 2026 · MAURITIUS</div>
+    <div class="f-right">© 2026 · 📍 <span x-text="locationText"></span></div>
   </footer>
 
 </body>

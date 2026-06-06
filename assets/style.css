@@ -951,7 +951,7 @@ body {
   padding: 20px;
 
   color: var(--text-color);
-  font-family: "Questrial", sans-serif;
+  font-family: "Nova Mono", "Questrial", sans-serif !important;
   background-color: var(--page-background-color);
   /* background-color: #f7f4e6; */
   /* opacity: 0.5; */
