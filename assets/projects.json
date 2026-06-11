@@ -1,5 +1,18 @@
 [
   {
+    "name": "Coconut Milk",
+    "description": {
+      "en": "A Lua-first, cross-platform desktop UI framework with a native webview bridge. Think Electron/Tauri but minimal — single-window, Lua scripting, native WKWebView on macOS. Features a full bridge protocol with call/emit/on, frameless/transparent windows, auto-generated typed JS wrappers from Lua annotations, and a CLI scaffolder for new projects.",
+      "fr": "Un framework d'interface utilisateur desktop multiplateforme axé Lua avec un pont webview natif. Comme Electron/Tauri mais minimal — fenêtre unique, scripting Lua, WKWebView natif sur macOS. Comprend un protocole de pont complet avec call/emit/on, fenêtres sans cadre/transparentes, des wrappers JS typés générés automatiquement à partir d'annotations Lua, et un CLI de scaffolding."
+    },
+    "tech_used": "C++, Lua, TypeScript, Vue, Bun, xmake, sol2",
+    "status": {
+      "en": "In active development",
+      "fr": "En développement actif"
+    },
+    "github_link": "https://github.com/lakubuDavid/coconut-milk"
+  },
+  {
     "name": "Mini CMS",
     "description": {
       "en": "A minimalist, self-hosted CMS for development studios. Features a web dashboard, authentication, database layer, API routes, and a CLI for schema sync and content operations.",
