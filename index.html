@@ -74,7 +74,7 @@
 
   <!-- Masthead -->
   <header class="masthead">
-    <div class="masthead-left" x-text="data ? (roleParts.length ? roleParts[1] + ' · ' + locationText + ' · ' + new Date().getFullYear()) : 'Loading...'"></div>
+    <div class="masthead-left" x-text="data ? (roleParts.length ? roleParts[1] + ' · ' + locationText + ' · ' + new Date().getFullYear() : '') : 'Loading...'"></div>
     <div class="masthead-center" x-text="data ? $store.i18n.localize(data.tagline) : 'The Dev Portfolio'"></div>
     <div class="masthead-right">
       <div class="selectors">
@@ -138,11 +138,11 @@
 
   <!-- Section Nav -->
   <nav class="section-nav">
-    <a href="index.html" x-text="$store.i18n.t('home')"></a>
-    <a href="portfolio.html" x-text="$store.i18n.t('portfolio')"></a>
-    <a href="posts.html" x-text="$store.i18n.t('blog')"></a>
+    <a href="index.html" x-text="$store.i18n.t(&#39;home&#39;)"></a>
+    <a href="portfolio.html" x-text="$store.i18n.t(&#39;portfolio&#39;)"></a>
+    <a href="posts.html" x-text="$store.i18n.t(&#39;blog&#39;)"></a>
     <div class="spacer"></div>
-    <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t('gitHub')"></span> →</a>
+    <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&#39;gitHub&#39;)"></span> →</a>
   </nav>
 
   <!-- Main Content Grid -->
@@ -227,7 +227,7 @@
 
   <!-- Projects Strip -->
   <div class="projects-strip" id="projects" x-data="projectsSection()">
-    <div x-show="loading" class="loading" x-text="$store.i18n.t('loading')"></div>
+    <div x-show="loading" class="loading" x-text="$store.i18n.t(&#39;loading&#39;)"></div>
     <template x-for="(project, index) in projects" :key="project.name">
       <div class="proj-item">
         <div class="proj-num" x-text="'0' + (index + 1)"></div>
@@ -235,7 +235,7 @@
         <div class="proj-desc" x-text="getDescription(project)"></div>
         <div class="proj-tech" x-text="project.tech_used"></div>
         <div class="proj-links">
-          <a :href="project.github_link" class="proj-link" target="_blank" x-text="$store.i18n.t('gitHub')"></a>
+          <a :href="project.github_link" class="proj-link" target="_blank" x-text="$store.i18n.t(&#39;gitHub&#39;)"></a>
           <a x-show="hasExternalLink(project)" :href="getExternalLinkUrl(project)" class="proj-link" target="_blank" x-text="getExternalLinkName(project)"></a>
         </div>
       </div>

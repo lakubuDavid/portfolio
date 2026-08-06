@@ -67,7 +67,7 @@
 </div>
 
 <div class="masthead">
-  <div class="masthead-left" x-text="data ? (roleParts.length ? roleParts[1] + ' · ' + locationText + ' · ' + new Date().getFullYear()) : 'Loading...'"></div>
+  <div class="masthead-left" x-text="data ? (roleParts.length ? roleParts[1] + ' · ' + locationText + ' · ' + new Date().getFullYear() : '') : 'Loading...'"></div>
   <div class="masthead-center" x-text="data ? $store.i18n.localize(data.tagline) : 'The Dev Portfolio'"></div>
   <div class="masthead-right">
     <div class="selectors">
@@ -125,11 +125,11 @@
 </div>
 
 <div class="section-nav">
-  <a href="index.html" x-text="$store.i18n.t('home')"></a>
-  <a href="portfolio.html" x-text="$store.i18n.t('portfolio')"></a>
-  <a href="posts.html" x-text="$store.i18n.t('blog')"></a>
+  <a href="index.html" x-text="$store.i18n.t(&#39;home&#39;)"></a>
+  <a href="portfolio.html" x-text="$store.i18n.t(&#39;portfolio&#39;)"></a>
+  <a href="posts.html" x-text="$store.i18n.t(&#39;blog&#39;)"></a>
   <div class="spacer"></div>
-  <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t('gitHub')"></span> →</a>
+  <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&#39;gitHub&#39;)"></span> →</a>
 </div>
 
 <div class="main">
