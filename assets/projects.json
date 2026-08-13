@@ -27,20 +27,21 @@
     "external_link": {
       "name": "Live Demo",
       "url": "https://mini-cms.lakubudavid.me"
-    }
+    },
+    "screenshot": "assets/project-screenshots/mini-cms.png"
   },
   {
     "name": "Soop",
     "description": {
-      "en": "A scaffolding tool to ease up new projects startup. Especially useful if, like myself, you are regularly calling init on multiple CLI tools for the same kind of projects. It uses just[...]",
-      "fr": "Un outil de scaffolding pour faciliter le démarrage de nouveaux projets. Particulièrement utile si, comme moi, vous appelez régulièrement init sur plusieurs outils CLI pour le mê[...]"
+      "en": "A language-agnostic project scaffolder driven by Lua templates. Soop helps bootstrap projects across different stacks, with strong support for mise-based toolchain setup, shared project conventions, and repeatable initialization.",
+      "fr": "Un outil de scaffolding agnostique du langage, piloté par des modèles Lua. Soop facilite le démarrage de projets avec différentes technologies, une forte intégration de mise, des conventions partagées et une initialisation reproductible."
     },
-    "tech_used": "Crystal",
+    "tech_used": "Lua",
     "status": {
       "en": "In active development",
       "fr": "En développement actif"
     },
-    "github_link": "https://github.com/lakubudavid/soop"
+    "github_link": "https://github.com/lakubuDavid/soop.lua"
   },
   {
     "name": "Noon",
@@ -83,7 +84,8 @@
     "external_link": {
       "name": "Play it",
       "url": "https://games.lakubudavid.me/play.html?id=tic-tac-toe"
-    }
+    },
+    "screenshot": "assets/project-screenshots/tic-tac-toe.png"
   },
   {
     "name": "Chess",
@@ -113,6 +115,7 @@
     "external_link": {
       "name": "Live Demo",
       "url": "https://aichat.lakubudavid.me"
-    }
+    },
+    "screenshot": "assets/project-screenshots/student-chatbot.png"
   }
 ]

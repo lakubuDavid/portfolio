@@ -509,6 +509,21 @@ document.addEventListener("alpine:init", () => {
    Alpine.data("projectsSection", () => ({
      projects: [],
      loading: true,
+     selectedProject: null,
+
+     openProject(project) {
+       this.selectedProject = project;
+       this.$nextTick(() => this.$refs.projectDialog?.showModal());
+     },
+
+     closeProject() {
+       this.$refs.projectDialog?.close();
+       this.selectedProject = null;
+     },
+
+     getScreenshot(project) {
+       return project?.screenshot || "";
+     },
 
      async init() {
        this.projects = await fetchProjects();
@@ -554,6 +569,34 @@ document.addEventListener("alpine:init", () => {
        return Alpine.store("collapse").getButtonText("#project");
      },
    }));
+
+  // Tools page component
+  Alpine.data("toolsSection", () => ({
+    tools: [],
+    loading: true,
+    copied: null,
+
+    async init() {
+      try {
+        const response = await fetch("assets/tools.json");
+        this.tools = response.ok ? await response.json() : [];
+      } catch (error) {
+        console.error("Failed to load tools:", error);
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    async copyInstall(tool) {
+      try {
+        await navigator.clipboard.writeText(tool.install);
+        this.copied = tool.name;
+        setTimeout(() => { this.copied = null; }, 1600);
+      } catch (error) {
+        console.error("Failed to copy install command:", error);
+      }
+    },
+  }));
 
   // Awards Section component
   Alpine.data("awardsSection", () => ({

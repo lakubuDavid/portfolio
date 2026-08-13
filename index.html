@@ -141,6 +141,7 @@
     <a href="index.html" x-text="$store.i18n.t(&#39;home&#39;)"></a>
     <a href="portfolio.html" x-text="$store.i18n.t(&#39;portfolio&#39;)"></a>
     <a href="posts.html" x-text="$store.i18n.t(&#39;blog&#39;)"></a>
+    <a href="tools.html">Tools</a>
     <div class="spacer"></div>
     <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&#39;gitHub&#39;)"></span> →</a>
   </nav>
@@ -229,17 +230,38 @@
   <div class="projects-strip" id="projects" x-data="projectsSection()">
     <div x-show="loading" class="loading" x-text="$store.i18n.t(&#39;loading&#39;)"></div>
     <template x-for="(project, index) in projects" :key="project.name">
-      <div class="proj-item">
+      <button class="proj-item proj-item-button" type="button" @click="openProject(project)">
         <div class="proj-num" x-text="'0' + (index + 1)"></div>
         <div class="proj-name" x-text="project.name"></div>
         <div class="proj-desc" x-text="getDescription(project)"></div>
         <div class="proj-tech" x-text="project.tech_used"></div>
         <div class="proj-links">
-          <a :href="project.github_link" class="proj-link" target="_blank" x-text="$store.i18n.t(&#39;gitHub&#39;)"></a>
-          <a x-show="hasExternalLink(project)" :href="getExternalLinkUrl(project)" class="proj-link" target="_blank" x-text="getExternalLinkName(project)"></a>
+          <span class="proj-link">View project →</span>
+        </div>
+      </button>
+    </template>
+
+    <dialog class="project-dialog" x-ref="projectDialog" @click.self="closeProject" @keydown.escape="closeProject">
+      <div class="project-dialog-inner" x-show="selectedProject">
+        <template x-if="selectedProject && selectedProject.external_link">
+          <div class="project-dialog-shot-wrap">
+            <img class="project-dialog-shot" :src="getScreenshot(selectedProject)" :alt="`${selectedProject.name} website screenshot`">
+            <span class="project-dialog-shot-label">Live preview</span>
+          </div>
+        </template>
+        <div class="project-dialog-content">
+          <div class="article-label">Project detail</div>
+          <h2 class="project-dialog-title" x-text="selectedProject?.name"></h2>
+          <div class="project-dialog-tags" x-text="selectedProject?.tech_used"></div>
+          <p class="project-dialog-description" x-text="selectedProject ? getDescription(selectedProject) : ''"></p>
+          <div class="project-dialog-links">
+            <a class="btn btn-stroke" :href="selectedProject?.github_link" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a class="btn btn-stroke" x-show="selectedProject && hasExternalLink(selectedProject)" :href="selectedProject && getExternalLinkUrl(selectedProject)" target="_blank" rel="noopener noreferrer" x-text="selectedProject && getExternalLinkName(selectedProject)"></a>
+            <button class="btn btn-solid" type="button" @click="closeProject">Close</button>
+          </div>
         </div>
       </div>
-    </template>
+    </dialog>
   </div>
 
   <footer>

@@ -1,0 +1,29 @@
+[
+  {
+    "name": "soop",
+    "description": "A language-agnostic project scaffolder driven by Lua templates. Soop bootstraps projects across different stacks, with heavy use of mise for toolchain versions, dependencies, and repeatable project setup.",
+    "language": "Lua",
+    "github": "https://github.com/lakubuDavid/soop.lua",
+    "install": "curl -fsSL https://lakubudavid.me/soop/install.sh | sh"
+  },
+  {
+    "name": "lazyscripts",
+    "description": "A collection of standalone Lua command-line tools, each focused on one small job and designed to live directly in your PATH. Install the collection, then choose the scripts you want to keep available.",
+    "language": "Lua",
+    "scripts": [
+      { "name": "todo", "description": "A Markdown-backed task tracker with add, list, status, and update commands. Tasks stay as readable files in a local todos directory." },
+      { "name": "jp", "description": "A fuzzy recipe picker for just, with optional Zellij floating-pane support for running the selected recipe." },
+      { "name": "zf", "description": "Runs any command inside a Zellij floating pane, keeping output visible until you dismiss it." },
+      { "name": "fancynames", "description": "Generates memorable adjective-animal names and unique email addresses for test data, mock users, and placeholder accounts." }
+    ],
+    "github": "https://github.com/lakubuDavid/lazyscipts",
+    "install": "curl -fsSL https://lakubudavid.me/lazyscripts/install.sh | sh"
+  },
+  {
+    "name": "lasyd",
+    "description": "A Lua-powered service manager that gives macOS launchd and Linux systemd a shared configuration language.",
+    "language": "Lua",
+    "github": "https://github.com/lakubuDavid/lasyd",
+    "install": "curl -fsSL https://lakubudavid.me/lasyd/install.sh | sh"
+  }
+]

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David Lakubu — Tools</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="assets/new_style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Questrial&family=Readex+Pro:wght@200..400&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.4/dist/cdn.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/app-alpine.js"></script>
+</head>
+<body x-data="combinedInit()" :class="themeClass">
+  <header class="masthead">
+    <div class="masthead-left">David Lakubu · toolkit · <span x-text="new Date().getFullYear()"></span></div>
+    <div class="masthead-center">Small tools, useful edges</div>
+    <div class="masthead-right">Open source / Lua</div>
+  </header>
+  <div class="color-bar"><div class="cb1"></div><div class="cb2"></div><div class="cb3"></div><div class="cb4"></div></div>
+
+  <nav class="section-nav">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="posts.html">Blog</a>
+    <a href="tools.html" class="active">Tools</a>
+    <div class="spacer"></div>
+    <a href="https://github.com/lakubudavid" target="_blank" rel="noopener">GitHub →</a>
+  </nav>
+
+  <main class="tools-page" x-data="toolsSection()">
+    <div class="tools-intro">
+      <div class="article-label">Personal utilities</div>
+      <h1 class="tools-title">Tools I make<br><em>and keep close.</em></h1>
+      <p>Small, opinionated tools for the terminal, project setup, and the machines that run my work.</p>
+    </div>
+    <div class="tools-list">
+      <div class="tool-loading" x-show="loading">Loading tools...</div>
+      <template x-for="(tool, index) in tools" :key="tool.name">
+        <article class="tool-card">
+          <div class="tool-index" x-text="'0' + (index + 1)"></div>
+          <div class="tool-card-main">
+            <div class="tool-card-heading">
+              <h2 x-text="tool.name"></h2>
+              <span class="tool-language" x-text="tool.language"></span>
+            </div>
+            <p x-text="tool.description"></p>
+            <div class="tool-script-list" x-show="tool.scripts">
+              <template x-for="script in tool.scripts" :key="script.name">
+                <div class="tool-script">
+                  <strong x-text="script.name"></strong>
+                  <span x-text="script.description"></span>
+                </div>
+              </template>
+            </div>
+            <div class="tool-install" x-show="tool.install">
+              <code x-text="tool.install"></code>
+              <button type="button" class="copy-button" @click="copyInstall(tool)" x-text="copied === tool.name ? 'Copied' : 'Copy'"></button>
+            </div>
+          </div>
+          <a class="tool-github" :href="tool.github" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </article>
+      </template>
+    </div>
+  </main>
+
+  <footer>
+    <div class="f-brand">David Lakubu</div>
+    <div class="f-links"><a href="index.html">Home</a><a href="https://github.com/lakubudavid" target="_blank">GitHub</a><a href="mailto:hello@lakubudavid.me">Email</a></div>
+    <div class="f-right">© 2026</div>
+  </footer>
+</body>
+</html>
