@@ -17,32 +17,32 @@ copy = true
 > **Before we start**
 > This small piece was written in September 2023, by the time I finally decided to publish it I might have made a few changes to the code.
 > Follow the README and NOTES files.
-> Alright, here we go...
+> Alright, here we go…
 
-## Why ??
+## Why?
 
 Due to a combination of curiosity and boredom, I found myself asking, "Can everything be made in any language? Can I create a website using C? Or even C++? To facilitate the development process, I could choose to incorporate Lua". And that's exactly what I did, sacrificing a portion of my time, sleep, and mental health to pursue this objective.
 
-## From the server to your browser
+## From the Server to Your Browser
 
 Before delving into the code, I needed to understand the underlying workings to determine what needed to be done.
 
-### Understanding what happens
+### Understanding What Happens
 
 ![](https://res.cloudinary.com/ddbfjkbdu/image/upload/w_1000/v1724777551/http_communication_iu5hu8.png)
 
-#### What happens when you look for google.com ?
+#### What Happens When You Look for Google.com?
 
-When you type a link into your browser's address bar and press enter, several steps are followed to get the webpage and display it on your screen:
+When you type a link into your browser's address bar and press enter, several steps are followed to get the web page and display it on your screen:
 
 1. Address Resolution: The browser begins by resolving the domain name in the link to obtain the IP address of the web server that hosts the website.
-2. Establishing a Connection: Once the IP address is obtained, the browser opens a TCP  connection to the web server. This involves a series of handshakes and acknowledgments to establish a reliable connection.
+2. Establishing a Connection: Once the IP address is obtained, the browser opens a TCP connection to the web server. This involves a series of handshakes and acknowledgments to establish a reliable connection.
 3. Sending a Request: The browser then sends an HTTP (Hypertext Transfer Protocol) request to the web server, specifying the URL, the desired resource (such as the HTML file), and any additional headers or parameters.
 4. Server Processing: The web server receives the HTTP request, processes it, and prepares the requested resource for delivery. This may involve accessing databases, executing server-side scripts, or performing other necessary tasks.
-5. Retrieving the Webpage: Once the server has processed the request, it retrieves the requested webpage (HTML content) from its storage or generates it dynamically. The server then sends back an HTTP response containing the requested webpage.
-6. HTML Parsing: Upon receiving the response, the browser starts parsing the HTML content. It reads and interprets the HTML tags and constructs a Document Object Model (DOM) tree, which represents the structure and content of the webpage.
-7. Resource Fetching: While parsing the HTML, the browser encounters various resources referenced within the webpage, such as CSS files, JavaScript files, images, and more. It starts fetching these resources concurrently to avoid blocking the main rendering process.
-8. Rendering the Page: As the browser receives each resource, it starts rendering the webpage on your screen. It processes the CSS to style the content, executes any JavaScript code, and combines all the resources to display the final webpage composition.
+5. Retrieving the Web page: Once the server has processed the request, it retrieves the requested web page (HTML content) from its storage or generates it dynamically. The server then sends back an HTTP response containing the requested web page.
+6. HTML Parsing: Upon receiving the response, the browser starts parsing the HTML content. It reads and interprets the HTML tags and constructs a Document Object Model (DOM) tree, which represents the structure and content of the web page.
+7. Resource Fetching: While parsing the HTML, the browser encounters various resources referenced within the web page, such as CSS files, JavaScript files, images, and more. It starts fetching these resources concurrently to avoid blocking the main rendering process.
+8. Rendering the Page: As the browser receives each resource, it starts rendering the web page on your screen. It processes the CSS to style the content, executes any JavaScript code, and combines all the resources to display the final web page composition.
 
 Each of these steps happens within milliseconds or even faster, providing you with a seemingly instantaneous loading of web pages.
 
@@ -54,7 +54,7 @@ From that we are left with 3 steps:
 - Processing the request
 - Sending it back
 
-## Step 1: Establishing the connection and receiving requests
+## Step 1: Establishing the Connection and Receiving Requests
 
 ![https://media.giphy.com/media/l41YvpiA9uMWw5AMU/giphy.gif](https://media.giphy.com/media/l41YvpiA9uMWw5AMU/giphy.gif)
 
@@ -62,7 +62,7 @@ To handle incoming requests, the server first starts by listening for new connec
 HTTP requests are transmitted through TCP, so a TCP listener is necessary to listen for any incoming messages.
 After receiving the message, the server needs to parse it to extract the relevant information and understand what actions should be taken.
 
-### Understanding and parsing the request
+### Understanding and Parsing the Request
 
 ![](https://res.cloudinary.com/ddbfjkbdu/image/upload/w_1000/v1724777552/parsing_http_request_qjcfiw.png)
 
@@ -82,11 +82,11 @@ So, in summary, the HTTP request structure is composed of easily digestible text
 
 From there we know what to look for.
 
-## Step 2: Processing the requests
+## Step 2: Processing the Request
 
 ![](https://res.cloudinary.com/ddbfjkbdu/image/upload/w_1000/v1724777552/data_processing_vqbc6d.png)
 
-> NACA researchers using an IBM type 704 electronic data processing machine in 1957
+> Researchers using an IBM Type 704 electronic data processing machine in 1957
 
 To process the request, I decided to use Lua.
 
@@ -96,24 +96,24 @@ Additionally, Lua boasts excellent performance, making it an ideal language for 
 
 ![](https://res.cloudinary.com/ddbfjkbdu/image/upload/w_1000/v1724777551/lua_performance_graph_fb75tk.png)
 
-> Comparison of lua with other languages in terms of execution times
+> Comparison of Lua with other languages in terms of execution time
 
-### How the server works
+### How the Server Works
 
 Since the processing part had to be in Lua I had to implement a proper structure for the projects
 
 ![](https://res.cloudinary.com/ddbfjkbdu/image/upload/v1724777552/project_structure_eldb0s.png)
 
-- libs: Contains lua libraries that the server might need for processing
-- middlewares: Contains all the middlewares for each request
-- routes: contains request routes
-- noon.config.lua: It's where we define each route and the web app configurations.
+- `libs`: Contains Lua libraries that the server might need for processing.
+- `middlewares`: Contains all the middleware for each request.
+- `routes`: Contains the request routes.
+- `noon.config.lua`: Defines each route and the web application configuration.
 
 If you need to dive deeper into it you can check [the GitHub repo](https://github.com/lakubuDavid/Noon) where I have a `README.md` and `NOTE.md` file ready with all the explanations.
 
-#### Resolving the correct route
+#### Resolving the Correct Route
 
-To make sure we handle incoming requests properly, we gotta send them to the right handler. And that's where the router comes in handy. Its job is to guide each request to the correct handler. The process of figuring out the route path is pretty simple. First, when we launch the server, we define each route in the `noon.config.lua` file and attach it to a corresponding handler script. Then, when a request arrives, the router follows a logic to figure out which route to call.
+To handle incoming requests properly, we need to send them to the right handler. That is where the router comes in. Its job is to guide each request to the correct handler. The process of finding the route path is straightforward. First, when we launch the server, we define each route in the `noon.config.lua` file and attach it to a corresponding handler script. Then, when a request arrives, the router follows a set of rules to determine which route to call.
 
 ![](https://res.cloudinary.com/ddbfjkbdu/image/upload/w_1000/v1724777553/request_routing_xtuhyd.png)
 
@@ -142,7 +142,7 @@ else {
 return match;
 ```
 
-## Step 3: Sending the response back
+## Step 3: Sending the Response Back
 
 Once the request has been processed we need to send back the response. You have to note that the browser is expecting an HTTP response so we have to format it in HTTP.
 
@@ -152,7 +152,7 @@ An HTTP response typically consists of several parts including:
 
 1. Status Line: The status line of an HTTP response includes the HTTP version, status code, and a short status message. For example: `HTTP/1.1 200 OK`.
 2. Headers: HTTP headers provide additional information about the response. Some commonly used headers include:
-    - Content-Type: Specifies the type of data in the response (e.g., text/html, application/json, image/jpeg).
+    - Content-Type: Specifies the type of data in the response (e.g., `text/html`, `application/json`, `image/jpeg`).
     - Content-Length: Indicates the length of the response content in bytes.
     - Cache-Control: Specifies caching instructions for the response.
     - Set-Cookie: Sets a cookie in the client's browser for future requests.
@@ -160,11 +160,11 @@ An HTTP response typically consists of several parts including:
 
 ## Conclusion
 
-After spending a few months on this project I came up with a pretty decent, working HTTP server.
+After spending a few months on this project, I came up with a decent, working HTTP server.
 [Here](https://github.com/lakubuDavid/Noon) is the project if you want to check it out.
 
 Working on this project was a really good opportunity to understand how HTTP servers generally work and to be able to see by myself all the theories that I was taught.
 If I had to make any improvement it would be:
 - HTTPS support
-- Better middlewares
+- Better middleware
 - Static file serving
