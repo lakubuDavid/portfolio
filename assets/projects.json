@@ -41,7 +41,8 @@
       "en": "In active development",
       "fr": "En développement actif"
     },
-    "github_link": "https://github.com/lakubuDavid/soop.lua"
+    "github_link": "https://github.com/lakubuDavid/soop.lua",
+    "screenshot": "assets/project-screenshots/soop.png"
   },
   {
     "name": "Noon",
@@ -117,5 +118,33 @@
       "url": "https://aichat.lakubudavid.me"
     },
     "screenshot": "assets/project-screenshots/student-chatbot.png"
+  },
+  {
+    "name": "Lazyscripts",
+    "description": {
+      "en": "A collection of standalone Lua command-line tools, each focused on one small job: Markdown-backed tasks, fuzzy just recipe picking, Zellij floating panes, and readable test names and emails.",
+      "fr": "Une collection d’outils Lua autonomes en ligne de commande, chacun dédié à une petite tâche : gestion de tâches Markdown, sélection de recettes just, panneaux flottants Zellij et génération de noms et d’e-mails lisibles."
+    },
+    "tech_used": "Lua, fzf, just, Zellij",
+    "status": {
+      "en": "In active development",
+      "fr": "En développement actif"
+    },
+    "github_link": "https://github.com/lakubuDavid/lazyscipts",
+    "screenshot": "assets/tool-screenshots/lazyscripts.png"
+  },
+  {
+    "name": "Lasyd",
+    "description": {
+      "en": "A Lua-powered service manager for macOS launchd and Linux systemd. Define services once in Lua and generate native units for the platform you are running on.",
+      "fr": "Un gestionnaire de services propulsé par Lua pour launchd sur macOS et systemd sur Linux. Définissez vos services une seule fois en Lua et générez les unités natives de chaque plateforme."
+    },
+    "tech_used": "Lua, launchd, systemd",
+    "status": {
+      "en": "In active development",
+      "fr": "En développement actif"
+    },
+    "github_link": "https://github.com/lakubuDavid/lasyd",
+    "screenshot": "assets/tool-screenshots/lasyd.png"
   }
 ]

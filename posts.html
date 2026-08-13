@@ -108,16 +108,6 @@
     </div>
   </header>
 
-  <!-- Section Nav -->
-  <nav class="section-nav">
-    <a href="index.html" x-text="$store.i18n.t(&#39;home&#39;)"></a>
-    <a href="portfolio.html" x-text="$store.i18n.t(&#39;portfolio&#39;)"></a>
-    <a href="posts.html" x-text="$store.i18n.t(&#39;blog&#39;)"></a>
-    <a href="tools.html">Tools</a>
-    <div class="spacer"></div>
-    <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&#39;gitHub&#39;)"></span> →</a>
-  </nav>
-
   <!-- Color Bar -->
   <div class="color-bar">
     <div class="cb1"></div>
@@ -125,6 +115,19 @@
     <div class="cb3"></div>
     <div class="cb4"></div>
   </div>
+
+<!-- Section Nav -->
+  <nav class="section-nav">
+    <div class="nav-profile">
+      <img :src="profileImage.src || 'assets/img/profile.png'" :alt="profileImage.alt || 'profile picture'">
+    </div>
+    <a href="index.html" x-text="$store.i18n.t(&#39;home&#39;)"></a>
+    <a href="portfolio.html" x-text="$store.i18n.t(&#39;portfolio&#39;)"></a>
+    <a href="posts.html" x-text="$store.i18n.t(&#39;blog&#39;)"></a>
+    <a href="tools.html">Tools</a>
+    <div class="spacer"></div>
+    <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&#39;gitHub&#39;)"></span> →</a>
+  </nav>
 
   <!-- Scroll Indicator & Scroll Up Button -->
   <div class="scroll-indicator" x-data="scrollIndicator()" x-show="showIndicator" @scroll.window="handleScroll()">

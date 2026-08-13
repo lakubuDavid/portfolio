@@ -99,32 +99,10 @@
   <div class="cb1"></div><div class="cb2"></div><div class="cb3"></div><div class="cb4"></div>
 </div>
 
-<div class="hero">
-  <div class="hero-content">
-    <span class="issue-tag" x-text="data && roleParts.length ? roleParts[1] + ' · Volume 1' : 'Loading...'"></span>
-    <div class="hero-name">
-      <span x-text="data ? data.name.split(' ')[0] : 'David'"></span><br/>
-      <span x-text="data ? data.name.split(' ').slice(1).join(' ') : 'Lakubu'"></span>
-      <em x-text="data ? $store.i18n.localize(data.tagline) : 'Software Engineer'"></em>
-    </div>
-    <p class="hero-byline" x-html="description"></p>
-    <div class="location-tag">📍 <span x-text="locationText"></span></div>
-    <div class="btn-row">
-      <a href="https://github.com/davidlakubu" class="btn btn-stroke" target="_blank" x-text="$store.i18n.t('gitHub')"></a>
-      <a href="mailto:hello@lakubudavid.me" class="btn btn-stroke" x-text="$store.i18n.t('contact')"></a>
-    </div>
-  </div>
-  <div class="hero-image">
-    <div class="hero-image-inner" x-show="!loading">
-      <img :src="profileImage.src || 'assets/img/profile.png'" :alt="profileImage.alt || 'profile picture'" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;"/>
-    </div>
-    <div class="hero-image-inner" x-show="loading">
-      <div class="hero-photo-placeholder"></div>
-    </div>
-  </div>
-</div>
-
 <div class="section-nav">
+  <div class="nav-profile">
+    <img :src="profileImage.src || 'assets/img/profile.png'" :alt="profileImage.alt || 'profile picture'">
+  </div>
   <a href="index.html" x-text="$store.i18n.t(&#39;home&#39;)"></a>
   <a href="portfolio.html" x-text="$store.i18n.t(&#39;portfolio&#39;)"></a>
   <a href="posts.html" x-text="$store.i18n.t(&#39;blog&#39;)"></a>
@@ -233,23 +211,6 @@
       </div>
     </div>
   </div>
-</div>
-
-<!-- PROJECTS STRIP -->
-<div class="projects-strip" id="projects" x-data="projectsSection()">
-  <div x-show="loading" class="loading" x-text="$store.i18n.t('loading')"></div>
-  <template x-for="(project, index) in projects" :key="project.name">
-    <div class="proj-item">
-      <div class="proj-num" x-text="'0' + (index + 1)"></div>
-      <div class="proj-name" x-text="project.name"></div>
-      <div class="proj-desc" x-text="getDescription(project)"></div>
-      <div class="proj-tech" x-text="project.tech_used"></div>
-      <div class="proj-links">
-        <a :href="project.github_link" class="proj-link" target="_blank" x-text="$store.i18n.t('gitHub')"></a>
-        <a x-show="hasExternalLink(project)" :href="getExternalLinkUrl(project)" class="proj-link" target="_blank" x-text="getExternalLinkName(project)"></a>
-      </div>
-    </div>
-  </template>
 </div>
 
 <footer>

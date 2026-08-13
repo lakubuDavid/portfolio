@@ -1681,7 +1681,7 @@ nav .selectors {
   max-height: min(900px, calc(100vh - 48px));
   padding: 0;
   border: 2px solid var(--ink);
-  background: var(--surface);
+  background: var(--bg);
   color: var(--ink);
   box-shadow: 14px 14px 0 var(--accent);
 }
@@ -1700,9 +1700,11 @@ nav .selectors {
 .project-dialog-shot {
   display: block;
   width: 100%;
-  height: 420px;
-  object-fit: cover;
-  object-position: top;
+  height: auto;
+  max-height: min(520px, 60vh);
+  object-fit: contain;
+  object-position: center;
+  background: var(--bg);
 }
 
 .project-dialog-shot-label {
@@ -1801,6 +1803,23 @@ nav .selectors {
 .tool-card:last-child {
   border-bottom: 0;
 }
+.tool-card.has-screenshot {
+  grid-template-columns: 44px minmax(220px, .8fr) minmax(280px, 1.2fr) auto;
+}
+.tool-card.has-screenshot .tool-screenshot {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  margin: 0;
+  max-width: 100%;
+}
+.tool-card.has-screenshot .tool-card-main {
+  grid-column: 3;
+}
+.tool-card.has-screenshot .tool-github {
+  grid-column: 4;
+  grid-row: 1;
+}
 
 .tool-index {
   color: var(--accent2);
@@ -1829,6 +1848,18 @@ nav .selectors {
   margin: 7px 0 14px;
   color: var(--mid);
   font: .8rem/1.7 'Readex Pro';
+}
+
+.tool-screenshot {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  max-height: 220px;
+  margin: 14px 0 16px;
+  object-fit: contain;
+  object-position: left center;
+  border: 1px solid var(--border);
+  background: var(--bg);
 }
 
 .tool-script-list {
@@ -1980,6 +2011,11 @@ nav .selectors {
     grid-template-columns: 32px 1fr;
     gap: 10px;
   }
+  .tool-card.has-screenshot { grid-template-columns: 32px 1fr; }
+  .tool-card.has-screenshot .tool-screenshot,
+  .tool-card.has-screenshot .tool-card-main,
+  .tool-card.has-screenshot .tool-github { grid-column: 2; grid-row: auto; }
+  .tool-card.has-screenshot .tool-screenshot { margin: 8px 0; }
 
   .tool-script {
     grid-template-columns: 85px 1fr;
@@ -1995,7 +2031,7 @@ nav .selectors {
   }
 
   .project-dialog-shot {
-    height: 220px;
+    max-height: 320px;
   }
 }
 
@@ -2024,15 +2060,24 @@ nav .selectors {
 /* Homepage split layout */
 .home-top-layout { display: grid; grid-template-columns: minmax(300px, .72fr) minmax(0, 1.7fr); align-items: stretch; border-bottom: 2px solid var(--ink); }
 .home-left-column { min-width: 0; background: var(--surface); }
-.home-left-column > .hero { display: flex; flex-direction: column; min-height: 720px; border: 0; }
+.home-left-column > .hero { display: flex; flex-direction: column; min-height: auto; border: 0; }
 .home-left-column > .hero .hero-content { order: -1; flex: 1; padding: 42px 38px; border-right: 0; }
 .home-left-column > .hero .hero-image { order: 0; min-height: 250px; border-top: 1px solid var(--border); }
 .home-right-column { min-width: 0; background: var(--surface); border-left: 2px solid var(--ink); }
 .home-writing { display: grid; grid-template-columns: 150px 1fr; align-items: center; min-height: 126px; border-bottom: 1px solid var(--border); background: var(--surface); }
+.home-left-column .home-writing { display: block; border-top: 1px solid var(--border); border-bottom: 0; }
+.home-left-column .home-writing-heading { padding: 20px 38px 0; border-right: 0; }
+.home-left-column .latest-writing-card { padding: 14px 38px 28px; }
 .home-writing-heading { height: 100%; padding: 20px 18px; border-right: 1px solid var(--border); display: flex; flex-direction: column; justify-content: center; }
 .home-writing-heading .article-label { margin-bottom: 10px; }
 .home-writing-link { color: var(--ink); font: .62rem 'Readex Pro'; letter-spacing: 1px; text-decoration: none; }
 .home-writing-link:hover { color: var(--accent); }
+.latest-writing-card { padding: 18px 22px 18px 18px; }
+.latest-writing-title { display: block; margin: 7px 0 8px; color: var(--ink); font: 700 1.15rem/1.2 'Bodoni Moda', serif; text-decoration: none; }
+.latest-writing-title:hover { color: var(--accent); }
+.latest-writing-card p { max-width: 560px; margin: 0 0 14px; color: var(--mid); font: .72rem/1.6 'Readex Pro'; }
+.nav-profile { width: 30px; height: 30px; flex: 0 0 30px; overflow: hidden; border: 1px solid var(--ink); border-radius: 50%; }
+.nav-profile img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .home-blog-marquee { overflow: hidden; padding: 18px 0; }
 .home-blog-track { display: flex; width: max-content; }
 .home-blog-item { display: grid; grid-template-columns: 82px minmax(180px, 1fr) 18px; gap: 10px; align-items: center; padding: 14px 18px; border-right: 1px solid var(--border); color: var(--ink); text-decoration: none; }

@@ -112,6 +112,9 @@
 
   <!-- Section Nav -->
   <nav class="section-nav">
+    <div class="nav-profile">
+      <img :src="profileImage.src || 'assets/img/profile.png'" :alt="profileImage.alt || 'profile picture'">
+    </div>
     <a href="index.html" x-text="$store.i18n.t(&#39;home&#39;)"></a>
     <a href="portfolio.html" x-text="$store.i18n.t(&#39;portfolio&#39;)"></a>
     <a href="posts.html" x-text="$store.i18n.t(&#39;blog&#39;)"></a>
@@ -139,37 +142,26 @@
         <a href="mailto:hello@lakubudavid.me" class="btn btn-stroke" x-text="$store.i18n.t('contact')"></a>
       </div>
     </div>
-    <div class="hero-image">
-      <div class="hero-image-inner" x-show="!loading">
-        <img :src="profileImage.src || 'assets/img/profile.png'" :alt="profileImage.alt || 'profile picture'" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
-      </div>
-      <div class="hero-image-inner" x-show="loading">
-        <div class="hero-photo-placeholder"></div>
-      </div>
-    </div>
   </section>
 
-    </div>
-    <div class="home-right-column">
   <!-- Latest writing -->
   <section class="home-writing" id="blogs" x-data="blogsSection()">
     <div class="home-writing-heading">
       <div class="article-label">Latest writing</div>
-      <a href="posts.html" class="home-writing-link">View all writing →</a>
     </div>
-    <div class="home-blog-marquee" aria-label="Latest blog posts">
-      <div class="home-blog-track">
-        <template x-for="article in localArticles" :key="article.id">
-          <a class="home-blog-item" :href="'posts.html?blog_post=' + article.id">
-            <span class="home-blog-date" x-text="formatDate(article.date)"></span>
-            <strong x-text="article.title"></strong>
-            <span class="home-blog-arrow">↗</span>
-          </a>
-        </template>
-      </div>
-    </div>
+    <template x-if="localArticles.length">
+      <article class="latest-writing-card">
+        <div class="home-blog-date" x-text="formatDate(localArticles[0].date)"></div>
+        <a class="latest-writing-title" :href="'posts.html?blog_post=' + localArticles[0].id" x-text="localArticles[0].title"></a>
+        <p x-text="localArticles[0].description"></p>
+        <a class="home-writing-link" href="posts.html">See other writing →</a>
+      </article>
+    </template>
   </section>
 
+
+    </div>
+    <div class="home-right-column">
       <div class="projects-heading">
         <div class="article-label">Selected work</div>
         <h2>Projects</h2>
@@ -192,10 +184,10 @@
 
     <dialog class="project-dialog" x-ref="projectDialog" @click.self="closeProject" @keydown.escape="closeProject">
       <div class="project-dialog-inner" x-show="selectedProject">
-        <template x-if="selectedProject && selectedProject.external_link">
+        <template x-if="selectedProject && selectedProject.screenshot">
           <div class="project-dialog-shot-wrap">
-            <img class="project-dialog-shot" :src="getScreenshot(selectedProject)" :alt="`${selectedProject.name} website screenshot`">
-            <span class="project-dialog-shot-label">Live preview</span>
+            <img class="project-dialog-shot" :src="getScreenshot(selectedProject)" :alt="`${selectedProject.name} preview`">
+            <span class="project-dialog-shot-label" x-text="selectedProject.external_link ? 'Live preview' : 'Terminal preview'"></span>
           </div>
         </template>
         <div class="project-dialog-content">

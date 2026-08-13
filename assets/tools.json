@@ -16,6 +16,7 @@
       { "name": "zf", "description": "Runs any command inside a Zellij floating pane, keeping output visible until you dismiss it." },
       { "name": "fancynames", "description": "Generates memorable adjective-animal names and unique email addresses for test data, mock users, and placeholder accounts." }
     ],
+    "screenshot": "assets/tool-screenshots/lazyscripts.png",
     "github": "https://github.com/lakubuDavid/lazyscipts",
     "install": "curl -fsSL https://lakubudavid.me/lazyscripts/install.sh | sh"
   },
@@ -23,6 +24,7 @@
     "name": "lasyd",
     "description": "A Lua-powered service manager that gives macOS launchd and Linux systemd a shared configuration language.",
     "language": "Lua",
+    "screenshot": "assets/tool-screenshots/lasyd.png",
     "github": "https://github.com/lakubuDavid/lasyd",
     "install": "curl -fsSL https://lakubudavid.me/lasyd/install.sh | sh"
   }
