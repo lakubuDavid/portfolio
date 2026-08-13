@@ -470,6 +470,10 @@ document.addEventListener("alpine:init", () => {
       return Alpine.store("i18n");
     },
 
+    get localArticles() {
+      return this.articles.filter((article) => !article.external_url);
+    },
+
     hasExternalLink(post) {
       return !!post.external_url;
     },

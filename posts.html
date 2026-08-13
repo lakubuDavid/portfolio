@@ -151,25 +151,33 @@
         <div class="blog-list-container" style="max-width: 100%;">
           <div class="article-label" x-text="$store.i18n.t('writing')"></div>
           <h1 class="blog-list-title" x-text="$store.i18n.t('blogArticles')"></h1>
-          <div id="blogs-list">
-            <template x-for="article in articles" :key="article.id">
-              <div class="work-entry">
-                <div class="work-title">
-<template x-if="article.external_url">
-                    <a :href="article.external_url" target="_blank" rel="noopener noreferrer" style="color: var(--ink); text-decoration: none;">
-                      <span x-text="article.title"></span>
-                      <span class="external-badge" x-text="article.platform" style="font-size: 0.5rem; margin-left: 6px; padding: 2px 6px; background: var(--border); border-radius: 4px; text-transform: uppercase;"></span>
-                    </a>
+          <div id="blogs-list" class="blog-list-groups">
+            <template x-for="group in articleGroups" :key="group.id">
+              <section class="blog-list-group">
+                <div class="article-label" x-text="group.label"></div>
+                <h2 class="blog-group-title" x-text="group.title"></h2>
+                <div class="blog-group-entries">
+                  <template x-for="article in group.articles" :key="article.id">
+                    <div class="work-entry">
+                      <div class="work-title">
+                        <template x-if="article.external_url">
+                          <a :href="article.external_url" target="_blank" rel="noopener noreferrer" style="color: var(--ink); text-decoration: none;">
+                            <span x-text="article.title"></span>
+                            <span class="external-badge" x-text="article.platform" style="font-size: 0.5rem; margin-left: 6px; padding: 2px 6px; background: var(--border); border-radius: 4px; text-transform: uppercase;"></span>
+                          </a>
+                        </template>
+                        <template x-if="!article.external_url">
+                          <a :href="'posts?blog_post=' + article.id" style="color: var(--ink); text-decoration: none;" x-text="article.title"></a>
+                        </template>
+                      </div>
+                      <div class="work-meta" x-text="formatDate(article.date)"></div>
+                      <div class="work-desc" x-text="article.description"></div>
+                    </div>
                   </template>
-                  <template x-if="!article.external_url">
-                    <a :href="'posts?blog_post=' + article.id" style="color: var(--ink); text-decoration: none;" x-text="article.title"></a>
-                  </template>
+                  <p class="empty-group" x-show="group.articles.length === 0" x-text="i18n.t('noArticles')">No articles found.</p>
                 </div>
-                <div class="work-meta" x-text="formatDate(article.date)"></div>
-                <div class="work-desc" x-text="article.description"></div>
-              </div>
+              </section>
             </template>
-            <p x-show="articles.length === 0" x-text="i18n.t('noArticles')">No articles found.</p>
           </div>
         </div>
       </template>

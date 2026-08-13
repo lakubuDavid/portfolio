@@ -110,6 +110,19 @@
     <div class="cb4"></div>
   </div>
 
+  <!-- Section Nav -->
+  <nav class="section-nav">
+    <a href="index.html" x-text="$store.i18n.t(&#39;home&#39;)"></a>
+    <a href="portfolio.html" x-text="$store.i18n.t(&#39;portfolio&#39;)"></a>
+    <a href="posts.html" x-text="$store.i18n.t(&#39;blog&#39;)"></a>
+    <a href="tools.html">Tools</a>
+    <div class="spacer"></div>
+    <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&#39;gitHub&#39;)"></span> →</a>
+  </nav>
+
+  <!-- Intro / projects split -->
+  <div class="home-top-layout">
+    <div class="home-left-column">
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
@@ -136,96 +149,32 @@
     </div>
   </section>
 
-  <!-- Section Nav -->
-  <nav class="section-nav">
-    <a href="index.html" x-text="$store.i18n.t(&#39;home&#39;)"></a>
-    <a href="portfolio.html" x-text="$store.i18n.t(&#39;portfolio&#39;)"></a>
-    <a href="posts.html" x-text="$store.i18n.t(&#39;blog&#39;)"></a>
-    <a href="tools.html">Tools</a>
-    <div class="spacer"></div>
-    <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&#39;gitHub&#39;)"></span> →</a>
-  </nav>
-
-  <!-- Main Content Grid -->
-  <div class="main">
-    <!-- Work Experience -->
-    <!-- <div class="article" id="experience" x-data="workExperienceSection()"> -->
-      <!-- <div class="article-label">Career</div> -->
-      <!-- <div class="article-title">Work<br/>Experience</div> -->
-
-      <!-- <template x-for="experience in experiences" :key="experience.title"> -->
-        <!-- <div class="work-entry"> -->
-          <!-- <div class="work-title" x-text="experience.title"></div> -->
-          <!-- <div class="work-meta" x-text="experience.duration"></div> -->
-          <!-- <div class="work-desc" x-html="experience.description"></div> -->
-          <!-- <div class="work-stack"> -->
-            <!-- <template x-for="tech in experience.tech_used" :key="tech"> -->
-              <!-- <span class="stack-item" x-text="tech"></span> -->
-            <!-- </template> -->
-          <!-- </div> -->
-        <!-- </div> -->
-      <!-- </template> -->
-    <!-- </div> -->
-
-    <!-- Blog Section -->
-    <div class="article" id="blogs" x-data="blogsSection()" style="grid-column: 1 / -1;">
-      <div class="article-label" x-text="$store.i18n.t('writing')"></div>
-      <div class="article-title" x-html="$store.i18n.t('blogTitle')"></div>
-
-      <template x-for="article in articles" :key="article.id">
-        <div class="work-entry">
-          <div class="work-title">
-            <template x-if="hasExternalLink(article)">
-              <a :href="getExternalLinkUrl(article)" target="_blank" rel="noopener noreferrer" style="color: var(--ink); text-decoration: none;">
-                <span x-text="article.title"></span>
-                <span class="external-badge" x-text="getPlatform(article)" style="font-size: 0.5rem; margin-left: 6px; padding: 2px 6px; background: var(--border); border-radius: 4px; text-transform: uppercase;"></span>
-              </a>
-            </template>
-            <template x-if="!hasExternalLink(article)">
-              <a :href="'posts?blog_post=' + article.id" style="color: var(--ink); text-decoration: none;" x-text="article.title"></a>
-            </template>
-          </div>
-          <div class="work-meta" x-text="formatDate(article.date)"></div>
-          <div class="work-desc" x-text="article.description"></div>
-        </div>
-      </template>
     </div>
+    <div class="home-right-column">
+  <!-- Latest writing -->
+  <section class="home-writing" id="blogs" x-data="blogsSection()">
+    <div class="home-writing-heading">
+      <div class="article-label">Latest writing</div>
+      <a href="posts.html" class="home-writing-link">View all writing →</a>
+    </div>
+    <div class="home-blog-marquee" aria-label="Latest blog posts">
+      <div class="home-blog-track">
+        <template x-for="article in localArticles" :key="article.id">
+          <a class="home-blog-item" :href="'posts.html?blog_post=' + article.id">
+            <span class="home-blog-date" x-text="formatDate(article.date)"></span>
+            <strong x-text="article.title"></strong>
+            <span class="home-blog-arrow">↗</span>
+          </a>
+        </template>
+      </div>
+    </div>
+  </section>
 
-    <!-- Sidebar -->
-    <!-- <div class="sidebar" id="skills" x-data="skillsSection()"> -->
-      <!-- <div class="sidebar-block"> -->
-        <!-- <div class="sidebar-title">Languages</div> -->
-        <!-- <template x-for="item in languageSkills" :key="item"> -->
-          <!-- <div class="sidebar-item" x-text="item"></div> -->
-        <!-- </template> -->
-      <!-- </div> -->
-      <!-- <div class="sidebar-block"> -->
-        <!-- <div class="sidebar-title">Libraries & Tools</div> -->
-        <!-- <template x-for="item in librariesAndTools" :key="item"> -->
-          <!-- <div class="sidebar-item" x-text="item"></div> -->
-        <!-- </template> -->
-      <!-- </div> -->
-      <!-- <div class="sidebar-block"> -->
-        <!-- <div class="sidebar-title">Infrastructure</div> -->
-        <!-- <template x-for="item in infraAndPlatforms" :key="item"> -->
-          <!-- <div class="sidebar-item" x-text="item"></div> -->
-        <!-- </template> -->
-      <!-- </div> -->
-      <!-- <div class="sidebar-block"> -->
-        <!-- <div class="sidebar-title">Contact</div> -->
-        <!-- <div class="sidebar-item"> -->
-          <!-- <a href="mailto:hello@lakubudavid.me" style="color: var(--accent); text-decoration: none;">hello@lakubudavid.me</a> -->
-        <!-- </div> -->
-        <!-- <div class="sidebar-item"> -->
-          <!-- <a href="https://github.com/davidlakubu" target="_blank" style="color: var(--accent); text-decoration: none;">github.com/davidlakubu</a> -->
-        <!-- </div> -->
-        <!-- <div class="sidebar-item"> -->
-          <!-- <a href="https://linkedin.com/in/david-lakubu" target="_blank" style="color: var(--accent); text-decoration: none;">linkedin.com/in/david-lakubu</a> -->
-        <!-- </div> -->
-      <!-- </div> -->
-    <!-- </div> -->
-  </div>
-
+      <div class="projects-heading">
+        <div class="article-label">Selected work</div>
+        <h2>Projects</h2>
+        <span>Click a project to open its details.</span>
+      </div>
   <!-- Projects Strip -->
   <div class="projects-strip" id="projects" x-data="projectsSection()">
     <div x-show="loading" class="loading" x-text="$store.i18n.t(&#39;loading&#39;)"></div>
@@ -262,6 +211,9 @@
         </div>
       </div>
     </dialog>
+  </div>
+
+    </div>
   </div>
 
   <footer>

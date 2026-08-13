@@ -49,6 +49,23 @@ document.addEventListener("alpine:init", () => {
       return Alpine.store("i18n");
     },
 
+    get articleGroups() {
+      return [
+        {
+          id: "blogs",
+          label: "Blogs · mine",
+          title: "My writing",
+          articles: this.articles.filter((article) => !article.external_url),
+        },
+        {
+          id: "stuff",
+          label: "Stuff · external",
+          title: "Around the web",
+          articles: this.articles.filter((article) => article.external_url),
+        },
+      ];
+    },
+
     async loadArticles() {
       this.articles = await fetchBlogArticles();
     },
