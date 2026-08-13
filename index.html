@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>David Lakubu — Home</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png" >
-  <link rel="stylesheet" href="assets/new_style.css" >
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="assets/new_style.css">
 
   <!-- Page Loader CSS (inline for immediate loading) -->
   <style>
@@ -24,16 +25,35 @@
       transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
       overflow: hidden;
     }
-    .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .loader-container { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+
+    .page-loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
     .spinner-square {
-      width: 60px; height: 60px;
+      width: 60px;
+      height: 60px;
       border: 3px solid var(--border);
       border-top-color: var(--accent);
       border-right-color: var(--accent);
       animation: spin 1s linear infinite;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
     .loader-text {
       font-family: "Readex Pro", sans-serif;
       font-size: 1rem;
@@ -42,18 +62,14 @@
     }
   </style>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" >
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Questrial&family=Readex+Pro:wght@200..400&display=swap"
-    rel="stylesheet"
-  >
+    rel="stylesheet">
 
   <!-- Alpine.js -->
-  <script
-    defer
-    src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.4/dist/cdn.min.js"
-  ></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.4/dist/cdn.min.js"></script>
 
   <!-- Page Loader (load first, no dependencies) -->
   <script src="assets/js/loader.js"></script>
@@ -74,7 +90,9 @@
 
   <!-- Masthead -->
   <header class="masthead">
-    <div class="masthead-left" x-text="data ? (roleParts.length ? roleParts[1] + ' · ' + locationText + ' · ' + new Date().getFullYear() : '') : 'Loading...'"></div>
+    <div class="masthead-left"
+      x-text="data ? (roleParts.length ? roleParts[1] + ' · ' + locationText + ' · ' + new Date().getFullYear() : '') : 'Loading...'">
+    </div>
     <div class="masthead-center" x-text="data ? $store.i18n.localize(data.tagline) : 'The Dev Portfolio'"></div>
     <div class="masthead-right">
       <div class="selectors">
@@ -84,7 +102,8 @@
           </div>
           <div class="select-items" :class="{ 'select-show': open }">
             <template x-for="lang in languages" :key="lang">
-              <div :class="{ 'same-as-selected': currentLanguage === lang }" @click="setCurrentLanguage(lang)" x-text="getLanguageLabel(lang)"></div>
+              <div :class="{ 'same-as-selected': currentLanguage === lang }" @click="setCurrentLanguage(lang)"
+                x-text="getLanguageLabel(lang)"></div>
             </template>
           </div>
         </div>
@@ -94,7 +113,8 @@
           </div>
           <div class="select-items" :class="{ 'select-show': open }">
             <template x-for="themeName in themes" :key="themeName">
-              <div :class="{ 'same-as-selected': currentTheme === themeName }" @click="setCurrentTheme(themeName)" x-text="themeName"></div>
+              <div :class="{ 'same-as-selected': currentTheme === themeName }" @click="setCurrentTheme(themeName)"
+                x-text="themeName"></div>
             </template>
           </div>
         </div>
@@ -120,44 +140,49 @@
     <a href="posts.html" x-text="$store.i18n.t(&quot;blog&quot;)"></a>
     <a href="tools.html">Tools</a>
     <div class="spacer"></div>
-    <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&quot;gitHub&quot;)"></span> →</a>
+    <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&quot;gitHub&quot;)"></span>
+      →</a>
   </nav>
 
   <!-- Intro / projects split -->
   <div class="home-top-layout">
     <div class="home-left-column">
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <span class="issue-tag" x-text="data && roleParts.length ? roleParts[1] + ' · Volume 1' : 'Loading...'"></span>
-      <h1 class="hero-name">
-        <span x-text="data ? data.name.split(' ')[0] : &quot;David&quot;"></span><br>
-        <span x-text="data ? data.name.split(' ').slice(1).join(' ') : &quot;Lakubu&quot;"></span>
-        <em x-text="data ? $store.i18n.localize(data.tagline) : 'Full Stack Developer'"></em>
-      </h1>
-      <p class="hero-byline" x-html="description"></p>
-      <span class="location-tag">📍 <span x-text="locationText"></span></span>
-      <div class="btn-row">
-        <a href="https://github.com/davidlakubu" class="btn btn-stroke" target="_blank" x-text="$store.i18n.t(&quot;gitHub&quot;)"></a>
-        <a href="mailto:hello@lakubudavid.me" class="btn btn-stroke" x-text="$store.i18n.t(&quot;contact&quot;)"></a>
-      </div>
-    </div>
-  </section>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <span class="issue-tag"
+            x-text="data && roleParts.length ? roleParts[1] + ' · Volume 1' : 'Loading...'"></span>
+          <h1 class="hero-name">
+            <span x-text="data ? data.name.split(' ')[0] : &quot;David&quot;"></span><br>
+            <span x-text="data ? data.name.split(' ').slice(1).join(' ') : &quot;Lakubu&quot;"></span>
+            <em x-text="data ? $store.i18n.localize(data.tagline) : 'Full Stack Developer'"></em>
+          </h1>
+          <p class="hero-byline" x-html="description"></p>
+          <span class="location-tag">📍 <span x-text="locationText"></span></span>
+          <div class="btn-row">
+            <a href="https://github.com/davidlakubu" class="btn btn-stroke" target="_blank"
+              x-text="$store.i18n.t(&quot;gitHub&quot;)"></a>
+            <a href="mailto:hello@lakubudavid.me" class="btn btn-stroke"
+              x-text="$store.i18n.t(&quot;contact&quot;)"></a>
+          </div>
+        </div>
+      </section>
 
-  <!-- Latest writing -->
-  <section class="home-writing" id="blogs" x-data="blogsSection()">
-    <div class="home-writing-heading">
-      <div class="article-label">Latest writing</div>
-    </div>
-    <template x-if="localArticles.length">
-      <article class="latest-writing-card">
-        <div class="home-blog-date" x-text="formatDate(localArticles[0].date)"></div>
-        <a class="latest-writing-title" :href="'posts.html?blog_post=' + localArticles[0].id" x-text="localArticles[0].title"></a>
-        <p x-text="localArticles[0].description"></p>
-        <a class="home-writing-link" href="posts.html">See other writing →</a>
-      </article>
-    </template>
-  </section>
+      <!-- Latest writing -->
+      <section class="home-writing" id="blogs" x-data="blogsSection()">
+        <div class="home-writing-heading">
+          <div class="article-label">Latest writing</div>
+        </div>
+        <template x-if="localArticles.length">
+          <article class="latest-writing-card">
+            <div class="home-blog-date" x-text="formatDate(localArticles[0].date)"></div>
+            <a class="latest-writing-title" :href="'posts.html?blog_post=' + localArticles[0].id"
+              x-text="localArticles[0].title"></a>
+            <p x-text="localArticles[0].description"></p>
+            <a class="home-writing-link" href="posts.html">See other writing →</a>
+          </article>
+        </template>
+      </section>
 
 
     </div>
@@ -167,45 +192,51 @@
         <h2>Projects</h2>
         <span>Click a project to open its details.</span>
       </div>
-  <!-- Projects Strip -->
-  <div class="projects-strip" id="projects" x-data="projectsSection()">
-    <div x-show="loading" class="loading" x-text="$store.i18n.t(&quot;loading&quot;)"></div>
-    <template x-for="(project, index) in visibleProjects" :key="project.name">
-      <button class="proj-item proj-item-button" type="button" @click="openProject(project)">
-        <div class="proj-num" x-text="'0' + (index + 1)"></div>
-        <div class="proj-name" x-text="project.name"></div>
-        <div class="proj-desc" x-text="getDescription(project)"></div>
-        <div class="proj-tech" x-text="project.tech_used"></div>
-        <div class="proj-links">
-          <span class="proj-link">View project →</span>
-        </div>
-      </button>
-    </template>
-
-    <button class="projects-more" type="button" x-show="projects.length > 6" @click="toggleProjects()" x-text="showAllProjects ? 'Show fewer projects ↑' : 'More projects ↓'"></button>
-
-    <dialog class="project-dialog" x-ref="projectDialog" @click.self="closeProject" @keydown.escape="closeProject">
-      <div class="project-dialog-inner" x-show="selectedProject">
-        <template x-if="selectedProject && selectedProject.screenshot">
-          <div class="project-dialog-shot-wrap">
-            <img class="project-dialog-shot" :src="getScreenshot(selectedProject)" :alt="`${selectedProject.name} preview`">
-            <span class="project-dialog-shot-label" x-text="selectedProject.external_link ? 'Live preview' : 'Terminal preview'"></span>
-          </div>
+      <!-- Projects Strip -->
+      <div class="projects-strip" id="projects" x-data="projectsSection()">
+        <div x-show="loading" class="loading" x-text="$store.i18n.t(&quot;loading&quot;)"></div>
+        <template x-for="(project, index) in visibleProjects" :key="project.name">
+          <button class="proj-item proj-item-button" type="button" @click="openProject(project)">
+            <div class="proj-num" x-text="'0' + (index + 1)"></div>
+            <div class="proj-name" x-text="project.name"></div>
+            <div class="proj-desc" x-text="getDescription(project)"></div>
+            <div class="proj-tech" x-text="project.tech_used"></div>
+            <div class="proj-links">
+              <span class="proj-link">View project →</span>
+            </div>
+          </button>
         </template>
-        <div class="project-dialog-content">
-          <div class="article-label">Project detail</div>
-          <h2 class="project-dialog-title" x-text="selectedProject?.name"></h2>
-          <div class="project-dialog-tags" x-text="selectedProject?.tech_used"></div>
-          <p class="project-dialog-description" x-text="selectedProject ? getDescription(selectedProject) : ''"></p>
-          <div class="project-dialog-links">
-            <a class="btn btn-stroke" :href="selectedProject?.github_link" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-            <a class="btn btn-stroke" x-show="selectedProject && hasExternalLink(selectedProject)" :href="selectedProject && getExternalLinkUrl(selectedProject)" target="_blank" rel="noopener noreferrer" x-text="selectedProject && getExternalLinkName(selectedProject)"></a>
-            <button class="btn btn-solid" type="button" @click="closeProject">Close</button>
+
+        <button class="projects-more" type="button" x-show="projects.length > 6" @click="toggleProjects()"
+          x-text="showAllProjects ? 'Show fewer projects ↑' : 'More projects ↓'"></button>
+
+        <dialog class="project-dialog" x-ref="projectDialog" @click.self="closeProject" @keydown.escape="closeProject">
+          <div class="project-dialog-inner" x-show="selectedProject">
+            <template x-if="selectedProject && selectedProject.screenshot">
+              <div class="project-dialog-shot-wrap">
+                <img class="project-dialog-shot" :src="getScreenshot(selectedProject)"
+                  :alt="`${selectedProject.name} preview`">
+                <span class="project-dialog-shot-label"
+                  x-text="selectedProject.external_link ? 'Live preview' : 'Terminal preview'"></span>
+              </div>
+            </template>
+            <div class="project-dialog-content">
+              <div class="article-label">Project detail</div>
+              <h2 class="project-dialog-title" x-text="selectedProject?.name"></h2>
+              <div class="project-dialog-tags" x-text="selectedProject?.tech_used"></div>
+              <p class="project-dialog-description" x-text="selectedProject ? getDescription(selectedProject) : ''"></p>
+              <div class="project-dialog-links">
+                <a class="btn btn-stroke" :href="selectedProject?.github_link" target="_blank"
+                  rel="noopener noreferrer">GitHub ↗</a>
+                <a class="btn btn-stroke" x-show="selectedProject && hasExternalLink(selectedProject)"
+                  :href="selectedProject && getExternalLinkUrl(selectedProject)" target="_blank"
+                  rel="noopener noreferrer" x-text="selectedProject && getExternalLinkName(selectedProject)"></a>
+                <button class="btn btn-solid" type="button" @click="closeProject">Close</button>
+              </div>
+            </div>
           </div>
-        </div>
+        </dialog>
       </div>
-    </dialog>
-  </div>
 
     </div>
   </div>
@@ -221,4 +252,5 @@
     <div class="f-right">© 2026 · 📍 <span x-text="locationText"></span></div>
   </footer>
 </body>
+
 </html>
