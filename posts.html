@@ -79,9 +79,9 @@
   <!-- Masthead -->
   <header class="masthead">
     <div class="masthead-left">
-      <a href="index.html" style="color: var(--ink); text-decoration: none;">← <span x-text="$store.i18n.t('home')"></span></a>
+      <a href="index.html" style="color: var(--ink); text-decoration: none;">← <span x-text="$store.i18n.t(&quot;home&quot;)"></span></a>
     </div>
-    <div class="masthead-center" x-text="data ? $store.i18n.localize(data.tagline) : 'Blog'"></div>
+    <div class="masthead-center" x-text="data ? $store.i18n.localize(data.tagline) : &quot;Blog&quot;"></div>
     <div class="masthead-right">
       <div class="selectors">
         <div class="custom-select" x-data="languageSelector()" @click.outside="open = false">
@@ -121,12 +121,12 @@
     <div class="nav-profile">
       <img :src="profileImage.src || 'assets/img/profile.png'" :alt="profileImage.alt || 'profile picture'">
     </div>
-    <a href="index.html" x-text="$store.i18n.t(&#39;home&#39;)"></a>
-    <a href="portfolio.html" x-text="$store.i18n.t(&#39;portfolio&#39;)"></a>
-    <a href="posts.html" x-text="$store.i18n.t(&#39;blog&#39;)"></a>
+    <a href="index.html" x-text="$store.i18n.t(&quot;home&quot;)"></a>
+    <a href="portfolio.html" x-text="$store.i18n.t(&quot;portfolio&quot;)"></a>
+    <a href="posts.html" x-text="$store.i18n.t(&quot;blog&quot;)"></a>
     <a href="tools.html">Tools</a>
     <div class="spacer"></div>
-    <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&#39;gitHub&#39;)"></span> →</a>
+    <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&quot;gitHub&quot;)"></span> →</a>
   </nav>
 
   <!-- Scroll Indicator & Scroll Up Button -->
@@ -147,13 +147,13 @@
     <!-- Blog List / Post View -->
     <section id="blog" x-data="blogSection()">
       <template x-if="loading">
-        <p x-text="i18n.t('loading')">Loading...</p>
+        <p x-text="i18n.t(&quot;loading&quot;)">Loading...</p>
       </template>
 
       <template x-if="!loading && !currentPostId">
         <div class="blog-list-container" style="max-width: 100%;">
-          <div class="article-label" x-text="$store.i18n.t('writing')"></div>
-          <h1 class="blog-list-title" x-text="$store.i18n.t('blogArticles')"></h1>
+          <div class="article-label" x-text="$store.i18n.t(&quot;writing&quot;)"></div>
+          <h1 class="blog-list-title" x-text="$store.i18n.t(&quot;blogArticles&quot;)"></h1>
           <div id="blogs-list" class="blog-list-groups">
             <template x-for="group in articleGroups" :key="group.id">
               <section class="blog-list-group">
@@ -177,7 +177,7 @@
                       <div class="work-desc" x-text="article.description"></div>
                     </div>
                   </template>
-                  <p class="empty-group" x-show="group.articles.length === 0" x-text="i18n.t('noArticles')">No articles found.</p>
+                  <p class="empty-group" x-show="group.articles.length === 0" x-text="i18n.t(&quot;noArticles&quot;)">No articles found.</p>
                 </div>
               </section>
             </template>
@@ -188,7 +188,7 @@
 <template x-if="!loading && currentPostId && isExternal">
         <div class="blog-post-container">
           <a :href="externalUrl" target="_blank" rel="noopener noreferrer" class="back-link">
-            <span x-text="i18n.t('external') + ': ' + postMetadata?.platform" style="text-transform: capitalize;"></span>
+            <span x-text="i18n.t(&quot;external&quot;) + ': ' + postMetadata?.platform" style="text-transform: capitalize;"></span>
             <span style="margin-left: 8px;">→</span>
           </a>
         </div>
@@ -200,7 +200,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span x-text="i18n.t('backToList')">Back to list</span>
+            <span x-text="i18n.t(&quot;backToList&quot;)">Back to list</span>
           </a>
           <template x-if="postMetadata">
             <div class="post-header">
@@ -215,10 +215,10 @@
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                     <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
-                  <span x-text="$store.i18n.t('back')"></span>
+                  <span x-text="$store.i18n.t(&quot;back&quot;)"></span>
                 </a>
               </div>
-              <div class="toc-title" x-text="$store.i18n.t('contents')"></div>
+              <div class="toc-title" x-text="$store.i18n.t(&quot;contents&quot;)"></div>
               <nav class="toc-nav">
                 <template x-for="(heading, index) in tocHeadings" :key="index">
                   <a :href="'#' + heading.id" class="toc-link" :class="'toc-level-' + heading.level" :style="'padding-left: ' + ((heading.level - 1) * 12) + 'px'" x-text="heading.text" @click="scrollToHeading($event, heading.id)"></a>
@@ -235,9 +235,9 @@
   <footer>
     <div class="f-brand">David Lakubu</div>
     <div class="f-links">
-      <a href="https://github.com/davidlakubu" target="_blank" x-text="$store.i18n.t('gitHub')"></a>
-      <a href="https://linkedin.com/in/david-lakubu" target="_blank" x-text="$store.i18n.t('linkedin')"></a>
-      <a href="mailto:hello@lakubudavid.me" x-text="$store.i18n.t('email')"></a>
+      <a href="https://github.com/davidlakubu" target="_blank" x-text="$store.i18n.t(&quot;gitHub&quot;)"></a>
+      <a href="https://linkedin.com/in/david-lakubu" target="_blank" x-text="$store.i18n.t(&quot;linkedin&quot;)"></a>
+      <a href="mailto:hello@lakubudavid.me" x-text="$store.i18n.t(&quot;email&quot;)"></a>
     </div>
     <div class="f-right">© 2026 · 📍 <span x-text="locationText"></span></div>
   </footer>

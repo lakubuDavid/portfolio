@@ -115,12 +115,12 @@
     <div class="nav-profile">
       <img :src="profileImage.src || 'assets/img/profile.png'" :alt="profileImage.alt || 'profile picture'">
     </div>
-    <a href="index.html" x-text="$store.i18n.t(&#39;home&#39;)"></a>
-    <a href="portfolio.html" x-text="$store.i18n.t(&#39;portfolio&#39;)"></a>
-    <a href="posts.html" x-text="$store.i18n.t(&#39;blog&#39;)"></a>
+    <a href="index.html" x-text="$store.i18n.t(&quot;home&quot;)"></a>
+    <a href="portfolio.html" x-text="$store.i18n.t(&quot;portfolio&quot;)"></a>
+    <a href="posts.html" x-text="$store.i18n.t(&quot;blog&quot;)"></a>
     <a href="tools.html">Tools</a>
     <div class="spacer"></div>
-    <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&#39;gitHub&#39;)"></span> →</a>
+    <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&quot;gitHub&quot;)"></span> →</a>
   </nav>
 
   <!-- Intro / projects split -->
@@ -131,15 +131,15 @@
     <div class="hero-content">
       <span class="issue-tag" x-text="data && roleParts.length ? roleParts[1] + ' · Volume 1' : 'Loading...'"></span>
       <h1 class="hero-name">
-        <span x-text="data ? data.name.split(' ')[0] : 'David'"></span><br>
-        <span x-text="data ? data.name.split(' ').slice(1).join(' ') : 'Lakubu'"></span>
+        <span x-text="data ? data.name.split(' ')[0] : &quot;David&quot;"></span><br>
+        <span x-text="data ? data.name.split(' ').slice(1).join(' ') : &quot;Lakubu&quot;"></span>
         <em x-text="data ? $store.i18n.localize(data.tagline) : 'Full Stack Developer'"></em>
       </h1>
       <p class="hero-byline" x-html="description"></p>
       <span class="location-tag">📍 <span x-text="locationText"></span></span>
       <div class="btn-row">
-        <a href="https://github.com/davidlakubu" class="btn btn-stroke" target="_blank" x-text="$store.i18n.t('gitHub')"></a>
-        <a href="mailto:hello@lakubudavid.me" class="btn btn-stroke" x-text="$store.i18n.t('contact')"></a>
+        <a href="https://github.com/davidlakubu" class="btn btn-stroke" target="_blank" x-text="$store.i18n.t(&quot;gitHub&quot;)"></a>
+        <a href="mailto:hello@lakubudavid.me" class="btn btn-stroke" x-text="$store.i18n.t(&quot;contact&quot;)"></a>
       </div>
     </div>
   </section>
@@ -169,7 +169,7 @@
       </div>
   <!-- Projects Strip -->
   <div class="projects-strip" id="projects" x-data="projectsSection()">
-    <div x-show="loading" class="loading" x-text="$store.i18n.t(&#39;loading&#39;)"></div>
+    <div x-show="loading" class="loading" x-text="$store.i18n.t(&quot;loading&quot;)"></div>
     <template x-for="(project, index) in projects" :key="project.name">
       <button class="proj-item proj-item-button" type="button" @click="openProject(project)">
         <div class="proj-num" x-text="'0' + (index + 1)"></div>
@@ -211,10 +211,10 @@
   <footer>
     <div class="f-brand">David Lakubu</div>
     <div class="f-links">
-      <a href="https://github.com/davidlakubu" target="_blank" x-text="$store.i18n.t('gitHub')"></a>
-      <a href="https://linkedin.com/in/david-lakubu" target="_blank" x-text="$store.i18n.t('linkedin')"></a>
-      <a href="mailto:hello@lakubudavid.me" x-text="$store.i18n.t('email')"></a>
-      <a href="posts.html" x-text="$store.i18n.t('blog')"></a>
+      <a href="https://github.com/davidlakubu" target="_blank" x-text="$store.i18n.t(&quot;gitHub&quot;)"></a>
+      <a href="https://linkedin.com/in/david-lakubu" target="_blank" x-text="$store.i18n.t(&quot;linkedin&quot;)"></a>
+      <a href="mailto:hello@lakubudavid.me" x-text="$store.i18n.t(&quot;email&quot;)"></a>
+      <a href="posts.html" x-text="$store.i18n.t(&quot;blog&quot;)"></a>
     </div>
     <div class="f-right">© 2026 · 📍 <span x-text="locationText"></span></div>
   </footer>

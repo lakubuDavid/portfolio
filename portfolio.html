@@ -103,20 +103,20 @@
   <div class="nav-profile">
     <img :src="profileImage.src || 'assets/img/profile.png'" :alt="profileImage.alt || 'profile picture'">
   </div>
-  <a href="index.html" x-text="$store.i18n.t(&#39;home&#39;)"></a>
-  <a href="portfolio.html" x-text="$store.i18n.t(&#39;portfolio&#39;)"></a>
-  <a href="posts.html" x-text="$store.i18n.t(&#39;blog&#39;)"></a>
+  <a href="index.html" x-text="$store.i18n.t(&quot;home&quot;)"></a>
+  <a href="portfolio.html" x-text="$store.i18n.t(&quot;portfolio&quot;)"></a>
+  <a href="posts.html" x-text="$store.i18n.t(&quot;blog&quot;)"></a>
   <a href="tools.html">Tools</a>
   <div class="spacer"></div>
-  <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&#39;gitHub&#39;)"></span> →</a>
+  <a href="https://github.com/davidlakubu" target="_blank"><span x-text="$store.i18n.t(&quot;gitHub&quot;)"></span> →</a>
 </div>
 
 <div class="main">
 
   <!-- Awards Section -->
   <div class="article" x-data="awardsSection()">
-    <div class="article-label" x-text="$store.i18n.t('recognition')"></div>
-    <div class="article-title" x-text="$store.i18n.t('awardsCertificates')"></div>
+    <div class="article-label" x-text="$store.i18n.t(&quot;recognition&quot;)"></div>
+    <div class="article-title" x-text="$store.i18n.t(&quot;awardsCertificates&quot;)"></div>
 
     <template x-for="award in awards" :key="award.title.en">
       <div class="work-entry">
@@ -138,8 +138,8 @@
   </div>
   <!-- Work Experience -->
   <div class="article" id="experience" x-data="workExperienceSection()">
-    <div class="article-label" x-text="$store.i18n.t('career')"></div>
-    <div class="article-title" x-text="$store.i18n.t('workExperiences')"></div>
+    <div class="article-label" x-text="$store.i18n.t(&quot;career&quot;)"></div>
+    <div class="article-title" x-text="$store.i18n.t(&quot;workExperiences&quot;)"></div>
 
     <template x-for="exp in experiences" :key="exp.title">
       <div class="work-entry">
@@ -181,25 +181,25 @@
   <!-- Sidebar skills -->
   <div class="sidebar" id="skills" x-data="skillsSection()">
     <div class="sidebar-block">
-      <div class="sidebar-title" x-text="$store.i18n.t('languages')"></div>
+      <div class="sidebar-title" x-text="$store.i18n.t(&quot;languages&quot;)"></div>
       <template x-for="(lang, index) in languageSkills" :key="index">
         <div class="sidebar-item" x-text="lang"></div>
       </template>
     </div>
     <div class="sidebar-block">
-      <div class="sidebar-title" x-text="$store.i18n.t('librariesTools')"></div>
+      <div class="sidebar-title" x-text="$store.i18n.t(&quot;librariesTools&quot;)"></div>
       <template x-for="(item, index) in librariesAndTools" :key="index">
         <div class="sidebar-item" x-text="item"></div>
       </template>
     </div>
     <div class="sidebar-block">
-      <div class="sidebar-title" x-text="$store.i18n.t('infrastructure')"></div>
+      <div class="sidebar-title" x-text="$store.i18n.t(&quot;infrastructure&quot;)"></div>
       <template x-for="(item, index) in infraAndPlatforms" :key="index">
         <div class="sidebar-item" x-text="item"></div>
       </template>
     </div>
     <div class="sidebar-block">
-      <div class="sidebar-title" x-text="$store.i18n.t('contact')"></div>
+      <div class="sidebar-title" x-text="$store.i18n.t(&quot;contact&quot;)"></div>
       <div class="sidebar-item">
         <a href="mailto:hello@lakubudavid.me" style="color:var(--accent);text-decoration:none;">hello@lakubudavid.me</a>
       </div>
@@ -216,10 +216,10 @@
 <footer>
   <div class="f-brand">David Lakubu</div>
   <div class="f-links">
-    <a href="https://github.com/davidlakubu" target="_blank" x-text="$store.i18n.t('gitHub')"></a>
-    <a href="https://linkedin.com/in/david-lakubu" target="_blank" x-text="$store.i18n.t('linkedin')"></a>
-    <a href="mailto:hello@lakubudavid.me" x-text="$store.i18n.t('email')"></a>
-    <a href="posts.html" x-text="$store.i18n.t('blog')"></a>
+    <a href="https://github.com/davidlakubu" target="_blank" x-text="$store.i18n.t(&quot;gitHub&quot;)"></a>
+    <a href="https://linkedin.com/in/david-lakubu" target="_blank" x-text="$store.i18n.t(&quot;linkedin&quot;)"></a>
+    <a href="mailto:hello@lakubudavid.me" x-text="$store.i18n.t(&quot;email&quot;)"></a>
+    <a href="posts.html" x-text="$store.i18n.t(&quot;blog&quot;)"></a>
   </div>
   <div class="f-right">© 2026 · 📍 <span x-text="locationText"></span></div>
 </footer>
