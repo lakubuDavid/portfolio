@@ -170,7 +170,7 @@
   <!-- Projects Strip -->
   <div class="projects-strip" id="projects" x-data="projectsSection()">
     <div x-show="loading" class="loading" x-text="$store.i18n.t(&quot;loading&quot;)"></div>
-    <template x-for="(project, index) in projects" :key="project.name">
+    <template x-for="(project, index) in visibleProjects" :key="project.name">
       <button class="proj-item proj-item-button" type="button" @click="openProject(project)">
         <div class="proj-num" x-text="'0' + (index + 1)"></div>
         <div class="proj-name" x-text="project.name"></div>
@@ -181,6 +181,8 @@
         </div>
       </button>
     </template>
+
+    <button class="projects-more" type="button" x-show="projects.length > 6" @click="toggleProjects()" x-text="showAllProjects ? 'Show fewer projects ↑' : 'More projects ↓'"></button>
 
     <dialog class="project-dialog" x-ref="projectDialog" @click.self="closeProject" @keydown.escape="closeProject">
       <div class="project-dialog-inner" x-show="selectedProject">

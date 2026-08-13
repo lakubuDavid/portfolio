@@ -514,6 +514,15 @@ document.addEventListener("alpine:init", () => {
      projects: [],
      loading: true,
      selectedProject: null,
+     showAllProjects: false,
+
+     get visibleProjects() {
+       return this.showAllProjects ? this.projects : this.projects.slice(0, 6);
+     },
+
+     toggleProjects() {
+       this.showAllProjects = !this.showAllProjects;
+     },
 
      openProject(project) {
        this.selectedProject = project;

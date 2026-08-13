@@ -2090,6 +2090,8 @@ nav .selectors {
 .projects-heading h2 { font: 700 1.8rem/1 'Bodoni Moda', serif; }
 .projects-heading span { margin-left: auto; color: var(--muted); font: .62rem 'Readex Pro'; }
 .home-right-column > .projects-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: start; min-height: 0; border: 0; }
+.projects-more { grid-column: 1 / -1; justify-self: center; margin: 18px 0 24px; padding: 9px 18px; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; font: .62rem 'Readex Pro'; letter-spacing: 2px; text-transform: uppercase; }
+.projects-more:hover { background: var(--ink); color: var(--surface); }
 @media (max-width: 768px) {
   .home-top-layout { grid-template-columns: 1fr; }
   .home-left-column > .hero { min-height: auto; border-bottom: 2px solid var(--ink); }
