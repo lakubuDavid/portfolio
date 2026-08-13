@@ -25,12 +25,12 @@
     <div class="nav-profile">
       <img :src="profileImage.src || 'assets/img/profile.png'" :alt="profileImage.alt || 'profile picture'">
     </div>
-    <a href="index.html" x-text="$store.i18n.t('home')"></a>
-    <a href="portfolio.html" x-text="$store.i18n.t('portfolio')"></a>
-    <a href="posts.html" x-text="$store.i18n.t('blog')"></a>
+    <a href="index.html" x-text="$store.i18n.t(&quot;home&quot;)"></a>
+    <a href="portfolio.html" x-text="$store.i18n.t(&quot;portfolio&quot;)"></a>
+    <a href="posts.html" x-text="$store.i18n.t(&quot;blog&quot;)"></a>
     <a href="tools.html">Tools</a>
     <div class="spacer"></div>
-    <a href="https://github.com/davidlakubu" target="_blank" rel="noopener"><span x-text="$store.i18n.t('gitHub')"></span> →</a>
+    <a href="https://github.com/davidlakubu" target="_blank" rel="noopener"><span x-text="$store.i18n.t(&quot;gitHub&quot;)"></span> →</a>
   </nav>
 
   <main class="tools-page" x-data="toolsSection()">
@@ -61,7 +61,7 @@
             </div>
             <div class="tool-install" x-show="tool.install">
               <code x-text="tool.install"></code>
-              <button type="button" class="copy-button" @click="copyInstall(tool)" x-text="copied === tool.name ? 'Copied' : 'Copy'"></button>
+              <button type="button" class="copy-button" @click="copyInstall(tool)" x-text="copied === tool.name ? &quot;Copied&quot; : &quot;Copy&quot;"></button>
             </div>
           </div>
           <a class="tool-github" :href="tool.github" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
