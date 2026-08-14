@@ -2417,14 +2417,6 @@ nav .selectors {
   min-height: 100px;
 }
 
-.contact-bot-field {
-  display: none !important;
-  visibility: hidden;
-  position: absolute;
-  width: 0;
-  height: 0;
-}
-
 .contact-form-actions {
   display: flex;
   gap: 12px;

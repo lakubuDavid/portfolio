@@ -256,9 +256,12 @@
 
   <!-- Contact Dialog -->
   <dialog id="contact-dialog" class="contact-dialog">
-    <form id="contact-form" name="contact" method="POST" data-netlify="true">
+    <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="website_url">
       <input type="hidden" name="form-name" value="contact">
-      <input type="text" name="bot-field" class="contact-bot-field" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="subject" data-remove-prefix value="New message from lakubudavid.me (%{submissionId})">
+      <p style="display:none;position:absolute;left:-9999px;">
+        <label>Website <input name="website_url" type="text" tabindex="-1" autocomplete="off"></label>
+      </p>
       <h2 class="contact-dialog-title">Get in touch</h2>
       <label class="contact-field">
         <span>Name</span>

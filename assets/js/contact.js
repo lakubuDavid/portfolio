@@ -57,10 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // Honeypot check — bots fill this, real users don't
-    var botField = form.querySelector("[name='bot-field']");
-    if (botField && botField.value) return;
-
     var submitBtn = form.querySelector("[type='submit']");
     var originalText = submitBtn.textContent;
     submitBtn.textContent = "Sending…";
