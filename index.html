@@ -162,8 +162,8 @@
           <div class="btn-row">
             <a href="https://github.com/davidlakubu" class="btn btn-stroke" target="_blank"
               x-text="$store.i18n.t(&quot;gitHub&quot;)"></a>
-            <a href="mailto:hello@lakubudavid.me" class="btn btn-stroke"
-              x-text="$store.i18n.t(&quot;contact&quot;)"></a>
+            <button type="button" invoketarget="contact-dialog" invokes="show-modal" class="btn btn-stroke"
+              x-text="$store.i18n.t(&quot;contact&quot;)"></button>
           </div>
         </div>
       </section>
@@ -248,9 +248,39 @@
       <a href="https://linkedin.com/in/david-lakubu" target="_blank" x-text="$store.i18n.t(&quot;linkedin&quot;)"></a>
       <a href="mailto:hello@lakubudavid.me" x-text="$store.i18n.t(&quot;email&quot;)"></a>
       <a href="posts.html" x-text="$store.i18n.t(&quot;blog&quot;)"></a>
+      <button type="button" invoketarget="contact-dialog" invokes="show-modal" class="contact-btn"
+        x-text="$store.i18n.t(&quot;contact&quot;)"></button>
     </div>
     <div class="f-right">© 2026 · 📍 <span x-text="locationText"></span></div>
   </footer>
+
+  <!-- Contact Dialog -->
+  <dialog id="contact-dialog" class="contact-dialog">
+    <form id="contact-form" name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact">
+      <input type="text" name="bot-field" class="contact-bot-field" tabindex="-1" autocomplete="off">
+      <h2 class="contact-dialog-title">Get in touch</h2>
+      <label class="contact-field">
+        <span>Name</span>
+        <input type="text" name="name" required autocomplete="name" placeholder="Your name">
+      </label>
+      <label class="contact-field">
+        <span>Email</span>
+        <input type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      </label>
+      <label class="contact-field">
+        <span>Message</span>
+        <textarea name="message" required rows="4" placeholder="What can I help you with?"></textarea>
+      </label>
+      <div class="contact-form-actions">
+        <button type="submit" class="btn btn-solid">Send</button>
+        <button type="button" invoketarget="contact-dialog" invokes="close" class="btn btn-stroke">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Invoker API polyfill + Contact form handler -->
+  <script src="assets/js/contact.js"></script>
 </body>
 
 </html>
