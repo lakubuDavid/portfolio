@@ -27,5 +27,16 @@
     "screenshot": "assets/tool-screenshots/lasyd.png",
     "github": "https://github.com/lakubuDavid/lasyd",
     "install": "curl -fsSL https://lakubudavid.me/lasyd/install.sh | sh"
+  },
+  {
+    "name": "Coconut Milk",
+    "description": "A Lua-first desktop UI framework with a native webview bridge. Build single-window apps in Lua and scaffold them with create-coconut-app; install the runtime binary and scaffolder with one command.",
+    "language": "C++ / Lua",
+    "github": "https://github.com/lakubuDavid/coconut-milk",
+    "install": "curl -fsSL https://lakubudavid.me/portfolio/coconut-milk/install.sh | sh",
+    "scripts": [
+      { "name": "coconut", "description": "The Coconut Milk runtime binary — runs a Coconut Milk app (window + native webview bridge)." },
+      { "name": "create-coconut-app", "description": "Scaffolds a new Coconut Milk project (bare / bare-ts / vite templates)." }
+    ]
   }
 ]
